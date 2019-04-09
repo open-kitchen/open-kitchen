@@ -13,8 +13,6 @@ page_sections:
     link_text: Blog
   - link: "#"
     link_text: ChefSurf
-  - link: "#"
-    link_text: Team
   cta:
     url: https://github.com/migueltrevinom/open-kitchen
     button_text: Repository
