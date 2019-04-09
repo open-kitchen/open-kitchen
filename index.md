@@ -10,14 +10,14 @@ page_sections:
   - link: "/"
     link_text: Home
   - link: "#"
-    link_text: Features
+    link_text: Blog
   - link: "#"
-    link_text: Pricing
+    link_text: ChefSurf
   - link: "#"
     link_text: Team
   cta:
-    url: https://github.com/forestryio/ubuild-jekyll/archive/master.zip
-    button_text: Download
+    url: https://github.com/migueltrevinom/open-kitchen
+    button_text: Repository
 - template: hero-banner-w-image
   block: hero-2
   headline: uBuild <br><strong>design blocks</strong>
