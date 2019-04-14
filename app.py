@@ -17,7 +17,7 @@ def hello():
     return jsonify(data)
 
 
-api.add_resource(AuthenticationController, '/register')
+api.add_resource(AuthenticationController, '/authenticate')
 
 if __name__ == '__main__':
     app.run()
