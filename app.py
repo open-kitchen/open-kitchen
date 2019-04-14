@@ -1,16 +1,23 @@
-from flask import Flask
+from flask import Flask, jsonify
+from flask_restful import Resource, Api, reqparse
+from flask_jwt import JWT, jwt_required
+from config import Config
+from Authentication.authentication import AuthenticationController
 
 app = Flask(__name__)
-app.config.from_envvar('APP_SETTINGS')
+api = Api(app)
 
 
 # must run export APP_SETTINGS=/path/settings.cfg first
 # then python app.py
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!' + app.config['ENV']
+def hello():
+    data = {"token": Config.TOKEN}
+    return jsonify(data)
 
+
+api.add_resource(AuthenticationController, '/register')
 
 if __name__ == '__main__':
     app.run()
