@@ -18,16 +18,16 @@ AuthenticationService.get_auth_token()
 dependencies = InventoryService.get_dependencies()
 
 
-def print_date_time():
-    print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
-
-
-scheduler = BackgroundScheduler()
-scheduler.add_job(func=print_date_time, trigger="interval", seconds=3)
-scheduler.start()
-
-# Shut down the scheduler when exiting the app
-atexit.register(lambda: scheduler.shutdown())
+# def print_date_time():
+#     print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
+#
+#
+# scheduler = BackgroundScheduler()
+# scheduler.add_job(func=print_date_time, trigger="interval", seconds=3)
+# scheduler.start()
+#
+# # Shut down the scheduler when exiting the app
+# atexit.register(lambda: scheduler.shutdown())
 
 
 # must run export APP_SETTINGS=/path/settings.cfg first
