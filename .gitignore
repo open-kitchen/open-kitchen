@@ -1,3 +1,4 @@
 .env
 settings.cfg
 flask
+Modules/InventoryModule/__pycache__
