@@ -18,3 +18,18 @@ class AuthenticationController(Resource):
                                  headers=headers)
         Config.TOKEN = response.json()['token']
         return {"token": Config.TOKEN, "env": Config.ENV}, 201
+
+
+class AuthenticationService:
+    def __init__(self):
+        pass
+
+    @classmethod
+    def get_auth_token(cls):
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(Config.SERVER_URL + '/api/auth/token',
+                                 data=json.dumps({"email": Config.AUTH_EMAIL, "password": Config.AUTH_PASSWORD}),
+                                 headers=headers)
+        Config.TOKEN = response.json()['token']
+        print(Config.TOKEN)
+        return {"token": Config.TOKEN, "env": Config.ENV}, 201
