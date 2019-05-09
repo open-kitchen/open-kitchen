@@ -19,7 +19,7 @@ Each container can hold upto 20 portions.
 
 Now let's pretend we have a grid of 5 columns with 5 rows. making a total of 25 different positions with a total of 500 portions.
 
-
+![image](https://user-images.githubusercontent.com/9138358/57421684-e96b4f80-71c9-11e9-8e7b-9479b684923f.png)
 
 
 ## Delivery Runners
