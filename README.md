@@ -13,7 +13,7 @@ The main components of the open kitchen project are:
 
 ## Inventory System
 
-The entire system is built on the idea of having a map of portion containers. Making a grid of squares and each position in the grid holds a container. 
+The entire system is built on the idea of a grid map which contains columns of portions. Making a grid of squares and each position in the grid holds a container. 
 
 Each container can hold upto 20 portions. 
 
