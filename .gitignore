@@ -8,3 +8,4 @@ site/public/
 dist/
 .tmp/
 _site/
+.env
