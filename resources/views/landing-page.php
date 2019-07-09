@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Open Kitchen </title>
-    <link rel="icon" href="img/Fevicon.png" type="image/png">
+    <link rel="icon" href="https://storage.googleapis.com/openkitchen_cdn/ok_landing_page/logo/openkitchen_isotipo_xNm_icon.ico" type="image/png">
 
     <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -65,7 +65,7 @@
                         </ul>
 
                         <div class="nav-right text-center text-lg-right py-4 py-lg-0">
-                            <a class="button" href="#">Github repository</a>
+                            <a class="button" href="https://github.com/open-kitchen/open-kitchen">Github repository</a>
                         </div>
 
                     </div>
@@ -90,7 +90,7 @@
                         home cooking than to fast food, and provide a unique experience to our customers in the casual
                         food industry.
                     </p>
-                    <a class="button button-hero mt-4" href="#">Github repository</a>
+                    <a class="button button-hero mt-4" href="https://github.com/open-kitchen/open-kitchen">Github repository</a>
                 </div>
                 <div class="col-md-6 col-lg-7 col-xl-6 offset-xl-1">
                     <img class="img-fluid"
@@ -422,25 +422,34 @@
                     <div class="col-md-3 col-lg-2 align-self-center">
                         <div class="testimonial__img">
                             <img class="card-img rounded-0"
-                                src="https://storage.googleapis.com/openkitchen_cdn/ok_landing_page/logo/angularJS.svg"
+                                src="https://storage.googleapis.com/openkitchen_cdn/ok_landing_page/logo/nodejs.png"
                                 alt="">
                         </div>
                     </div>
                     <div class="col-md-9 col-lg-10">
                         <div class="testimonial__content mt-3 mt-sm-0">
-                            <h3>Daniel heart</h3>
-                            <p>Project manager, Nestle</p>
-                            <p class="testimonial__i">Also made from. Give may saying meat there from heaven it
-                                lights face had is gathered god earth light for life may itself shall whales made
-                                they're blessed whales also made from give may saying meat. There from heaven it
-                                lights face had</p>
+                            <h3>NodeJS + Restify.js</h3>
+                            <p>
+                                All the business logic is built in this language. Usually we would built everything in
+                                the same stack, but our previous app <span class="main-color"> ChefSurf </span> was
+                                built using Restify.Js and we are
+                                taking all the good parts of the project ( backend ). Restify.js we use it as a
+                                microservice that handles all the requests and returns the data formatted as a JSON
+                                object.
+
+                                We will post an API documentation later in the website.
+
+                            </p>
+                            <p class="testimonial__i">
+
+                            </p>
 
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="testimonial__item m-sm">
+            <!-- <div class="testimonial__item m-sm">
                 <div class="row">
                     <div class="col-md-3 col-lg-2 align-self-center">
                         <div class="testimonial__img">
@@ -451,7 +460,7 @@
                     </div>
                     <div class="col-md-9 col-lg-10">
                         <div class="testimonial__content mt-3 mt-sm-0">
-                            <h3>Python</h3>
+                            <h3>Sp</h3>
                             <p>Main programming language for the brain of the kitchen</p>
                             <p class="testimonial__i">Also made from. Give may saying meat there from heaven it
                                 lights face had is gathered god earth light for life may itself shall whales made
@@ -461,7 +470,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- </div> -->
         </div>
     </section>
