@@ -3,3 +3,10 @@ settings.cfg
 flask
 Modules/InventoryModule/__pycache__
 __pycache__
+
+
+venv/
+
+./venv
+
+venv

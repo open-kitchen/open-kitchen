@@ -11,7 +11,6 @@ class AuthenticationController(Resource):
 
     def post(self):
         # data = AuthenticationController.parser.parse_args()
-
         headers = {'Content-Type': 'application/json'}
         response = requests.post(Config.SERVER_URL + '/api/auth/token',
                                  data=json.dumps({"email": Config.AUTH_EMAIL, "password": Config.AUTH_PASSWORD}),
@@ -30,6 +29,9 @@ class AuthenticationService:
         response = requests.post(Config.SERVER_URL + '/api/auth/token',
                                  data=json.dumps({"email": Config.AUTH_EMAIL, "password": Config.AUTH_PASSWORD}),
                                  headers=headers)
-        Config.TOKEN = response.json()['token']
-        print(Config.TOKEN)
+
+        Config.set_token(response.json()['token'])
+
+        print('token has been set ======!!!=====', Config.get_token())
+
         return {"token": Config.TOKEN, "env": Config.ENV}, 201
