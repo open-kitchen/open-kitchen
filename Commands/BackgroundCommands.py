@@ -6,6 +6,7 @@ import datetime
 
 from Modules.OrderModule.Services.OrderService import OrderService
 from Modules.WokModule.Services.WokService import WokService
+from Modules.DishesModule.Services.DishService import DishService
 
 
 class BackGroundCommandsController:
@@ -37,21 +38,16 @@ class BackGroundCommandsController:
     @classmethod
     def sync_next_dishes_in_queue(cls):
         now = datetime.datetime.now()
-        response = OrderService.request_next_dishes({
+        dishes_response = OrderService.request_next_dishes({
             "date": now.strftime("%m/%d/%Y, %H:%M:%S"),
-
         })
-        print('************************')
-        print(response)
-        print('************************')
 
     @classmethod
     def sync_current_orders(cls):
         now = datetime.datetime.now()
-        response = OrderService.request_dishes_in_queue({
+        dishes_response = OrderService.request_dishes_in_queue({
             "date": now.strftime("%m/%d/%Y, %H:%M:%S"),
 
         })
-        print('-------------------------')
-        print(response)
-        print('-------------------------')
+        DishService.set_dishes_in_queue(dishes_response['data'])
+        print('sync current orders completed')

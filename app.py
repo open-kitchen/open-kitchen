@@ -4,6 +4,7 @@ from flask_jwt import JWT, jwt_required
 from config import Config
 from Authentication.authentication import AuthenticationController, AuthenticationService
 from Modules.KitchenModule.Controllers.KitchenController import KitchenController
+from routes import Router
 from flask import Flask
 from Commands.BackgroundCommands import BackGroundCommandsController
 
@@ -12,23 +13,14 @@ api = Api(app)
 AuthenticationService.get_auth_token()
 kitchen = KitchenController.init_kitchen()
 
-
 # Steps
 # must run export APP_SETTINGS=/path/settings.cfg first
 # then python app.py
 
-@app.route('/')
-def hello():
-    data = {"token": Config.TOKEN, "dependencies": kitchen}
-    return jsonify(data)
-
-
-api.add_resource(AuthenticationController, '/authenticate')
-
+Router.init_routes(app, api)
 
 BackGroundCommandsController.init()
 
 if __name__ == '__main__':
     print('start server ' + __name__)
     app.run()
-
