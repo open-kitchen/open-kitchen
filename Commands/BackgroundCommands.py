@@ -6,7 +6,7 @@ import datetime
 
 from Modules.OrderModule.Services.OrderService import OrderService
 from Modules.WokModule.Services.WokService import WokService
-from Modules.DishesModule.Services.DishService import DishService
+from Modules.DishModule.Services.DishService import DishService
 
 
 class BackGroundCommandsController:
