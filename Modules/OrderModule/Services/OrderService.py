@@ -11,7 +11,7 @@ class OrderService:
         pass
 
     @classmethod
-    def request_next_dishes(cls, params):
+    def assign_next_dishes_in_queue(cls, params):
         path = cls.base_path + '/assign/dishes'
 
         cls.headers['Authorization'] = "JWT " + Config.get_token()

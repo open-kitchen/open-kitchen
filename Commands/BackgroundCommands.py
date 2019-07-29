@@ -18,36 +18,41 @@ class BackGroundCommandsController:
     def init(cls):
         scheduler = BackgroundScheduler()
 
-        # init print_date_time every 3 seconds
-        scheduler.add_job(func=cls.print_date_time, trigger="interval", seconds=3)
-        scheduler.start()
+        # sync orders from server every 60 seconds to see if priorities changed
+        scheduler.add_job(func=cls.sync_next_dishes_in_queue, trigger="interval", seconds=15)
 
-        # init sync orders from server every 10 seconds
-        scheduler.add_job(func=cls.sync_next_dishes_in_queue, trigger="interval", seconds=50)
-
-        # init sync orders from server every 10 seconds
+        # get current dishes in queue from server every 10 seconds
         scheduler.add_job(func=cls.sync_current_orders, trigger="interval", seconds=10)
+
+        # assign dishes to available woks
+        scheduler.add_job(func=cls.add_dishes_to_woks, trigger="interval", seconds=5)
+
+        scheduler.start()
 
         # Shut down the scheduler when exiting the app
         atexit.register(lambda: scheduler.shutdown())
 
     @classmethod
-    def print_date_time(cls):
-        print('...')
-
-    @classmethod
     def sync_next_dishes_in_queue(cls):
         now = datetime.datetime.now()
-        dishes_response = OrderService.request_next_dishes({
+        dishes_response = OrderService.assign_next_dishes_in_queue({
             "date": now.strftime("%m/%d/%Y, %H:%M:%S"),
         })
+        print('next dishes assigned now')
 
     @classmethod
     def sync_current_orders(cls):
         now = datetime.datetime.now()
         dishes_response = OrderService.request_dishes_in_queue({
             "date": now.strftime("%m/%d/%Y, %H:%M:%S"),
-
         })
         DishService.set_dishes_in_queue(dishes_response['data'])
+        print(len(DishService.get_dishes_in_queue()))
         print('sync current orders completed')
+
+    @classmethod
+    def add_dishes_to_woks(cls):
+        # get woks
+        # assign order to woks and notify the server about it
+        # init new background schedule for a specific wok so the runner can start getting the ingredients
+        print('--- add dishes to woks ---')
