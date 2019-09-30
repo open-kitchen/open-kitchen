@@ -2,6 +2,8 @@ from Authentication.authentication import AuthenticationController, Authenticati
 from Modules.RunnerModule.Controllers.RunnerController import RunnerController, RunnersController
 from Modules.DishModule.Controllers.DishController import DishesController, DishController
 from Modules.WokModule.Controllers.WokController import WoksController, WokController
+from Modules.AdminModule.Controllers.AdminController import AdminController
+from Modules.HealthCheckModule.Controllers.HealthCheckController import HealthCheckController
 from config import Config
 from flask import Flask, jsonify
 
@@ -36,3 +38,8 @@ class Router:
         # # woks endpoints
         cls.api_reference.add_resource(WoksController, '/woks')
         cls.api_reference.add_resource(WokController, '/wok/<wok_id>')
+
+        # Admin Endpoints
+        cls.api_reference.add_resource(AdminController, '/admin/update/<hash_value>')
+
+        cls.api_reference.add_resource(HealthCheckController, '/z/health')
