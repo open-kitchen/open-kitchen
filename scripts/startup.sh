@@ -13,11 +13,22 @@ then
     OPEN_KITCHEN_PATH=/var/www
 fi
 
-# Ensure we're connected to the wifi
-python3 $OPEN_KITCHEN_PATH/scripts/connect-to-wifi.py &
+if type python3
+then
+    # Ensure we're connected to the wifi
+    # Attempt to use the scripts path if connect to wifi doesn't exist
+    if [ ! -d "$OPEN_KITCHEN_PATH/scripts" ]
+    then
+        python3 /scripts/connect-to-wifi.py &
+    else
+        python3 $OPEN_KITCHEN_PATH/scripts/connect-to-wifi.py &
+    fi
 
-# Pull latest changes
-cd $OPEN_KITCHEN_PATH
-git pull
+    # Pull latest changes
+    cd $OPEN_KITCHEN_PATH
+    git pull
 
-python3 $OPEN_KITCHEN_PATH/app.py &> /tmp/open-kitchen.log
+    python3 $OPEN_KITCHEN_PATH/app.py &>> /tmp/open-kitchen.log
+else
+    echo "python3 not yet installed. Skipping current run"
+fi

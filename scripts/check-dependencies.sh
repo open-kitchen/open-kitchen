@@ -9,19 +9,28 @@ if [ -d "$OPEN_KITCHEN_PATH" ]
 then
     echo "[ ok ] Open Kitchen Repository exists"
 else
-    echo "[    ] No Open Kitchen Repository"
+    echo "[    ] Open Kitchen Repository exists"
 fi
 
-if [ which python3 ]
+if type python3
 then
-    echo "[ ok ] Python3 exists"
+    echo "[ ok ] Python3 installed"
 else
-    echo "[    ] No Python3"
+    echo "[    ] Python3 installed"
 fi
 
-if [ which pip3 ]
+if type pip3
 then
-    echo "[ ok ] pip3 exists"
+    echo "[ ok ] pip3 installed"
 else
-    echo "[    ] No pip3"
+    echo "[    ] pip3 installed"
+fi
+
+status=`curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:5000`
+
+if [ "$status" -ne "200" ]
+then
+    echo "[    ] app.py is running"
+else
+    echo "[ ok ] app.py is running"
 fi

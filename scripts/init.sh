@@ -12,13 +12,23 @@ fi
 
 echo "[APT-GET] Installing build dependencies"
 sudo apt-get update -y
-sudo apt-get install cron git build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libffi-dev -y
+sudo apt-get install cron git curl build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libffi-dev -y
 
 sudo systemctl enable cron
 
 # Create and clone the repository
 echo "[GIT] Cloning repository to $OPEN_KITCHEN_PATH"
 git clone https://github.com/open-kitchen/open-kitchen $OPEN_KITCHEN_PATH
+git checkout $OPEN_KITCHEN_PATH
+
+if [ [ ! -f "$OPEN_KITCHEN_PATH/.env" ] && [ -f /scripts/.env ] ]
+then
+    echo "Copying .env from /scripts to $OPEN_KITCHEN_PATH"
+    cp /scripts/.env $OPEN_KITCHEN_PATH/.env
+else
+    echo ".env already exist or cannot be copied from /scripts"
+fi
+    
 
 # Install Python3.7.2 and make an alias to it
 echo "Installing python 3.7.2"
