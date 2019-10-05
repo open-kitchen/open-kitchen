@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# This script assumes the following files are in /scripts
-# - startup.sh
+# This script assumes the following files are in the same directory as this
 # - init.sh
-# - requirements.txt
+# - config.sh
 
 CURRENT_SCRIPTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+LOG_FILE=init.log
+
+# Run configurations
+. $CURRENT_SCRIPTS_DIR/config.sh
 
 if [ -d $OPEN_KITCHEN_SCRIPTS_PATH ]
 then
@@ -20,12 +23,13 @@ fi
 
 # Create the logs folder:
 if [ ! -d ~/logs ]
+then
     mkdir ~/logs
 fi
 
 echo "[EXEC] Try Installing cron, git, curl and build dependencies"
-sudo apt-get update -y
-sudo apt-get install cron git curl build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libffi-dev -y
+sudo apt-get update -y >> $LOG_FILE
+sudo apt-get install cron git curl build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev libffi-dev -y >> $LOG_FILE
 
 # Create and clone the repository
 if [ -d $OPEN_KITCHEN_PATH ]
@@ -42,13 +46,28 @@ then
     # Attempt to copy only if the .env does not exist
     if [ -f "$OPEN_KITCHEN_PATH/.env" ]
     then
-        echo ".env already exist or cannot be copied from /scripts"
+        echo "[SKIP] Copying .env to $OPEN_KITCHEN_PATH"
     else
+        echo "[EXEC] Copying .env to $OPEN_KITCHEN_PATH"
         if [ -f $CURRENT_SCRIPTS_DIR/.env ]
         then
+            cp $OPEN_KITCHEN_SCRIPTS_PATH/.env $OPEN_KITCHEN_PATH/.env
         else
-            echo "Copying .env from /scripts to $OPEN_KITCHEN_PATH"
-            cp /scripts/.env $OPEN_KITCHEN_PATH/.env
+            echo "[FAIL] $CURRENT_SCRIPTS_DIR/.env does not exist. Cannot copy"
+        fi
+    fi
+
+    # Same for settings.cfg
+    if [ -f "$OPEN_KITCHEN_PATH/settings.cfg" ]
+    then
+        echo "[SKIP] Copying settings.cfg to $OPEN_KITCHEN_PATH"
+    else
+        echo "[EXEC] Copying settings.cfg to $OPEN_KITCHEN_PATH"
+        if [ -f $CURRENT_SCRIPTS_DIR/settings.cfg ]
+        then
+            cp $OPEN_KITCHEN_SCRIPTS_PATH/settings.cfg $OPEN_KITCHEN_PATH/settings.cfg
+        else
+            echo "[FAIL] $CURRENT_SCRIPTS_DIR/settings.cfg does not exist. Cannot copy"
         fi
     fi
 else
@@ -68,8 +87,11 @@ else
     wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
     tar xf Python-3.7.2.tar.xz
     cd Python-3.7.2
-    ./configure
-    make -j 4
+    echo "------ Configuring..."
+    ./configure >> $LOG_FILE
+    echo "------ Making..."
+    make -j 4 >> $LOG_FILE
+    echo "------ altinstalling..."
     sudo make altinstall
 
     echo "alias python3='python3.7'" >> ~/.bashrc
