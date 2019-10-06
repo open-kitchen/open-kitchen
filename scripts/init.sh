@@ -17,7 +17,7 @@ else
     echo "[EXEC] Creating $OPEN_KITCHEN_SCRIPTS_PATH"
     mkdir $OPEN_KITCHEN_SCRIPTS_PATH
     echo "[EXEC] Copying contents of $CURRENT_SCRIPTS_DIR to $OPEN_KITCHEN_SCRIPTS_PATH"
-    cp $CURRENT_SCRIPTS_DIR/* $OPEN_KITCHEN_SCRIPTS_PATH
+    cp -r $CURRENT_SCRIPTS_DIR $OPEN_KITCHEN_SCRIPTS_PATH/..
     chmod +x $OPEN_KITCHEN_SCRIPTS_PATH/*.sh
 fi
 
@@ -103,7 +103,7 @@ then
     echo "[SKIP] Adding APP_SETTINGS export to .bashrc"
 else
     echo "[EXEC] Adding APP_SETTINGS export to .bashrc"
-    echo "export APP_SETTINGS=$OPEN_KITCHEN_PATH/setting.cfg" >> ~/.bashrc
+    echo "export APP_SETTINGS=$OPEN_KITCHEN_PATH/settings.cfg" >> ~/.bashrc
 fi
 
 if grep "$OPEN_KITCHEN_SCRIPTS_PATH/startup.sh" ~/.bashrc
@@ -154,5 +154,8 @@ then
     echo "------ Already running"
 else
     echo "[EXEC] Executing $OPEN_KITCHEN_SCRIPTS_PATH/startup.sh"
+    export APP_SETTINGS=$OPEN_KITCHEN_PATH/settings.cfg
     $OPEN_KITCHEN_SCRIPTS_PATH/startup.sh &
 fi
+
+read -p "Press [Enter] to continue..."

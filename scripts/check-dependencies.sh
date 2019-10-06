@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ -z "$OPEN_KITCHEN_PATH" ]
-then
-    OPEN_KITCHEN_PATH=/var/www
-fi
+CURRENT_SCRIPTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# Run configurations
+. $CURRENT_SCRIPTS_DIR/config.sh
 
 if [ -d "$OPEN_KITCHEN_PATH" ]
 then
