@@ -155,7 +155,7 @@ then
 else
     echo "[EXEC] Executing $OPEN_KITCHEN_SCRIPTS_PATH/startup.sh"
     export APP_SETTINGS=$OPEN_KITCHEN_PATH/settings.cfg
-    $OPEN_KITCHEN_SCRIPTS_PATH/startup.sh &
+    $OPEN_KITCHEN_SCRIPTS_PATH/health-check.sh &
 fi
 
 read -p "Press [Enter] to continue..."
