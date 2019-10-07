@@ -32,6 +32,10 @@ def connect():
 
     wire = Wireless()
 
+    if wire.current() == WIFI_SSID:
+        print('Already connected to [' + WIFI_SSID + ']')
+        return
+
     is_connected = False
     tries = 0
 
