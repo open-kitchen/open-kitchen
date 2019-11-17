@@ -1,64 +1,50 @@
-// i2c_slave_test.ino
+// i2c_firmware_arduino.ino
 #include <Wire.h>
- 
-#define SLAVE_ADDRESS 0x08
- 
-// 10 byte data buffer
-int receiveBuffer[9];
-uint8_t keepCounted = 0;
- 
- 
-// Read data in to buffer, offset in first element.
-void receiveData(int byteCount){
-  int counter = 0;
-  while(Wire.available()) {
-    receiveBuffer[counter] = Wire.read();
-    Serial.print("Got data: ");
-    Serial.println(receiveBuffer[counter]);
-    counter ++;
+
+#define SLAVE_ADDRESS 0x20
+
+// data buffer
+String dataBuffer = "";
+
+
+// Read data in to buffer.
+void receiveData(int byteCount) {
+  dataBuffer = "";
+  while (Wire.available()) {
+    dataBuffer += (char) Wire.read();
   }
+  Serial.println("Receive");
+  Serial.println(dataBuffer);
+  char lengthStrBuff[32];
+  sprintf(lengthStrBuff, "Length: %d", dataBuffer.length());
+  Serial.println(lengthStrBuff);
 }
- 
- 
-// Use the offset value to select a function
-void sendData(){
-  if (receiveBuffer[0] == 99) {
-    writeData(keepCount());
-  } else{
-    Serial.println("No function for this address");
-  }
+
+
+// Respnse to request
+void sendData() {
+  Serial.println("Request");
+  Serial.println(dataBuffer);
+  Wire.write(dataBuffer.c_str());
 }
- 
- 
-// Write data
-void writeData(char newData) {
-  char data[] = {receiveBuffer[0], newData};
-  int dataSize = sizeof(data);
-  Wire.write(data, dataSize);
-}
- 
- 
-// Counter function
-int keepCount() {
-  keepCounted ++;
-  if (keepCounted > 255) {
-    keepCounted = 0;
-    return 0;
-  } else {
-    return keepCounted;
-  }
-}
- 
- 
-void setup(){
-  Serial.begin(9600); // start serial for output
+
+
+/*
+* Setup the Arduino
+*/
+void setup() {
   Wire.begin(SLAVE_ADDRESS);
   Wire.onReceive(receiveData);
   Wire.onRequest(sendData);
+  
+  Serial.begin(9600); // start serial for debugging
   Serial.println("I2C Ready!");
 }
- 
- 
-void loop(){
-  delay(100);
+
+
+/*
+* Arduino looping
+*/
+void loop() {
+  delay(100); // Delay for stability
 }
