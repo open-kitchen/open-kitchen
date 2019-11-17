@@ -1,4 +1,5 @@
 from smbus2 import SMBus, i2c_msg
+import time
 
 
 class I2CDevice:
@@ -35,9 +36,10 @@ class I2CDevice:
 if __name__ == "__main__":
     i2c_device_1 = I2CDevice(0x20)
     
-    cmd = input("Type in message to send (no longer than 64 charactors): ")
-    print("Sending message:", cmd)
+    cmd = input("Type in message to send (no longer than 32 charactors): ")
+    print(f"Sending message: \"{cmd}\" (Length: {len(cmd)})")
     i2c_device_1.send(cmd)
     
-    print("Receive message:", i2c_device_1.read(len(cmd)))
+    time.sleep(0.1)  # Give it sometime to recover
+    print(f"Receive message: \"{i2c_device_1.read(len(cmd))}\"")
     
