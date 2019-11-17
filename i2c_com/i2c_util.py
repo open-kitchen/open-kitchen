@@ -4,7 +4,6 @@ from smbus2 import SMBus, i2c_msg
 class I2CDevice:
     def __init__(self, address: int) -> None:
         self.addr = address
-        self._bus = SMBus(1)  # None
     
     def set_address(self, address: int) -> None:
         self.addr = address
@@ -36,7 +35,7 @@ class I2CDevice:
 if __name__ == "__main__":
     i2c_device_1 = I2CDevice(0x20)
     
-    cmd = "Hi, this is a test."
+    cmd = input("Type in message to send (no longer than 64 charactors): ")
     print("Sending message:", cmd)
     i2c_device_1.send(cmd)
     
