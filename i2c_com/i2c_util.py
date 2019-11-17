@@ -15,7 +15,7 @@ class I2CDevice:
         
     def send(self, data: str or int) -> None:
         if type(data) is str:
-            data = list(str)
+            data = list(data)
             data = list(map(ord, data))
         elif type(data) is int:
             data = data
@@ -29,7 +29,7 @@ class I2CDevice:
         request_msg = i2c_msg.read(self.addr, read_bytes)
         self._i2c_rw(request_msg)
         
-        response = [chr(value) for value in read]
+        response = [chr(value) for value in request_msg]
         return "".join(response)
         
 
@@ -40,38 +40,5 @@ if __name__ == "__main__":
     print("Sending message:", cmd)
     i2c_device_1.send(cmd)
     
-    print("Receive message:", i2c_device_1.read())
+    print("Receive message:", i2c_device_1.read(len(cmd)))
     
-# addres = [0x8, 0x20] # bus address
-# last_cmd = [0x0, 0x0]
-# 
-# # # 1: Convert message content to list
-# # msg = i2c_msg.write(0x20, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-# # data = list(msg)  # data = [1, 2, 3, ...]
-# # print("msg len:", len(data))  # => 10
-# # 
-# # # 2: i2c_msg is iterable
-# # for value in msg:
-# #     print(value, end=" ")
-# # print()
-# # 
-# # # 3: Through i2c_msg properties
-# # for k in range(msg.len):
-# #     print(msg.buf[k])
-# # print()
-# 
-# write = i2c_msg.write(0x20, [ord('a'), ord('b')])
-# read = i2c_msg.read(0x20, 5)
-# 
-# with SMBus(1) as bus:
-#     bus.i2c_rdwr(write, read)
-# 
-# # 2: i2c_msg is iterable
-# print("Got")
-# for value in read:
-#     print(value, end=" ")
-# print()
-# # 3: Through i2c_msg properties
-# for k in range(read.len):
-#     print(read.buf[k])
-# print()
