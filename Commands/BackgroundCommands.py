@@ -35,6 +35,11 @@ class BackGroundCommandsController:
     @classmethod
     def sync_next_dishes_in_queue(cls):
         now = datetime.datetime.now()
+        # date and time params option
+        # {   date: '2019-07-29',
+        #     time: '12:15:00',
+        #     dateTime: '2019-07-29 12:00:00'
+        # }
         dishes_response = OrderService.assign_next_dishes_in_queue({
             "date": now.strftime("%m/%d/%Y, %H:%M:%S"),
         })
