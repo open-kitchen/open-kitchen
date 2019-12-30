@@ -8,3 +8,9 @@ dist/
 _site/
 .env
 website
+vendor/
+
+settings.cfg
+venv/
+.idea/
+__pycache__/
