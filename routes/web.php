@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('landing-page');
 });
+
+Route::get('/api', function() {
+    return view('api-page');
+});
