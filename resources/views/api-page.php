@@ -841,8 +841,8 @@ ID | The ID of the kitten to delete
 </tr>
 <tr>
 <td>location</td>
-<td>ObjectId</td>
-<td>Assign a QueueDish so everyone knows which dish will be cooked on the wok.</td>
+<td>Object</td>
+<td>You can add a Google location which includes the address, coordinates, etc.</td>
 </tr>
 <tr>
 <td>name</td>
@@ -923,7 +923,7 @@ ID | The ID of the kitten to delete
 <span class="p">}</span>
 
 <span class="cm">/**
- * @param {Object} params | this property is optional, it's to add additional query params before deleting the wok in case you want to don't delete it on certain conditions
+ * @param {Object} params | this property is optional, it's to add additional query params before deleting the restaurant in case you want to don't delete it on certain conditions
 */</span>
 <span class="nx">deleteWok</span><span class="p">(</span><span class="nx">restaurant_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">restaurant_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
@@ -961,14 +961,14 @@ ID | The ID of the kitten to delete
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>If you are trying to delete a wok that it has been deleted, you will get an exception: 404.</p>
+<p>If you are trying to delete a restaurant that it has been deleted, you will get an exception: 404.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Record not found."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific wok.</p>
+<p>This endpoint deletes a specific restaurant.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE - https://node.chefsurf.io/api/restaurants/restaurant_id</code></p>
 <h1 id='queue-dishes'>Queue Dishes</h1><h2 id='get-queue-dishes'>Get Queue Dishes</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
