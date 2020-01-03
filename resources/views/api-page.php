@@ -236,6 +236,26 @@
               </ul>
           </li>
           <li>
+            <a href="#restaurants" class="toc-h1 toc-link" data-title="Restaurants">Restaurants</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-restaurants" class="toc-h2 toc-link" data-title="Get Restaurants">Get Restaurants</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-restaurant" class="toc-h2 toc-link" data-title="Get a Restaurant">Get a Restaurant</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-restaurant" class="toc-h2 toc-link" data-title="Create a Restaurant">Create a Restaurant</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-restaurant" class="toc-h2 toc-link" data-title="Update a Restaurant">Update a Restaurant</a>
+                  </li>
+                  <li>
+                    <a href="#delete-restaurant" class="toc-h2 toc-link" data-title="Delete Restaurant">Delete Restaurant</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#queue-dishes" class="toc-h1 toc-link" data-title="Queue Dishes">Queue Dishes</a>
               <ul class="toc-list-h2">
                   <li>
@@ -284,6 +304,14 @@
 <p>Welcome to the ChefSurf &amp; OpenKitchen API. You can use our API documentation to access all our endpoints that are being used across the ChefSurf | Satee | OpenKitchen applications, which can get information on all the products, orders, dishes in the queue, etc.</p>
 
 <p>At this point we will only write documentation for JavasCript and then we will add documentation for Python and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+
+<p><img src="https://storage.googleapis.com/cs-bucket-space/assets/logo/new/logo_caviar.svg"
+     alt="ChefSurf logo"
+     style="width: 300px; float: left; margin-top: 38px;" /></p>
+
+<p><img src="https://storage.googleapis.com/openkitchen_cdn/satee/logosatee.png"
+     alt="Satee logo"
+     style="width: 200px; float: left; margin-top: 10px;" /></p>
 
 <!-- This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation. -->
 <h1 id='authentication'>Authentication</h1>
@@ -550,6 +578,399 @@ available | true | If set to false, the result will include kittens that have al
 <td>apply a customer._id condition to the query i.e <strong>5e091e65f79a1c3227d93d73</strong></td>
 </tr>
 </tbody></table>
+<h1 id='restaurants'>Restaurants</h1><h2 id='get-restaurants'>Get Restaurants</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/restaurants'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">requestRestaurants</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"chefs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"5dd9790212256f10e83bb936"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"5dd9790212256f10e83bb938"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"5dd9790212256f10e83bb93a"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"5dd9790212256f10e83bb93c"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"5dd9790312256f10e83bb93e"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"background"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satee"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"automatedKitchen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deliveryAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pickUpAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cashPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"creditCardPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"defaultDeliveryGuy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comesate.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb933"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-23T18:22:59.212Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-23T18:22:58.081Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of restaurants that the staff / chef can see under the same ownership.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://node.chefsurf.io/api/restaurants</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>where_name</td>
+<td>apply a name condition to the query. i.e <strong>Satee</strong></td>
+</tr>
+<tr>
+<td>where_domain</td>
+<td>apply a domain condition to the query i.e <strong>comesate.com</strong></td>
+</tr>
+</tbody></table>
+<h2 id='get-a-restaurant'>Get a Restaurant</h2>
+<blockquote>
+<p>GET - https://node.chefsurf.io/open-kitchen/restaurants/:restaurant_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/restaurants'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">requestRestaurant</span><span class="p">(</span><span class="nx">restaurant_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">restaurant_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"chefs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9790212256f10e83bb936"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5dd9790212256f10e83bb938"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5dd9790212256f10e83bb93a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5dd9790212256f10e83bb93c"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5dd9790312256f10e83bb93e"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"background"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satee"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"automatedKitchen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deliveryAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pickUpAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cashPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creditCardPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"defaultDeliveryGuy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comesate.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb933"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-23T18:22:59.212Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-23T18:22:58.081Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves one restaurant by the ID.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://node.chefsurf.io/open-kitchen/restaurants/:restaurant_id</code></p>
+
+<!-- ### URL Parameters -->
+
+<!--
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to delete
+ -->
+<h2 id='create-a-restaurant'>Create a Restaurant</h2>
+<blockquote>
+<p>POST = https://node.chefsurf.io/api/restaurants</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/restaurants'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">createRestaurant</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"chefs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"background"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New restaurant"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"automatedKitchen"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deliveryAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pickUpAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cashPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creditCardPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e0ec1eb8fbe5c18ac3f72e3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newrestaurant.dev"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-03T04:24:11.972Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-03T04:24:11.972Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to create a new restaurant. if you create a new restaurant you need to be aware that you need to make sure to add a domain that is not taken already. otherwise it will throw an exception.</p>
+
+<p>Chefs are created in a different endpoint, and they will be added automatically to the Restaurant record that it belongs to.</p>
+<h2 id='update-a-restaurant'>Update a Restaurant</h2>
+<blockquote>
+<p>PUT - https://node.chefsurf.io/api/restaurants/restaurant_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/restaurants'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">updateWok</span><span class="p">(</span><span class="nx">restaurant_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">restaurant_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Sample Data ( you can send the params you want to be updated in your request )</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New restaurant - updated"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newrestaurant.app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"chefs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"background"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New restaurant - updated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"automatedKitchen"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deliveryAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pickUpAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cashPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creditCardPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e0ec1eb8fbe5c18ac3f72e3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newrestaurant.app"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-03T10:20:00.972Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-03T04:24:11.972Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to modify the restaurant, not a lot of the properties can be modified and there are formats that must be followed otherwise it will throw an error.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PUT - https://node.chefsurf.io/api/restaurants/restaurant_id</code></p>
+<h3 id='fillable-properties'>Fillable properties</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>logo</td>
+<td>String</td>
+<td>You can modify the logo url.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>String</td>
+<td>You can modify the background url.</td>
+</tr>
+<tr>
+<td>location</td>
+<td>ObjectId</td>
+<td>Assign a QueueDish so everyone knows which dish will be cooked on the wok.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>You can change the name of the restaurant that is visible to the customers.</td>
+</tr>
+<tr>
+<td>automatedKitchen</td>
+<td>Boolean</td>
+<td>Enable/Disable the automatedKitchen feature ( OpenKitchen )</td>
+</tr>
+<tr>
+<td>deliveryAvailable</td>
+<td>Boolean</td>
+<td>Enable/Disable delivery to address feature</td>
+</tr>
+<tr>
+<td>cashPaymentAvailable</td>
+<td>Boolean</td>
+<td>Enable/Disable cash payments feature</td>
+</tr>
+<tr>
+<td>creditCardPaymentAvailable</td>
+<td>Boolean</td>
+<td>Enable/Disable credit card payments feature</td>
+</tr>
+</tbody></table>
+<h3 id='non-fillable'>Non fillable</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>ObjectID</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td>chefs</td>
+<td>Array</td>
+<td>Array of Chef Objects.</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>ObjectID</td>
+<td>Ower Object ID</td>
+</tr>
+<tr>
+<td>user</td>
+<td>ObjectID</td>
+<td>User Object ID</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>DateTime</td>
+<td>Update timestamps - auto generated.</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>DateTime</td>
+<td>Create timestamps - auto generated.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-restaurant'>Delete Restaurant</h2>
+<blockquote>
+<p>DELETE - https://node.chefsurf.io/api/restaurants/restaurant_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/restaurants'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @param {Object} params | this property is optional, it's to add additional query params before deleting the wok in case you want to don't delete it on certain conditions
+*/</span>
+<span class="nx">deleteWok</span><span class="p">(</span><span class="nx">restaurant_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">restaurant_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"chefs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"background"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New restaurant"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"automatedKitchen"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deliveryAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pickUpAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cashPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creditCardPaymentAvailable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e0ec1eb8fbe5c18ac3f72e3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"newrestaurant.app"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-03T06:24:06.699Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-03T04:24:11.972Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-03T06:24:06.698Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>If you are trying to delete a wok that it has been deleted, you will get an exception: 404.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Record not found."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a specific wok.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE - https://node.chefsurf.io/api/restaurants/restaurant_id</code></p>
 <h1 id='queue-dishes'>Queue Dishes</h1><h2 id='get-queue-dishes'>Get Queue Dishes</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
   <span class="nx">HttpClient</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
@@ -1205,11 +1626,7 @@ ID | The ID of the kitten to delete
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE - https://node.chefsurf.io/api/open-kitchen/woks/wok_id</code></p>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -1223,19 +1640,19 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Unauthorized -- Your API Token is wrong.</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The record requested is hidden for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified record could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access a record with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -1243,7 +1660,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>Gone -- The record requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -1251,7 +1668,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many records! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
