@@ -1,68 +1,13 @@
 import logging
 import threading
 import time
-from enum import IntEnum, Enum, auto
 
 import colorlog
+from MainControllerMessage import ComponentCodes
+from WokMessage import WokStates, WokRequestCodes, MasterWokRequestCodes, WokErrors
 from transitions import Machine
 
 log = colorlog.getLogger("WokSim")
-
-
-class EnhanceEnum(Enum):
-    @classmethod
-    def values(cls):
-        return [v.value for v in cls]
-
-    @classmethod
-    def names(cls):
-        return [v.name for v in cls]
-
-
-class ComponentCodes(IntEnum):
-    WOK = 1
-    DISPENSER = 2
-    RUNNER = 3
-    TRANSPORTATION_BAND = 4
-
-
-class MasterRequestCodes(IntEnum):
-    GET_COMPONENT_CODE = 1
-    GET_STATE_CODE = 2
-    GET_ERROR_CODE = 3
-    GET_REQUEST_CODE = 4
-    RESPOND_REQUEST = 5
-    RESET_WOK = 6
-
-
-class WokRequestCodes(IntEnum):
-    NO_REQUEST = 0
-    SET_HEAT_DIGREE = 1
-    SET_COOK_SECONDS = 2
-    SET_INGREDIENTS_READY = 3
-
-
-class WokErrors(IntEnum):
-    COOK_TERMINATED_BEFORE_DONE = 1  # Cooking terminates before cooking time complete
-    BOWL_NO_READY = 2  # The bowl is not in place for dish exporting
-
-
-# The Wok error code and description map
-WokErrorsDescriptions = {
-    1: "Cooking terminates before cooking time complete",
-    2: "The bowl is not in place for dish exporting",
-}
-
-
-class WokStates(IntEnum, EnhanceEnum):
-    """Wok states"""
-
-    # ERROR = 255
-    WAITING_ORDER = auto()
-    WAITING_INGREDIENT = auto()
-    COOKING = auto()
-    EXPORTING_DISH = auto()
-    CLEANING = auto()
 
 
 class WokSim:
@@ -101,7 +46,7 @@ class WokSim:
                 WokStates.CLEANING,
             ],
             "dest": WokStates.WAITING_ORDER,
-            "before": "_reset"
+            "before": "_reset",
         },
     ]
 
@@ -110,7 +55,7 @@ class WokSim:
         self.error_code = 0
         self.request_code = WokRequestCodes.NO_REQUEST
 
-        self.order_id = 0
+        self._order_id = None
         self._heat_degree = None
         self._cook_seconds = None
         self._ingredients_ready = False
@@ -137,6 +82,7 @@ class WokSim:
         loop_thread.start()
 
     def _reset(self):
+        self._order_id = None
         self._heat_degree = None
         self._cook_seconds = None
         self._ingredients_ready = False
@@ -152,11 +98,15 @@ class WokSim:
             self.state == WokStates.WAITING_ORDER
             and self._heat_degree
             and self._cook_seconds
+            and self._order_id
         ):
-            self.set_order_id(self.order_id + 1)
+            self.set_order_id(self._order_id)
         elif self.state == WokStates.WAITING_INGREDIENT and self._ingredients_ready:
             self.cook()
-        elif self.state == WokStates.COOKING and self._cooked_seconds >= self._cook_seconds:
+        elif (
+            self.state == WokStates.COOKING
+            and self._cooked_seconds >= self._cook_seconds
+        ):
             self.cook_done()
         elif self.state == WokStates.EXPORTING_DISH and self._drop_done:
             self.clean()
@@ -164,9 +114,9 @@ class WokSim:
             self.reset()
 
     def _set_order_id(self, o_id):
-        self.order_id = o_id
+        self._order_id = o_id
         log.info(
-            f"WokSim {self.id} set an order to cook (Order ID: {self.order_id}) "
+            f"WokSim {self.id} set an order to cook (Order ID: {self._order_id}) "
             f"Temperature: {self._heat_degree}C, Cook for {self._cook_seconds} seconds."
         )
 
@@ -199,7 +149,9 @@ class WokSim:
         self._clean_done = True
 
     def _save_data_handler(self, data):
-        if self.request_code == WokRequestCodes.SET_HEAT_DIGREE:
+        if self.request_code == WokRequestCodes.SET_ORDER_ID:
+            self._order_id = data
+        elif self.request_code == WokRequestCodes.SET_HEAT_DEGREES:
             self._heat_degree = data
         elif self.request_code == WokRequestCodes.SET_COOK_SECONDS:
             self._cook_seconds = data
@@ -209,25 +161,31 @@ class WokSim:
         self._transit_state()
 
     def request(self, request_code, data=0):
-        respond = 0
-        if request_code == MasterRequestCodes.GET_COMPONENT_CODE:
-            respond = ComponentCodes.WOK
-        elif request_code == MasterRequestCodes.GET_STATE_CODE:
-            respond = self.state
-        elif request_code == MasterRequestCodes.GET_ERROR_CODE:
-            respond = self.error_code
-        elif request_code == MasterRequestCodes.GET_REQUEST_CODE:
-            respond = self.request_code
-        elif request_code == MasterRequestCodes.RESPOND_REQUEST:
+        response = 0
+        if request_code == MasterWokRequestCodes.GET_COMPONENT_CODE:
+            response = ComponentCodes.WOK
+        elif request_code == MasterWokRequestCodes.GET_STATE_CODE:
+            response = self.state
+        elif request_code == MasterWokRequestCodes.GET_ERROR_CODE:
+            response = self.error_code
+        elif request_code == MasterWokRequestCodes.GET_REQUEST_CODE:
+            response = self.request_code
+        elif request_code == MasterWokRequestCodes.RESPOND_REQUEST:
             self._save_data_handler(data)
             self.request_code = WokRequestCodes.NO_REQUEST
-        elif request_code == MasterRequestCodes.RESET_WOK:
+            response = 1
+        elif request_code == MasterWokRequestCodes.RESET_WOK:
             if self.state == WokStates.COOKING:
                 self.error_code = WokErrors.COOK_TERMINATED_BEFORE_DONE
-                log.error(WokErrorsDescriptions.get(WokErrors.COOK_TERMINATED_BEFORE_DONE, ""))
+                log.error(self.error_code.get_description())
+            else:
+                response = 1
             self.reset()
+        elif request_code == MasterWokRequestCodes.RESET_COOKING_TIME:
+            log.warning(f"Wok cooking time reset to {data} seconds (was {self._cook_seconds} seconds).")
+            self._cook_seconds = data
 
-        return respond
+        return response
 
     def stop(self):
         self._loop_thread_stop_event.set()
@@ -238,9 +196,28 @@ class WokSim:
 
         while not self._loop_thread_stop_event.is_set():
             if self.state == WokStates.WAITING_ORDER:
-                self.request_code = 1 if self._heat_degree is None else 2
+                self.request_code = WokRequestCodes.NO_REQUEST
+                self.request_code = (
+                    WokRequestCodes.SET_ORDER_ID
+                    if self._order_id is None
+                    else self.request_code
+                )
+                self.request_code = (
+                    WokRequestCodes.SET_COOK_SECONDS
+                    if self._cook_seconds is None
+                    else self.request_code
+                )
+                self.request_code = (
+                    WokRequestCodes.SET_HEAT_DEGREES
+                    if self._heat_degree is None
+                    else self.request_code
+                )
             elif self.state == WokStates.WAITING_INGREDIENT:
-                self.request_code = 3
+                self.request_code = (
+                    WokRequestCodes.SET_INGREDIENTS_READY
+                    if not self._ingredients_ready
+                    else WokRequestCodes.NO_REQUEST
+                )
             elif self.state == WokStates.COOKING:
                 self._cook()
             elif self.state == WokStates.EXPORTING_DISH:
@@ -308,21 +285,29 @@ if __name__ == "__main__":
             elif type(eval(command)) is int:
                 command = int(command)
                 data = 0
-                if command == MasterRequestCodes.GET_COMPONENT_CODE:
+                if command == MasterWokRequestCodes.GET_COMPONENT_CODE:
                     pass
-                elif command == MasterRequestCodes.GET_STATE_CODE:
+                elif command == MasterWokRequestCodes.GET_STATE_CODE:
                     pass
-                elif command == MasterRequestCodes.GET_ERROR_CODE:
+                elif command == MasterWokRequestCodes.GET_ERROR_CODE:
                     pass
-                elif command == MasterRequestCodes.GET_REQUEST_CODE:
+                elif command == MasterWokRequestCodes.GET_REQUEST_CODE:
                     pass
-                elif command == MasterRequestCodes.RESPOND_REQUEST:
-                    data = int(input("I2C data > "))
-                elif command == MasterRequestCodes.RESET_WOK:
+                elif command == MasterWokRequestCodes.RESPOND_REQUEST:
+                    data = input("I2C data > ")
+                    if wok.request(request_code=MasterWokRequestCodes.GET_REQUEST_CODE, data=0) == WokRequestCodes.SET_ORDER_ID:
+                        data = data
+                    else:
+                        data = int(data)
+                elif command == MasterWokRequestCodes.RESET_WOK:
+                    pass
+                elif command == MasterWokRequestCodes.RESET_COOKING_TIME:
+                    data = input("I2C data > ")
+                    data = int(data)
                     pass
 
-                respond = wok.request(request_code=int(command), data=data)
-                print(f"I2C respond: {respond}")
+                response = wok.request(request_code=int(command), data=data)
+                print(f"I2C respond: {response}")
 
                 # # Check state code
                 # state_code = wok.request(request_code=int(2), data=0)
