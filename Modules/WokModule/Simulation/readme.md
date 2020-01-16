@@ -27,8 +27,8 @@ Once the virtual environment has been setup, go to the directory `Modules/WokMod
 # Wok Behavior
 
 The WokSim is the core of hardware-level, single wok simulation. It simulates the behavior of a wok which will only
- receive I2C requests from the main controller (Raspberry Pi) and respond base on different requests from the main
-  controller. The overall workflow cycle of the Wok component will be,
+ receive I2C requests from the main controller (Raspberry Pi) and respond based on which requests has been sent from the main
+  controller. The overall workflow cycle of the Wok component is explained in the next 6 points,
 
 1. The Wok will initialize in the `waiting order` state, which will
     - Wait for the main controller to set the cooking heat temperature.
