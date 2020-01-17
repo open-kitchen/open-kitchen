@@ -73,7 +73,7 @@ class WokStates(IntEnum, EnhanceEnum):
     WAITING_ORDER = auto()
     WAITING_INGREDIENT = auto()
     COOKING = auto()
-    EMPTYING_WOK = auto()
+    DISPENSING_FOOD = auto()
     CLEANING = auto()
 
 

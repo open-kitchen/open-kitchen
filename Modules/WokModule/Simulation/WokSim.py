@@ -29,12 +29,12 @@ class WokSim:
         {
             "trigger": "cook_done",
             "source": WokStates.COOKING,
-            "dest": WokStates.EMPTYING_WOK,
+            "dest": WokStates.DISPENSING_FOOD,
             "after": "_drop_dish_to_bowl",
         },
         {
             "trigger": "clean",
-            "source": WokStates.EMPTYING_WOK,
+            "source": WokStates.DISPENSING_FOOD,
             "dest": WokStates.CLEANING,
         },
         {
@@ -43,7 +43,7 @@ class WokSim:
                 WokStates.WAITING_ORDER,
                 WokStates.WAITING_INGREDIENT,
                 WokStates.COOKING,
-                WokStates.EMPTYING_WOK,
+                WokStates.DISPENSING_FOOD,
                 WokStates.CLEANING,
             ],
             "dest": WokStates.WAITING_ORDER,
@@ -109,7 +109,7 @@ class WokSim:
             and self._cooked_seconds >= self._cook_seconds
         ):
             self.cook_done()
-        elif self.state == WokStates.EMPTYING_WOK and self._drop_done:
+        elif self.state == WokStates.DISPENSING_FOOD and self._drop_done:
             self.clean()
         elif self.state == WokStates.CLEANING and self._clean_done:
             self.reset()
@@ -222,7 +222,7 @@ class WokSim:
                 )
             elif self.state == WokStates.COOKING:
                 self._cook()
-            elif self.state == WokStates.EMPTYING_WOK:
+            elif self.state == WokStates.DISPENSING_FOOD:
                 self.request_code = WokRequestCodes.SET_WOK_IS_EMPTY
             elif self.state == WokStates.CLEANING:
                 self._clean_wok()
