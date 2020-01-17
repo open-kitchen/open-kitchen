@@ -16,6 +16,7 @@ from WokMessage import WokStates, WokRequestCodes, MasterWokRequestCodes, WokErr
 from WokSim import WokSim
 from fastapi import FastAPI
 from starlette import status
+from pydantic import BaseModel
 from starlette.responses import JSONResponse
 
 i2c_sim = FastAPI()
@@ -27,11 +28,62 @@ woks = [WokSim(id=1), WokSim(id=2)]
 log = logging.getLogger(f"WokSims")
 
 
+class WokConfig(BaseModel):
+    temperature: int
+    duration: int
+    order_id: str
+
+
 def get_wok_by_id(wok_id: int):
     if wok_id - 1 not in range(len(woks)):
         log.error("Wok ID not exist.")
         return None
     return woks[wok_id - 1]
+
+
+@pi_sim.put("/wok/{wok_id}/cook_config")
+async def config_cooking(wok_id: int, wok_config: WokConfig):
+    wok = get_wok_by_id(wok_id)
+    if wok is None:
+        return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={
+                "Error": f"Wok with ID {wok_id} not found."
+            }
+        )
+    response = ""
+    # for i in range(len(wok_config.dict())):
+    while wok.request(MasterWokRequestCodes.GET_REQUEST_CODE) != WokRequestCodes.SET_INGREDIENTS_READY:
+        if wok.request(MasterWokRequestCodes.GET_REQUEST_CODE) == WokRequestCodes.SET_HEAT_DEGREES:
+            wok_raw_response = wok.request(MasterWokRequestCodes.RESPOND_REQUEST, data=wok_config.temperature)
+            wok_response = WokReceiveResponses(wok_raw_response)
+            if wok_response == WokReceiveResponses.CONFIRMED:
+                response += f"Set temperature to {wok_config.temperature} ℃ successfully."
+            else:
+                response += f"Failed to set temperature to {wok_config.temperature} ℃."
+                log.error(response)
+                break
+        elif wok.request(MasterWokRequestCodes.GET_REQUEST_CODE) == WokRequestCodes.SET_COOK_SECONDS:
+            wok_raw_response = wok.request(MasterWokRequestCodes.RESPOND_REQUEST, data=wok_config.duration)
+            wok_response = WokReceiveResponses(wok_raw_response)
+            if wok_response == WokReceiveResponses.CONFIRMED:
+                response += f"Set cook time to {wok_config.duration} seconds successfully."
+            else:
+                response += f"Failed to set cook time to {wok_config.duration} seconds."
+                log.error(response)
+                break
+        elif wok.request(MasterWokRequestCodes.GET_REQUEST_CODE) == WokRequestCodes.SET_ORDER_ID:
+            wok_raw_response = wok.request(MasterWokRequestCodes.RESPOND_REQUEST, data=wok_config.order_id)
+            wok_response = WokReceiveResponses(wok_raw_response)
+            if wok_response == WokReceiveResponses.CONFIRMED:
+                response += f"Set order id to {wok_config.order_id} successfully."
+            else:
+                response += f"Failed to set order id to {wok_config.order_id}."
+                log.error(response)
+                break
+    return {
+        "Wok response": response
+    }
 
 
 @pi_sim.get("/wok/{wok_id}/state")
