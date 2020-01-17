@@ -186,6 +186,11 @@ class WokSim:
         elif request_code == MasterWokRequestCodes.RESET_COOKING_TIME:
             log.warning(f"Wok cooking time reset to {data} seconds (was {self._cook_seconds} seconds).")
             self._cook_seconds = data
+            response = 1
+        elif request_code == MasterWokRequestCodes.RESET_HEAT_TEMPERATURE:
+            log.warning(f"Wok cooking temperature reset to {data} C (was {self._heat_degree} C).")
+            self._heat_degree = data
+            response = 1
 
         return response
 

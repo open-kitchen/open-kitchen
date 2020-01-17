@@ -13,6 +13,7 @@ class MasterWokRequestCodes(IntEnum):
     RESPOND_REQUEST = 5
     RESET_WOK = 6
     RESET_COOKING_TIME = 7
+    RESET_HEAT_TEMPERATURE = 8
 
     def get_description(self):
         request_desc = {
@@ -22,7 +23,8 @@ class MasterWokRequestCodes(IntEnum):
             self.GET_REQUEST_CODE: "request wok action",
             self.RESPOND_REQUEST: "send data to Wok",
             self.RESET_WOK: "request to reset Wok",
-            self.RESET_COOKING_TIME: "request to reset Wok cooking duration"
+            self.RESET_COOKING_TIME: "request to reset Wok cooking duration",
+            self.RESET_HEAT_TEMPERATURE: "request to reset Wok heating temperature",
         }
         request_code = self.value
         return request_desc.get(request_code, f"No description for Master-Wok request code {request_code}")
@@ -44,6 +46,7 @@ class WokRequestCodes(IntEnum):
             self.SET_HEAT_DEGREES: "Wok request to set cooking temperature",
             self.SET_COOK_SECONDS: "Wok request to set cook time in seconds",
             self.SET_INGREDIENTS_READY: "Wok request to confirm whether ingredients are in Wok",
+            self.SET_WOK_IS_EMPTY: "Wok request to confirm whether the wok in empty"
         }
         wok_request_code = self.value
         return request_desc.get(wok_request_code, f"No description for Wok request code {wok_request_code}")
@@ -76,5 +79,10 @@ class WokStates(IntEnum, EnhanceEnum):
     DISPENSING_FOOD = auto()
     CLEANING = auto()
 
+
+class WokReceiveResponses(IntEnum):
+
+    DENIED = 0
+    CONFIRMED = 1
 
 

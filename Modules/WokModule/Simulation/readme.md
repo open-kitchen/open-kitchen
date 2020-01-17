@@ -87,6 +87,8 @@ Now, you can send requests as the main controller to control the Wok. Every time
 |              |                     |       | 1        | Wok successfully reset
 | 7            | Reset cooking time  | uint8 | 0        | Wok failed to reset cooking duration
 |              |                     |       | 1        | Wok successfully reset cooking duration
+| 8            | Reset wok temperature| uint8 | 0        | Wok failed to reset cooking temperature
+|              |                     |       | 1        | Wok successfully reset cooking temperature 
 
 
 The following table represents the request types from the Wok to the main controller (Raspberry pi) and the meanings of each one of them.
@@ -172,5 +174,20 @@ Here is what you should see if you did setup the Wok #1 to cook at the temperatu
  ![](../../../docs/img/wok_i2c_sim_004.png)
   
   
+  
+# Human Friendly Simulation
+
+You can using the following command to launch a human friendly simulation with a RESTful API interface at `http://127
+.0.0.1:8000/docs`,
+```bash
+uvicorn WokI2CSim:pi_sim
+```
+
+The UI should look like the screenshot below,
+![](../../../docs/img/wok_i2c_sim_005.png)
+
+
+
+
 # The End
 That's how you can use Wok simulation.
