@@ -35,6 +35,7 @@ class WokRequestCodes(IntEnum):
     SET_COOK_SECONDS = auto()
     SET_ORDER_ID = auto()
     SET_INGREDIENTS_READY = auto()
+    SET_WOK_IS_EMPTY = auto()
 
     def get_description(self):
         request_desc = {

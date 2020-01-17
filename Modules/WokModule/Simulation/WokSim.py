@@ -30,6 +30,7 @@ class WokSim:
             "trigger": "cook_done",
             "source": WokStates.COOKING,
             "dest": WokStates.EMPTYING_WOK,
+            "after": "_drop_dish_to_bowl",
         },
         {
             "trigger": "clean",
@@ -142,7 +143,6 @@ class WokSim:
 
     def _drop_dish_to_bowl(self):
         log.info(f"WokSim {self.id} dropping dish to bowl ...")
-        self._drop_done = True
 
     def _clean_wok(self):
         log.info(f"WokSim {self.id} cleaning ...")
@@ -157,6 +157,8 @@ class WokSim:
             self._cook_seconds = data
         elif self.request_code == WokRequestCodes.SET_INGREDIENTS_READY:
             self._ingredients_ready = data == 1
+        elif self.request_code == WokRequestCodes.SET_WOK_IS_EMPTY:
+            self._drop_done = True
 
         self._transit_state()
 
@@ -221,7 +223,7 @@ class WokSim:
             elif self.state == WokStates.COOKING:
                 self._cook()
             elif self.state == WokStates.EMPTYING_WOK:
-                self._drop_dish_to_bowl()
+                self.request_code = WokRequestCodes.SET_WOK_IS_EMPTY
             elif self.state == WokStates.CLEANING:
                 self._clean_wok()
 

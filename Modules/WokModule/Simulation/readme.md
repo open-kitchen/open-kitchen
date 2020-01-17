@@ -37,7 +37,7 @@ The WokSim is the core of hardware-level, single wok simulation. It simulates th
     - Wait for the main controller to notify if the ingredients are in the Wok.
 3. Once the main controller confirm the ingredients have been put in the Wok, it goes into the `cooking` state which will
     - Heat the Wok to the temperature configured and cook for the duration in seconds previously set.
-4. Once the cooking time has passed, the Wok will enter the `exporting dish` state which will
+4. Once the cooking time has passed, the Wok will enter the `dispensing food` state which will
     - Drop the Wok content (food) into the bowl.
 5. Finally, the Wok will go to the `cleaning` state after dropping the dish into a bowl. It will 
     - Clean itself
@@ -99,7 +99,9 @@ The following table represents the request types from the Wok to the main contro
 | 2            | Request to set cooking duration (s)     |       | uint8    | Cooking duration in seconds
 | 3            | Request to set order id                 |       | string   | Order id
 | 4            | Request to confirm dispensed ingredients|       | 0        | Denied                    
-|              |                                         |       | 1        | Confirm
+|              |                                         |       | 1        | Confirmed
+| 5            | Request to confirm if wok is empty      |       | 0        | Denied 
+|              |                                         |       | 1        | Confirmed
 
 Therefore, we can use the I2C request code `4` to check the Wok request code. So, if you type 4 in the WokSim command line and hit
  enter, you should see the following: 
