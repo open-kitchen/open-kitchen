@@ -343,7 +343,9 @@ async def notice_wok_ingredients_ready(wok_id: int, is_ingredients_ready: bool):
     else:
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
-            content={"Error": "Not able to set order ID now."},
+            content={
+                "Error": f"Not able to notify Wok #{wok_id} ingredients status now."
+            },
         )
 
 
@@ -374,7 +376,7 @@ async def notice_wok_empty(wok_id: int, is_wok_empty: bool):
     else:
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
-            content={"Error": "Not able to set order ID now."},
+            content={"Error": f"Not able to notify Wok #{wok_id} is empty now."},
         )
 
 
