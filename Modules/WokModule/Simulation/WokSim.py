@@ -113,6 +113,7 @@ class WokSim:
             self.clean()
         elif self.state == WokStates.CLEANING and self._clean_done:
             self.reset()
+            log.info(f"WokSim {self.id} cleaning done. Waiting order again.")
 
     def _set_order_id(self, o_id):
         self._order_id = o_id

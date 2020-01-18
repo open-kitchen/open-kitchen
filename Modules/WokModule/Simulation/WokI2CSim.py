@@ -37,6 +37,10 @@ pi_sim = FastAPI(
 
 log = logging.getLogger(f"WokSims")
 
+# Setup finite state machine log
+transition_log = logging.getLogger("transitions.core")
+transition_log.setLevel(logging.WARNING)
+
 
 class WokConfig(BaseModel):
     temperature: int
@@ -74,6 +78,16 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"Error": f"Wok with ID {wok_id} not found."},
+        )
+
+    # Check if in waiting order state
+    if wok.request(MasterWokRequestCodes.GET_STATE_CODE) != WokStates.WAITING_ORDER:
+        return JSONResponse(
+            status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
+            content={
+                "Error": f"Wok with ID {wok_id} is not in {WokStates.WAITING_ORDER.name} state to set temperature, "
+                f"cook time duration, and order ID."
+            },
         )
 
     # Handle API call
