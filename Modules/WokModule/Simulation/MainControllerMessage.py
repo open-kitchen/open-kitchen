@@ -18,5 +18,3 @@ class ComponentCodes(IntEnum):
     DISPENSER = 2
     RUNNER = 3
     TRANSPORTATION_BAND = 4
-
-

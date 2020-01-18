@@ -1,2 +1,1 @@
 black==19.10b0
-uvicorn==0.11.1

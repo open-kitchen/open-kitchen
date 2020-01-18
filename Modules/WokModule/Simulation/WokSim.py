@@ -156,7 +156,7 @@ class WokSim:
         elif self.request_code == WokRequestCodes.SET_COOK_SECONDS:
             self._cook_seconds = data
         elif self.request_code == WokRequestCodes.SET_INGREDIENTS_READY:
-            self._ingredients_ready = data == 1
+            self._ingredients_ready = data == True
         elif self.request_code == WokRequestCodes.SET_WOK_IS_EMPTY:
             self._drop_done = True
 
@@ -184,11 +184,15 @@ class WokSim:
                 response = 1
             self.reset()
         elif request_code == MasterWokRequestCodes.RESET_COOKING_TIME:
-            log.warning(f"Wok cooking time reset to {data} seconds (was {self._cook_seconds} seconds).")
+            log.warning(
+                f"Wok cooking time reset to {data} seconds (was {self._cook_seconds} seconds)."
+            )
             self._cook_seconds = data
             response = 1
         elif request_code == MasterWokRequestCodes.RESET_HEAT_TEMPERATURE:
-            log.warning(f"Wok cooking temperature reset to {data} C (was {self._heat_degree} C).")
+            log.warning(
+                f"Wok cooking temperature reset to {data} C (was {self._heat_degree} C)."
+            )
             self._heat_degree = data
             response = 1
 
@@ -273,7 +277,7 @@ if __name__ == "__main__":
     log.setLevel(logging.INFO)
     log.addHandler(ch)
 
-    # Setup finit state machine log
+    # Setup finite state machine log
     transition_log = colorlog.getLogger("transitions.core")
     transition_log.name = "StateMachine"
     transition_log.setLevel(logging.INFO)
@@ -302,7 +306,12 @@ if __name__ == "__main__":
                     pass
                 elif command == MasterWokRequestCodes.RESPOND_REQUEST:
                     data = input("I2C data > ")
-                    if wok.request(request_code=MasterWokRequestCodes.GET_REQUEST_CODE, data=0) == WokRequestCodes.SET_ORDER_ID:
+                    if (
+                        wok.request(
+                            request_code=MasterWokRequestCodes.GET_REQUEST_CODE, data=0
+                        )
+                        == WokRequestCodes.SET_ORDER_ID
+                    ):
                         data = data
                     else:
                         data = int(data)

@@ -180,7 +180,7 @@ Here is what you should see if you did setup the Wok #1 to cook at the temperatu
 You can using the following command to launch a human friendly simulation with a RESTful API interface at `http://127
 .0.0.1:8000/docs`,
 ```bash
-uvicorn WokI2CSim:pi_sim
+python WokI2CSim.py --wok_num <number_of_simulated_woks>
 ```
 
 The UI should look like the screenshot below,
