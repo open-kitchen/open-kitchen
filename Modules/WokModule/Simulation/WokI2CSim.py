@@ -92,43 +92,32 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
 
     # Handle API call
     response = ""
-    while (
-        wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-        != WokRequestCodes.SET_INGREDIENTS_READY
-    ):
+
+    # Set temperature
+    wok_raw_response = wok.request(
+        MasterWokRequestCodes.RESET_HEAT_TEMPERATURE, data=wok_config.temperature
+    )
+    wok_response = WokReceiveResponses(wok_raw_response)
+    if wok_response == WokReceiveResponses.CONFIRMED:
+        response += f"Set temperature to {wok_config.temperature} ℃ successfully."
+    else:
+        response += f"Failed to set temperature to {wok_config.temperature} ℃."
+        log.error(response)
+
+    # Set cooking time duration
+    wok_raw_response = wok.request(
+        MasterWokRequestCodes.RESET_COOKING_TIME, data=wok_config.duration
+    )
+    wok_response = WokReceiveResponses(wok_raw_response)
+    if wok_response == WokReceiveResponses.CONFIRMED:
+        response += f"Set cook time to {wok_config.duration} seconds successfully."
+    else:
+        response += f"Failed to set cook time to {wok_config.duration} seconds."
+        log.error(response)
+
+    # Set order ID
+    while True:
         if (
-            wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-            == WokRequestCodes.SET_HEAT_DEGREES
-        ):
-            wok_raw_response = wok.request(
-                MasterWokRequestCodes.RESPOND_REQUEST, data=wok_config.temperature
-            )
-            wok_response = WokReceiveResponses(wok_raw_response)
-            if wok_response == WokReceiveResponses.CONFIRMED:
-                response += (
-                    f"Set temperature to {wok_config.temperature} ℃ successfully."
-                )
-            else:
-                response += f"Failed to set temperature to {wok_config.temperature} ℃."
-                log.error(response)
-                break
-        elif (
-            wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-            == WokRequestCodes.SET_COOK_SECONDS
-        ):
-            wok_raw_response = wok.request(
-                MasterWokRequestCodes.RESPOND_REQUEST, data=wok_config.duration
-            )
-            wok_response = WokReceiveResponses(wok_raw_response)
-            if wok_response == WokReceiveResponses.CONFIRMED:
-                response += (
-                    f"Set cook time to {wok_config.duration} seconds successfully."
-                )
-            else:
-                response += f"Failed to set cook time to {wok_config.duration} seconds."
-                log.error(response)
-                break
-        elif (
             wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
             == WokRequestCodes.SET_ORDER_ID
         ):
@@ -142,6 +131,10 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
                 response += f"Failed to set order id to {wok_config.order_id}."
                 log.error(response)
                 break
+
+            # Break setting order ID loop
+            break
+
     return {"Wok response": response}
 
 

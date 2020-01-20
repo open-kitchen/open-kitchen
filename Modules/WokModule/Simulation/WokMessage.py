@@ -13,8 +13,8 @@ class MasterWokRequestCodes(IntEnum):
     GET_REQUEST_CODE = 4
     RESPOND_REQUEST = 5
     RESET_WOK = 6
-    RESET_COOKING_TIME = 7
-    RESET_HEAT_TEMPERATURE = 8
+    RESET_HEAT_TEMPERATURE = 7
+    RESET_COOKING_TIME = 8
 
     def get_description(self):
         request_desc = {
@@ -24,8 +24,8 @@ class MasterWokRequestCodes(IntEnum):
             self.GET_REQUEST_CODE: "request wok action",
             self.RESPOND_REQUEST: "send data to Wok",
             self.RESET_WOK: "request to reset Wok",
-            self.RESET_COOKING_TIME: "request to reset Wok cooking duration",
             self.RESET_HEAT_TEMPERATURE: "request to reset Wok heating temperature",
+            self.RESET_COOKING_TIME: "request to reset Wok cooking duration",
         }
         request_code = self.value
         return request_desc.get(

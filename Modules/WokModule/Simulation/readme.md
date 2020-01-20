@@ -31,6 +31,7 @@ The WokSim is the core of hardware-level, single wok simulation. It simulates th
 
 1. The Wok will initialize in the `waiting order` state, which will
     - Wait for the main controller to set the cooking heat temperature.
+    - Heat the Wok to the temperature configured.
     - Wait for the main controller to set cooking duration in seconds.
     - Wait for the main controller to pass down the order id.
 2. After the above parameters are set, the Wok goes into the `waiting ingredients` state which will
@@ -85,10 +86,10 @@ Now, you can send requests as the main controller to control the Wok. Every time
 |              |                     |       | 1        | Wok successfully save data and/or setup
 | 6            | Reset Wok           |       | 0        | Wok failed to reset
 |              |                     |       | 1        | Wok successfully reset
-| 7            | Reset cooking time  | uint8 | 0        | Wok failed to reset cooking duration
-|              |                     |       | 1        | Wok successfully reset cooking duration
-| 8            | Reset wok temperature| uint8 | 0        | Wok failed to reset cooking temperature
+| 7            | Reset wok temperature| uint8 | 0        | Wok failed to reset cooking temperature
 |              |                     |       | 1        | Wok successfully reset cooking temperature 
+| 8            | Reset cooking time  | uint8 | 0        | Wok failed to reset cooking duration
+|              |                     |       | 1        | Wok successfully reset cooking duration
 
 
 The following table represents the request types from the Wok to the main controller (Raspberry pi) and the meanings of each one of them.
