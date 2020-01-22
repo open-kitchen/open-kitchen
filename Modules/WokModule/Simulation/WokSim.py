@@ -199,7 +199,7 @@ class WokSim:
         """Handler data that requested by Wok request 2 and Main Controller request 7"""
         # Not able to set heat degree while not in WAITING ORDER, WAITING INGREDIENT, or COOKING state
         if not (
-            self.is_WAITING_ORDER() or self.is_WAITING_INGREDIENT() or self.is_COOKING()
+                self.is_WAITING_ORDER() or self.is_WAITING_INGREDIENT() or self.is_COOKING()
         ):
             log.error(
                 f"WokSim #{self.id} not able to set temperature while in {self.state.name} state"
@@ -219,7 +219,7 @@ class WokSim:
         """Handler data that requested by Wok request 3 and Main Controller request 8"""
         # Not able to set cooking duration while not in WAITING ORDER, WAITING INGREDIENT, or COOKING state
         if not (
-            self.is_WAITING_ORDER() or self.is_WAITING_INGREDIENT() or self.is_COOKING()
+                self.is_WAITING_ORDER() or self.is_WAITING_INGREDIENT() or self.is_COOKING()
         ):
             log.error(
                 f"WokSim #{self.id} not able to set cook duration while in {self.state.name} state"
@@ -251,8 +251,8 @@ class WokSim:
     def _is_temperature_set(self) -> bool:
         """Check if preheat is done"""
         if (
-            self._heat_degrees
-            and abs(self._heat_degrees - self._real_wok_degrees) < 0.5
+                self._heat_degrees
+                and abs(self._heat_degrees - self._real_wok_degrees) < 0.5
         ):
             return True
         return False
@@ -357,11 +357,11 @@ class WokSim:
 
         # If Wok is configured if the order id, cook duration, and temperature are set (point 1 and 2)
         if (
-            self.is_WAITING_ORDER()
-            and self._real_wok_degrees
-            and self._is_temperature_set
-            and self._cook_seconds
-            and self._order_id
+                self.is_WAITING_ORDER()
+                and self._real_wok_degrees
+                and self._is_temperature_set
+                and self._cook_seconds
+                and self._order_id
         ):
             self.configured_order()
 
@@ -371,9 +371,9 @@ class WokSim:
 
         # If Wok done cooking when the cooked time is mare than configured cook duration (point 4)
         elif (
-            self.is_COOKING() and self._cooked_seconds >= self._cook_seconds
-            if self._cook_seconds
-            else 0
+                self.is_COOKING() and self._cooked_seconds >= self._cook_seconds
+                if self._cook_seconds
+                else 0
         ):
             self.cook_done()
 
@@ -522,10 +522,10 @@ if __name__ == "__main__":
                 elif command == MasterWokRequestCodes.RESPOND_REQUEST:
                     data = input("I2C data > ")
                     if (
-                        wok.request(
-                            request_code=MasterWokRequestCodes.GET_REQUEST_CODE, data=0
-                        )
-                        == WokRequestCodes.SET_ORDER_ID
+                            wok.request(
+                                request_code=MasterWokRequestCodes.GET_REQUEST_CODE, data=0
+                            )
+                            == WokRequestCodes.SET_ORDER_ID
                     ):
                         data = data
                     else:
