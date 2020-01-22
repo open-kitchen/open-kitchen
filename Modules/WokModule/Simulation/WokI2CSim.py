@@ -1,7 +1,7 @@
 """
 This is a simulation for the I2C communication of Wok(s).
 
-The RESTful API setup at here is use to simulate the I2C communication designed in
+The API setup at here is use to simulate the I2C communication designed in
 OK Communication Message Specification.
 
 To bring up the Simulation, install requirements and requirements-dev then run,
@@ -31,8 +31,8 @@ i2c_sim = FastAPI(
     title="Wok Simulation", description="The Open-kitchen Wok simulation engine.",
 )
 pi_sim = FastAPI(
-    title="Wok Simulation (Human)",
-    description="The Open-kitchen Wok simulation engine that friendly to human.",
+    title="Wok Simulation v1.0.0",
+    description="This API is for testing proposes; please play around with all the endpoints to control the simulation."
 )
 
 log = logging.getLogger(f"WokSims")
@@ -50,7 +50,7 @@ class WokConfig(BaseModel):
 
 def get_wok_by_id(wok_id: int):
     if wok_id - 1 not in range(len(woks)):
-        log.error(f"Wok ID {wok_id} not exist.")
+        log.error(f"Wok #{wok_id} does not exists.")
         return None
     return woks[wok_id - 1]
 
@@ -60,14 +60,14 @@ async def startup_event():
     global woks
     wok_num = args.wok_num
     woks = [WokSim(id=wok_id + 1) for wok_id in range(wok_num)]
-    log.info(f"{len(woks)} WokSims have been created.")
+    log.info(f"{len(woks)} Wok simulation has been initialized.")
 
 
 @pi_sim.on_event("shutdown")
 async def shutdown_event():
     for wok in woks:
         wok.stop()
-    log.info(f"{len(woks)} WokSims have been shutdown.")
+    log.info(f"{len(woks)} Wok simulation has been turned off.")
 
 
 @pi_sim.put("/wok/{wok_id}/cook_config")
@@ -77,7 +77,7 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok with ID {wok_id} not found."},
+            content={"Error": f"Wok #{wok_id} not found."},
         )
 
     # Check if in waiting order state
@@ -85,8 +85,8 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
             content={
-                "Error": f"Wok with ID {wok_id} is not in {WokStates.WAITING_ORDER.name} state to set temperature, "
-                f"cook time duration, and order ID."
+                "Error": f"To set [cooking_temperature, cooking_time, order_id] the Wok #{wok_id}, "
+                f"has to be in STATE: {WokStates.WAITING_ORDER.name}."
             },
         )
 
@@ -99,7 +99,7 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
     )
     wok_response = WokReceiveResponses(wok_raw_response)
     if wok_response == WokReceiveResponses.CONFIRMED:
-        response += f"Set temperature to {wok_config.temperature} ℃ successfully."
+        response += f"Cooking temperature has been successfully set to {wok_config.temperature} celsius degrees."
     else:
         response += f"Failed to set temperature to {wok_config.temperature} ℃."
         log.error(response)
@@ -110,23 +110,23 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
     )
     wok_response = WokReceiveResponses(wok_raw_response)
     if wok_response == WokReceiveResponses.CONFIRMED:
-        response += f"Set cook time to {wok_config.duration} seconds successfully."
+        response += f"Cooking time has been successfully set to {wok_config.duration} seconds."
     else:
-        response += f"Failed to set cook time to {wok_config.duration} seconds."
+        response += f"Failed to set a cooking time to {wok_config.duration} seconds."
         log.error(response)
 
     # Set order ID
     while True:
         if (
-            wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-            == WokRequestCodes.SET_ORDER_ID
+                wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
+                == WokRequestCodes.SET_ORDER_ID
         ):
             wok_raw_response = wok.request(
                 MasterWokRequestCodes.RESPOND_REQUEST, data=wok_config.order_id
             )
             wok_response = WokReceiveResponses(wok_raw_response)
             if wok_response == WokReceiveResponses.CONFIRMED:
-                response += f"Set order id to {wok_config.order_id} successfully."
+                response += f"Order ID has been set successfully to {wok_config.order_id}."
             else:
                 response += f"Failed to set order id to {wok_config.order_id}."
                 log.error(response)
@@ -145,7 +145,7 @@ async def get_wok_state(wok_id: int):
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok with ID {wok_id} not found."},
+            content={"Error": f"Wok #{wok_id} not found."},
         )
 
     # Handle API call
@@ -161,7 +161,7 @@ async def get_wok_error(wok_id: int):
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok with ID {wok_id} not found."},
+            content={"Error": f"Wok #{wok_id} not found."},
         )
 
     # Handle API call
@@ -177,13 +177,13 @@ async def get_wok_request(wok_id: int):
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok with ID {wok_id} not found."},
+            content={"Error": f"Wok #{wok_id} not found."},
         )
 
     # Handle API call
     wok_raw_response = wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
     wok_request = WokRequestCodes(wok_raw_response)
-    return {"Wok reqeust": f"{wok_request.get_description()}"}
+    return {"Wok request": f"{wok_request.get_description()}"}
 
 
 @pi_sim.patch("/wok/{wok_id}/temperature/{temperature}")
@@ -193,7 +193,7 @@ async def reset_wok_temperature(wok_id: int, temperature: int):
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok with ID {wok_id} not found."},
+            content={"Error": f"Wok #{wok_id} not found."},
         )
 
     # Handle API call
@@ -202,9 +202,9 @@ async def reset_wok_temperature(wok_id: int, temperature: int):
     )
     wok_response = WokReceiveResponses(wok_raw_response)
     if wok_response == WokReceiveResponses.CONFIRMED:
-        response = f"Reset temperature to {temperature} ℃ successfully."
+        response = f"Cooking temperature has been changed successfully to {temperature} celsius degrees."
     else:
-        response = f"Failed to reset temperature to {temperature} ℃."
+        response = f"Failed to change the cooking temperature : {temperature}"
     return {"Wok response": response}
 
 
@@ -215,27 +215,27 @@ async def set_wok_temperature(wok_id: int, temperature: int):
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok with ID {wok_id} not found."},
+            content={"Error": f"Wok #{wok_id} not found."},
         )
 
     # Handle API call
     if (
-        wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-        == WokRequestCodes.SET_HEAT_DEGREES
+            wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
+            == WokRequestCodes.SET_HEAT_DEGREES
     ):
         wok_raw_response = wok.request(
             MasterWokRequestCodes.RESPOND_REQUEST, data=temperature
         )
         wok_response = WokReceiveResponses(wok_raw_response)
         if wok_response == WokReceiveResponses.CONFIRMED:
-            response = f"Set temperature to {temperature} ℃ successfully."
+            response = f"Cooking temperature has been changed successfully to {temperature} celsius degrees."
         else:
-            response = f"Failed to set temperature to {temperature} ℃."
+            response = f"Failed to change the cooking temperature : {temperature}"
         return {"Wok response": response}
     else:
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
-            content={"Error": "Not able to set cooking temperature now."},
+            content={"Error": "Not able to set a cooking temperature now."},
         )
 
 
@@ -246,7 +246,7 @@ async def reset_wok_cooking_time(wok_id: int, duration: int):
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok with ID {wok_id} not found."},
+            content={"Error": f"Wok #{wok_id} not found."},
         )
 
     # Handle API call
@@ -255,9 +255,9 @@ async def reset_wok_cooking_time(wok_id: int, duration: int):
     )
     wok_response = WokReceiveResponses(wok_raw_response)
     if wok_response == WokReceiveResponses.CONFIRMED:
-        response = f"Reset cook time to {duration} seconds successfully."
+        response = f"Cooking time has been successfully set to {duration} seconds."
     else:
-        response = f"Failed to reset cook time to {duration} seconds."
+        response = f"Failed to set a cooking time."
     return {"Wok response": response}
 
 
@@ -273,22 +273,22 @@ async def set_wok_cooking_time(wok_id: int, duration: int):
 
     # Handle API call
     if (
-        wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-        == WokRequestCodes.SET_COOK_SECONDS
+            wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
+            == WokRequestCodes.SET_COOK_SECONDS
     ):
         wok_raw_response = wok.request(
             MasterWokRequestCodes.RESPOND_REQUEST, data=duration
         )
         wok_response = WokReceiveResponses(wok_raw_response)
         if wok_response == WokReceiveResponses.CONFIRMED:
-            response = f"Set cook time to {duration} seconds successfully."
+            response = f"Cooking time has been successfully set to {duration} seconds."
         else:
-            response = f"Failed to set cook time to {duration} seconds."
+            response = f"Failed to set a cooking time."
         return {"Wok response": response}
     else:
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
-            content={"Error": "Not able to set cooking time now."},
+            content={"Error": "Failed to set a cooking time."},
         )
 
 
@@ -304,8 +304,8 @@ async def set_wok_order_id(wok_id: int, order_id: str):
 
     # Handle API call
     if (
-        wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-        == WokRequestCodes.SET_ORDER_ID
+            wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
+            == WokRequestCodes.SET_ORDER_ID
     ):
         wok_raw_response = wok.request(
             MasterWokRequestCodes.RESPOND_REQUEST, data=order_id
@@ -327,6 +327,7 @@ async def set_wok_order_id(wok_id: int, order_id: str):
 async def notice_wok_ingredients_ready(wok_id: int, is_ingredients_ready: bool):
     # Get the specific Wok by id
     wok = get_wok_by_id(wok_id)
+
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -335,23 +336,23 @@ async def notice_wok_ingredients_ready(wok_id: int, is_ingredients_ready: bool):
 
     # Handle API call
     if (
-        wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-        == WokRequestCodes.SET_INGREDIENTS_READY
+            wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
+            == WokRequestCodes.SET_INGREDIENTS_READY
     ):
         wok_raw_response = wok.request(
             MasterWokRequestCodes.RESPOND_REQUEST, data=int(is_ingredients_ready)
         )
         wok_response = WokReceiveResponses(wok_raw_response)
         if wok_response == WokReceiveResponses.CONFIRMED:
-            response = f"Successfully notified wok #{wok_id} the ingredients is ready."
+            response = f"Wok #{wok_id} - The ingredients are ready."
         else:
-            response = f"Failed to notified wok #{wok_id} the ingredients is ready."
+            response = f"Wok #{wok_id} - failed to set ingredients ready."
         return {"Wok response": response}
     else:
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
             content={
-                "Error": f"Not able to notify Wok #{wok_id} ingredients status now."
+                "Error": f"Wok #{wok_id} - failed to set ingredients ready."
             },
         )
 
@@ -368,22 +369,22 @@ async def notice_wok_empty(wok_id: int, is_wok_empty: bool):
 
     # Handle API call
     if (
-        wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
-        == WokRequestCodes.SET_WOK_IS_EMPTY
+            wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
+            == WokRequestCodes.SET_WOK_IS_EMPTY
     ):
         wok_raw_response = wok.request(
             MasterWokRequestCodes.RESPOND_REQUEST, data=int(is_wok_empty)
         )
         wok_response = WokReceiveResponses(wok_raw_response)
         if wok_response == WokReceiveResponses.CONFIRMED:
-            response = f"Successfully notified wok #{wok_id} it's empty."
+            response = f" Wok #{wok_id} has been notified that the container is empty."
         else:
-            response = f"Failed to notified wok #{wok_id} it's empty."
+            response = f"Failed to notified Wok #{wok_id}."
         return {"Wok response": response}
     else:
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
-            content={"Error": f"Not able to notify Wok #{wok_id} is empty now."},
+            content={"Error": f"Failed to notified Wok #{wok_id}."},
         )
 
 
@@ -391,11 +392,11 @@ async def notice_wok_empty(wok_id: int, is_wok_empty: bool):
 async def init_woks():
     global woks
     woks = [WokSim(id=wok_id + 1) for wok_id in range(2)]
-    log.info(f"{len(woks)} WokSims been created.")
+    log.info(f"{len(woks)} Wok simulation has been initialized.")
 
 
 @i2c_sim.on_event("shutdown")
-async def deinit_woks():
+async def shutdown_woks_event():
     await shutdown_event()
 
 
@@ -406,7 +407,7 @@ async def send_i2c(wok_id: int, request_code: int, data: int):
     if wok is None:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok with ID {wok_id} not found."},
+            content={"Error": f"Wok #{wok_id} not found."},
         )
 
     # Get Wok request code so it can generate human readable text later
@@ -420,12 +421,12 @@ async def send_i2c(wok_id: int, request_code: int, data: int):
 
     wok_response_desc = ""
     if request_code == MasterWokRequestCodes.GET_COMPONENT_CODE:
-        wok_response_desc = f"The component is a {ComponentCodes(response).name}."
+        wok_response_desc = f"Component => {ComponentCodes(response).name}."
     elif request_code == MasterWokRequestCodes.GET_STATE_CODE:
-        wok_response_desc = f"The Wok is at {WokStates(response).name} state."
+        wok_response_desc = f"Wok state => {WokStates(response).name}"
     elif request_code == MasterWokRequestCodes.GET_ERROR_CODE:
         if response == 0:
-            wok_response_desc = f"The Wok has no error."
+            wok_response_desc = f"The Wok does not contain any error."
         else:
             wok_response_desc = (
                 f"The Wok error is {WokErrors(response).get_description()}."
@@ -435,16 +436,16 @@ async def send_i2c(wok_id: int, request_code: int, data: int):
     elif request_code == MasterWokRequestCodes.RESPOND_REQUEST:
         if response == WokReceiveResponses.CONFIRMED:
             if wok_request_code == WokRequestCodes.SET_HEAT_DEGREES:
-                wok_response_desc = f"Wok set heat temperature to {data}C."
+                wok_response_desc = f"Wok heat temperature: {data} C degrees."
             elif wok_request_code == WokRequestCodes.SET_COOK_SECONDS:
-                wok_response_desc = f"Wok set cooking duration to {data} seconds."
+                wok_response_desc = f"Wok cooking time: {data} seconds."
             elif wok_request_code == WokRequestCodes.SET_ORDER_ID:
-                wok_response_desc = f"Wok set order id to {data}."
+                wok_response_desc = f"Wok order id: {data}."
             elif wok_request_code == WokRequestCodes.SET_INGREDIENTS_READY:
                 if data == 1:
-                    wok_response_desc = f"Wok notify the ingredient is ready."
+                    wok_response_desc = f"Wok has been notified that the ingredients are ready."
                 else:
-                    wok_response_desc = f"Wok notify the ingredient is not ready."
+                    wok_response_desc = f"Wok has been notified that the ingredients are NOT ready."
 
     return {
         "wok_id": wok_id,
@@ -456,9 +457,9 @@ async def send_i2c(wok_id: int, request_code: int, data: int):
 
 
 if __name__ == "__main__":
-    argparser = argparse.ArgumentParser()
-    argparser.add_argument("--wok_num", default=2, type=int)
-    args = argparser.parse_args()
+    arg_parser = argparse.ArgumentParser()
+    arg_parser.add_argument("--wok_num", default=2, type=int)
+    args = arg_parser.parse_args()
 
     woks = []
 

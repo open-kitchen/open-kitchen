@@ -503,7 +503,7 @@ if __name__ == "__main__":
 
     # CLI
     while True:
-        command = input("I2C reqest code > ")
+        command = input("I2C request code > ")
         try:
             if command == "stop":
                 wok.stop()
