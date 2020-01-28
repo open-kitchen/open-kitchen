@@ -31,11 +31,12 @@ from starlette import status
 from starlette.responses import JSONResponse
 
 i2c_sim = FastAPI(
-    title="Wok Simulation", description="The Open-kitchen Wok simulation engine.",
+    title="Wok Simulation", description="The Open-kitchen Wok simulation engine."
 )
 pi_sim = FastAPI(
     title="Wok Simulation v1.0.0",
-    description="This API is for testing proposes; please play around with all the endpoints to control the simulation.",
+    description=f"This API is for testing proposes; "
+    f"please play around with all the endpoints to control the simulation.",
 )
 
 log = logging.getLogger(f"WokSims")
@@ -165,8 +166,8 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
                 log.error(response)
         else:
             response += (
-                f"Not albe to set order id to {wok_config.order_id} since cooking time and/or temperature "
-                f"haven't been set. "
+                f"Not albe to set Order ID to {wok_config.order_id} since it already been set or "
+                f"cooking time and/or temperature haven't been set. "
             )
             log.error(response)
 
@@ -187,39 +188,59 @@ async def get_wok_state(wok_id: int):
 
 
 @pi_sim.put("/wok/{wok_id}/state")
-async def transit_wok_state(wok_id: int):
+async def transit_wok_state(wok_id: int, dest_state: WokStates):
     # Get the specific Wok by id
     wok = get_wok_by_id(wok_id)
     if wok is None:
         return ErrorResponse.wok_not_found(wok_id)
 
+    # Get the current wok state
+    current_state = WokStates(wok.request(MasterWokRequestCodes.GET_STATE_CODE))
+
+    # Reconfigure
+    if dest_state == WokStates.WAITING_ORDER and current_state in [
+        WokStates.WAITING_ORDER,
+        WokStates.WAITING_INGREDIENT,
+        WokStates.COOKING,
+    ]:
+        master_request_code = MasterWokRequestCodes.RECONFIG_WOK
+        response = f"reconfigure Wok #{wok_id} (erased cooking time and temperature)."
+
+    # Force dispense
+    elif dest_state == WokStates.DISPENSING_FOOD and current_state == WokStates.COOKING:
+        master_request_code = MasterWokRequestCodes.FORCE_DISPENSE
+        response = f"force dispense Wok #{wok_id}."
+
     # Set ingredients is ready
-    if (
-        wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
+    elif (
+        current_state == WokStates.WAITING_INGREDIENT
+        and dest_state == WokStates.COOKING
+        and wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
         == WokRequestCodes.SET_INGREDIENTS_READY
     ):
+        master_request_code = MasterWokRequestCodes.RESPOND_REQUEST
         response = f"notify Wok #{wok_id} that ingredients are ready."
 
     # Set wok is empty
     elif (
-        wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
+        current_state == WokStates.DISPENSING_FOOD
+        and dest_state == WokStates.CLEANING
+        and wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
         == WokRequestCodes.SET_WOK_IS_EMPTY
     ):
+        master_request_code = MasterWokRequestCodes.RESPOND_REQUEST
         response = f"notify Wok #{wok_id} that wok is empty."
 
     # Method not allow
     else:
-        # Get the current wok state
-        wok_raw_response = wok.request(MasterWokRequestCodes.GET_STATE_CODE)
-        wok_state = WokStates(wok_raw_response)
-
         return ErrorResponse.method_not_allow(
-            wok_id, f"not able to transit state while in {wok_state.name} state."
+            wok_id,
+            f"not able to transit to {dest_state.name} state while in {current_state.name} state.",
         )
 
     # Perform wok operation through I2C
     wok_raw_response = wok.request(
-        MasterWokRequestCodes.RESPOND_REQUEST, data=WokReceiveResponses.CONFIRMED
+        master_request_code, data=WokReceiveResponses.CONFIRMED
     )
     wok_response = WokReceiveResponses(wok_raw_response)
     if wok_response == WokReceiveResponses.CONFIRMED:

@@ -43,6 +43,15 @@ class WokSim:
             "dest": WokStates.CLEANING,
         },
         {
+            "trigger": "reconfig",
+            "source": [
+                WokStates.WAITING_ORDER,
+                WokStates.WAITING_INGREDIENT,
+                WokStates.COOKING,
+            ],
+            "dest": WokStates.WAITING_ORDER,
+        },
+        {
             "trigger": "reset",
             "source": "*",
             "dest": WokStates.WAITING_ORDER,
@@ -73,8 +82,7 @@ class WokSim:
         self._cook_start_time = None
         self._cooked_seconds = 0
         self._last_cook_iteration_check_time = 0
-
-        self._reset()
+        self._startup = True
 
         # Initialize Wok state machine
         self.machine = Machine(
@@ -83,6 +91,8 @@ class WokSim:
             transitions=WokSim.transitions,
             initial=WokStates.WAITING_ORDER,
         )
+
+        self._reset()
 
         # Request handlers
         self._request_handlers = {
@@ -95,6 +105,8 @@ class WokSim:
             MasterWokRequestCodes.RESET_WOK: self._reset,
             MasterWokRequestCodes.RESET_HEAT_TEMPERATURE: self._set_heat_degrees,
             MasterWokRequestCodes.RESET_COOKING_TIME: self._set_cook_seconds,
+            MasterWokRequestCodes.RECONFIG_WOK: self._reconfig,
+            MasterWokRequestCodes.FORCE_DISPENSE: self._force_dispense,
         }
 
         # Receiving handlers
@@ -121,7 +133,9 @@ class WokSim:
         loop_thread = threading.Thread(target=self._sim_loop)
         loop_thread.start()
 
-    # ===== Wok Input/Output functions =====
+    """
+    Wok Input/Output functions
+    """
 
     def request(self, request_code, data=0) -> int:
         """Got request from main controller"""
@@ -172,11 +186,23 @@ class WokSim:
 
         # Reset operation attributes
         self._order_id = None
+
+        return self._reconfig(data=data)
+
+    def _reconfig(self, data=None) -> WokReceiveResponses:
+        """Handle request code 9"""
+
+        # Check state
+        if self.is_DISPENSING_FOOD() or (self.is_CLEANING() and not self._clean_done):
+            self.error_code = WokErrors.NOT_ABLE_TO_RECONFIG
+            log.error(f"WokSim #{self.id} {self.error_code.get_description()}")
+            return WokReceiveResponses.DENIED
+
+        # Reset operation attributes
         self._heat_degrees = None
         self._cook_seconds = None
         self._ingredients_ready = False
         self._drop_done = False
-        self._clean_done = False
 
         self._preheat_start_degrees = None
         self._cook_start_time = None
@@ -184,7 +210,28 @@ class WokSim:
         self._last_cook_iteration_check_time = 0
         self._last_cook_iteration_time = None
 
+        # Go to WAITING ORDER if not naturally reconfigure request from the Main Controller
+        if not (self.is_CLEANING() and self._clean_done) and not self._startup:
+            self.reconfig()
+            log.warning(
+                f"WokSim #{self.id} reconfigured (erase cooking time and temperature)"
+            )
+
+        self._clean_done = False
+        self._startup = False
+
         return WokReceiveResponses.CONFIRMED
+
+    def _force_dispense(self, data=None):
+        """Handle request code 10"""
+        if self.is_COOKING():
+            log.warning(f"WokSim #{self.id} been forced to dispense dish")
+            self._cook_seconds = 0
+            return WokReceiveResponses.CONFIRMED
+
+        self.error_code = WokErrors.NOT_ABLE_TO_RECONFIG
+        log.error(f"WokSim #{self.id} {self.error_code.get_description()}")
+        return WokReceiveResponses.DENIED
 
     def _set_order_id(self, o_id: str) -> WokReceiveResponses:
         """Handler data that requested by Wok request 1"""
@@ -245,7 +292,9 @@ class WokSim:
         self._drop_done = is_wok_empty
         return WokReceiveResponses.CONFIRMED
 
-    # ===== Physical functions =====
+    """
+    Physical functions
+    """
 
     @property
     def _is_temperature_set(self) -> bool:
@@ -333,7 +382,9 @@ class WokSim:
         self._clean_done = True
         log.info(f"WokSim #{self.id} cleaning done. Waiting order again.")
 
-    # ======= Wok Operations logic functions =======
+    """
+    Wok Operations logic functions
+    """
 
     def _transit_state(self) -> None:
         """The logic of state transition
@@ -345,7 +396,8 @@ class WokSim:
             - Wait for the main controller to pass down the order id.
         2. After the above parameters are set, the Wok goes into the `waiting ingredients` state which will
             - Wait for the main controller to notify if the ingredients are in the Wok.
-        3. Once the main controller confirm the ingredients have been put in the Wok, it goes into the `cooking` state which will
+        3. Once the main controller confirm the ingredients have been put in the Wok, it goes into the
+        `cooking` state which will
             - Heat the Wok to the temperature configured and cook for the duration in seconds previously set.
         4. Once the cooking time has passed, the Wok will enter the `dispensing food` state which will
             - Drop the Wok content (food) into the bowl.
@@ -372,7 +424,7 @@ class WokSim:
         # If Wok done cooking when the cooked time is mare than configured cook duration (point 4)
         elif (
             self.is_COOKING() and self._cooked_seconds >= self._cook_seconds
-            if self._cook_seconds
+            if self._cook_seconds is not None
             else 0
         ):
             self.cook_done()
@@ -459,13 +511,13 @@ class WokSim:
 
 if __name__ == "__main__":
     """This main function should only be use to debug
-    
-    It contains a command line interface to control a wok simulation. 
-    This simulation will simulate the hardware level behavior of a Wok 
-    which will receive 8-bit I2C message at a time and respond another 
-    8-bits message as designed in OK Communication Message 
+
+    It contains a command line interface to control a wok simulation.
+    This simulation will simulate the hardware level behavior of a Wok
+    which will receive 8-bit I2C message at a time and respond another
+    8-bits message as designed in OK Communication Message
     Specification.
-    
+
     To debug, install requirements and requirements-dev then run
     >>> python WokSim.py
     """

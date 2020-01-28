@@ -15,6 +15,8 @@ class MasterWokRequestCodes(IntEnum):
     RESET_WOK = 6
     RESET_HEAT_TEMPERATURE = 7
     RESET_COOKING_TIME = 8
+    RECONFIG_WOK = 9
+    FORCE_DISPENSE = 10
 
     def get_description(self):
         request_desc = {
@@ -26,6 +28,8 @@ class MasterWokRequestCodes(IntEnum):
             self.RESET_WOK: "request to reset Wok",
             self.RESET_HEAT_TEMPERATURE: "request to reset Wok heating temperature",
             self.RESET_COOKING_TIME: "request to reset Wok cooking duration",
+            self.RECONFIG_WOK: "request to reconfigure Wok (reset cooking time and temperature)",
+            self.FORCE_DISPENSE: "request to force dispense dish",
         }
         request_code = self.value
         return request_desc.get(
@@ -63,6 +67,8 @@ class WokErrors(IntEnum):
     NO_ERROR = 0
     COOK_TERMINATED_BEFORE_DONE = 1  # Cooking terminates before cooking time complete
     BOWL_NO_READY = 2  # The bowl is not in place for dish exporting
+    NOT_ABLE_TO_RECONFIG = 3
+    NOT_ABLE_TO_DISPENSE = 4
 
     def get_description(self):
         # The Wok error code and description map
@@ -70,6 +76,8 @@ class WokErrors(IntEnum):
             self.NO_ERROR: "no error",
             self.COOK_TERMINATED_BEFORE_DONE: "cooking terminates before cooking time complete",
             self.BOWL_NO_READY: "the bowl is not in place for dish exporting",
+            self.NOT_ABLE_TO_RECONFIG: "not able to reconfig at current state",
+            self.NOT_ABLE_TO_DISPENSE: "not able to dispense dish at current state",
         }
         err_code = self.value
         return err_desc.get(err_code, f"No description for Error {err_code}")
