@@ -7,12 +7,12 @@
 // data buffer
 String dataBuffer = "";
 
-
 // Read data in to buffer.
 void receiveData(int byteCount) {
   dataBuffer = "";
   while (Wire.available()) {
     dataBuffer += (char) Wire.read();
+   
   }
   
   if (DEBUG) {
@@ -28,7 +28,8 @@ void receiveData(int byteCount) {
 // Respnse to request
 void sendData() {
   Wire.write(dataBuffer.c_str());
-  
+  Serial.println(dataBuffer);
+   
   if (DEBUG) {
     Serial.println("Request");
     Serial.println(dataBuffer);
