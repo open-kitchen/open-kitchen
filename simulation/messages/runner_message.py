@@ -14,6 +14,7 @@ MASTER_RUNNER_REQ_DESC_MAP = CodeDescMap(
     RESET_DESIRE_SAUCE="request to set desire sauce ID",
     RESET_RELEASE_VOLUME="request to set release volume",
     SET_REFILL_DONE="request to set refill done",
+    SET_WOK_IS_READY="request to set Wok is ready",
 )
 
 MasterRunnerRequestCodes = OKComponentCodeEnum(
@@ -38,6 +39,7 @@ class RunnerRequestCodes(IntEnum):
     SET_DESIRE_SAUCE = auto()
     SET_RELEASE_VOLUME = auto()
     SET_REFILL_DONE = auto()
+    SET_WOK_IS_READY = auto()
 
     def get_description(self):
         request_desc = {
@@ -46,6 +48,7 @@ class RunnerRequestCodes(IntEnum):
             self.SET_DESIRE_SAUCE: "Runner request desire sauce ID",
             self.SET_RELEASE_VOLUME: "Runner request release volume",
             self.SET_REFILL_DONE: "Runner request to notify if refill is done",
+            self.SET_WOK_IS_READY: "Runner request to notify if Wok is ready for sauce dispense",
         }
         runner_request_code = self.value
         return request_desc.get(

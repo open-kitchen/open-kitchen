@@ -120,6 +120,7 @@ class RunnerSim(ComponentSim):
             MasterRunnerRequestCodes.RESET_DESIRE_SAUCE: self._set_desire_sauce,
             MasterRunnerRequestCodes.RESET_RELEASE_VOLUME: self._set_release_volume,
             MasterRunnerRequestCodes.SET_REFILL_DONE: self._set_refill_done,
+            MasterRunnerRequestCodes.SET_WOK_IS_READY: self._set_wok_ready,
         }
 
         # Combines all handlers
@@ -134,6 +135,7 @@ class RunnerSim(ComponentSim):
             RunnerRequestCodes.SET_DESIRE_SAUCE: self._set_desire_sauce,
             RunnerRequestCodes.SET_RELEASE_VOLUME: self._set_release_volume,
             RunnerRequestCodes.SET_REFILL_DONE: self._set_refill_done,
+            RunnerRequestCodes.SET_WOK_IS_READY: self._set_wok_ready,
         }
 
     def _reset(self, data=None) -> ComponentReceiveResponses:
@@ -241,6 +243,25 @@ class RunnerSim(ComponentSim):
 
         self.sauce_containers[self._desire_sauce_id].refill()
         self._error_code = RunnerErrors.NO_ERROR
+        return ComponentReceiveResponses.CONFIRMED
+
+    def _set_wok_ready(self, data: int) -> ComponentReceiveResponses:
+        """Handler data that requested by Runner request 5 and Main Controller request 11"""
+        # Not able to set wok ready while not in SENDING state
+        if not self.is_SENDING():
+            self.log.error(
+                f"RunnerSim #{self.id} not able to set wok ready while in {self.state.name} state"
+            )
+            return ComponentReceiveResponses.DENIED
+
+        # Set wok ready
+        else:
+            self.log.info(
+                f"RunnerSim #{self.id} got notified that "
+                f"Wok #{self._target_wok} is now at WAITING INGREDIENT state (Wok is ready for sauce dispense)."
+            )
+
+        self._is_wok_ready = True
         return ComponentReceiveResponses.CONFIRMED
 
     """
@@ -396,7 +417,12 @@ class RunnerSim(ComponentSim):
             else:
                 self.go_to_refill()
 
-        elif self.is_SENDING() and self._is_arrive_target_wok and self._release_volume:
+        elif (
+            self.is_SENDING()
+            and self._is_arrive_target_wok
+            and self._release_volume
+            and self._is_wok_ready
+        ):
             self.go_to_release()
 
         elif self.is_RELEASING() and self._is_release_done:
@@ -419,19 +445,20 @@ class RunnerSim(ComponentSim):
         }
 
     def _standby_state_actions(self) -> None:
+        self._release_code = RunnerRequestCodes.NO_REQUEST
         if self._target_wok is None:
             self._request_code = RunnerRequestCodes.SET_TARGET_WOK
         elif self._desire_sauce_id is None:
             self._request_code = RunnerRequestCodes.SET_DESIRE_SAUCE
         elif self._release_volume is None:
             self._request_code = RunnerRequestCodes.SET_RELEASE_VOLUME
-        else:
-            self._release_code = RunnerRequestCodes.NO_REQUEST
 
     def _sending_state_actions(self) -> None:
+        self._release_code = RunnerRequestCodes.NO_REQUEST
+        if not self._is_wok_ready:
+            self._request_code = RunnerRequestCodes.SET_WOK_IS_READY
+
         self._adjust_runner_position(self.wok_positions[self._target_wok])
-        if self._release_volume is None:
-            self._request_code = RunnerRequestCodes.SET_RELEASE_VOLUME
 
     def _releasing_state_actions(self) -> None:
         self._release_sauce()
