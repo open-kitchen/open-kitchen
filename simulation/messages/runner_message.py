@@ -11,7 +11,9 @@ Main Controller to Runner messages
 MASTER_RUNNER_REQ_DESC_MAP = CodeDescMap(
     RESET_RUNNER="request to reset runner",
     RESET_TARGET_WOK="request to set target Wok ID",
+    RESET_DESIRE_SAUCE="request to set desire sauce ID",
     RESET_RELEASE_VOLUME="request to set release volume",
+    SET_REFILL_DONE="request to set refill done",
 )
 
 MasterRunnerRequestCodes = OKComponentCodeEnum(
@@ -33,13 +35,17 @@ class RunnerRequestCodes(IntEnum):
 
     NO_REQUEST = 0
     SET_TARGET_WOK = auto()
+    SET_DESIRE_SAUCE = auto()
     SET_RELEASE_VOLUME = auto()
+    SET_REFILL_DONE = auto()
 
     def get_description(self):
         request_desc = {
             self.NO_REQUEST: "No request from Sauce Runner",
             self.SET_TARGET_WOK: "Runner request target Wok ID",
+            self.SET_DESIRE_SAUCE: "Runner request desire sauce ID",
             self.SET_RELEASE_VOLUME: "Runner request release volume",
+            self.SET_REFILL_DONE: "Runner request to notify if refill is done",
         }
         runner_request_code = self.value
         return request_desc.get(
@@ -56,10 +62,11 @@ Runner status messages
 class RunnerErrors(IntEnum):
 
     NO_ERROR = 0
+    NEED_REFILL = 1
 
     def get_description(self):
         # The Wok error code and description map
-        err_desc = {self.NO_ERROR: "no error"}
+        err_desc = {self.NO_ERROR: "no error", self.NEED_REFILL: "need refill"}
         err_code = self.value
         return err_desc.get(err_code, f"No description for Error {err_code}")
 

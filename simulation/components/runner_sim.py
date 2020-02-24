@@ -1,6 +1,7 @@
 from components import ComponentSim
 from messages.main_controller_message import ComponentCodes, ComponentReceiveResponses
 from messages.runner_message import (
+    RunnerErrors,
     RunnerStates,
     RunnerRequestCodes,
     MasterRunnerRequestCodes,
@@ -15,7 +16,7 @@ class SauceContainer:
 
     """
 
-    def __init__(self, sauce_id, capacity):
+    def __init__(self, sauce_id, sauce_name, capacity=None):
         """Constructor
 
         Args:
@@ -24,16 +25,27 @@ class SauceContainer:
 
         """
         self.id = sauce_id
+        if capacity is None:
+            capacity = self.full_capacity
         self._capacity = capacity
+        self.sauce_name = sauce_name
 
-    def release(self, volume):
+    @property
+    def full_capacity(self) -> int:
+        return 100
+
+    @property
+    def current_capacity(self) -> int:
+        return self._capacity
+
+    def release(self, volume: int) -> int:
         """Release sauce from this sauce container
 
         Args:
             volume (int): The amount of sauce to release
 
         Returns:
-            released_volume (int): The actual volume that been releaseed
+            released_volume (int): The actual volume that been released
 
         """
         # Log the current capacity before release
@@ -51,45 +63,12 @@ class SauceContainer:
         released_volume = before_release_capacity - self._capacity
         return released_volume
 
-    def refill(self):
+    def refill(self) -> None:
         """Refill the sauce container"""
-        self._capacity = 100
+        self._capacity = self.full_capacity
 
 
 class RunnerSim(ComponentSim):
-    @property
-    def transitions(self):
-        # The transitions for the finite state machine
-        transitions = [
-            {
-                "trigger": "go_to_send_runner",
-                "source": RunnerStates.STANDBY,
-                "dest": RunnerStates.SENDING,
-            },
-            {
-                "trigger": "go_to_release",
-                "source": RunnerStates.SENDING,
-                "dest": RunnerStates.RELEASING,
-            },
-            {
-                "trigger": "go_to_retrieve_runner",
-                "source": RunnerStates.RELEASING,
-                "dest": RunnerStates.RETRIEVING,
-            },
-            {"trigger": "go_to_refill", "source": "*", "dest": RunnerStates.REFILLING},
-            {
-                "trigger": "go_to_standby",
-                "source": [RunnerStates.REFILLING, RunnerStates.RETRIEVING],
-                "dest": RunnerStates.STANDBY,
-                "before": "_reset",
-            },
-        ]
-        return transitions
-
-    @property
-    def states(self):
-        return RunnerStates
-
     def __init__(self, id: int, sauce_container_number: int = 4) -> None:
         super().__init__(
             component_id=id,
@@ -99,16 +78,23 @@ class RunnerSim(ComponentSim):
 
         # Sauce Runner attributes
         self.sauce_type = None
-        self.current_volume = 100
-        # self.sauce_containers = [for i in sauce_container_number]
+        # self.current_volume = 100
+        self.sauce_containers = dict(
+            [
+                (i, SauceContainer(sauce_id=i, sauce_name=f"Sauce #{i}"))
+                for i in range(sauce_container_number)
+            ]
+        )
         self.wok_positions = {1: 11500, 2: 23000, 3: 34500}  # {Wok ID: sim position}
         self.home_position = 500
         self.moving_speed = 500
 
         # Operation attributes
         self._target_wok = None
+        self._desire_sauce_id = None
         self._release_volume = None
         self._released = 0
+        self._is_wok_ready = False
 
         self._current_position = self.home_position
         self._startup = True
@@ -131,7 +117,9 @@ class RunnerSim(ComponentSim):
         runner_request_handlers = {
             MasterRunnerRequestCodes.RESET_RUNNER: self._reset,
             MasterRunnerRequestCodes.RESET_TARGET_WOK: self._set_target_wok,
+            MasterRunnerRequestCodes.RESET_DESIRE_SAUCE: self._set_desire_sauce,
             MasterRunnerRequestCodes.RESET_RELEASE_VOLUME: self._set_release_volume,
+            MasterRunnerRequestCodes.SET_REFILL_DONE: self._set_refill_done,
         }
 
         # Combines all handlers
@@ -143,7 +131,9 @@ class RunnerSim(ComponentSim):
         """Receiving handlers"""
         return {
             RunnerRequestCodes.SET_TARGET_WOK: self._set_target_wok,
+            RunnerRequestCodes.SET_DESIRE_SAUCE: self._set_desire_sauce,
             RunnerRequestCodes.SET_RELEASE_VOLUME: self._set_release_volume,
+            RunnerRequestCodes.SET_REFILL_DONE: self._set_refill_done,
         }
 
     def _reset(self, data=None) -> ComponentReceiveResponses:
@@ -159,14 +149,20 @@ class RunnerSim(ComponentSim):
 
         # Reset operation attributes
         self._target_wok = None
+        self._desire_sauce_id = None
         self._release_volume = None
         self._released = 0
+        self._is_wok_ready = False
 
         # return self._reconfig(data=data)
         return ComponentReceiveResponses.CONFIRMED
 
     def _set_target_wok(self, target_wok_id: int) -> ComponentReceiveResponses:
         """Handler data that requested by Runner request 1 and MainController request 7"""
+        # Check if desire Wok ID is valid
+        if target_wok_id not in self.wok_positions:
+            return ComponentReceiveResponses.DENIED
+
         # If resetting target Wok (only at Main Controller request 7)
         if self._target_wok:
             self.log.warning(
@@ -180,8 +176,33 @@ class RunnerSim(ComponentSim):
         self._target_wok = target_wok_id
         return ComponentReceiveResponses.CONFIRMED
 
-    def _set_release_volume(self, volume: int) -> ComponentReceiveResponses:
+    def _set_desire_sauce(self, desire_sauce_id: int) -> ComponentReceiveResponses:
         """Handler data that requested by Runner request 2 and Main Controller request 8"""
+        # Not able to set heat desire sauce while not in STANDBY, SENDING, or RELEASING state
+        if not (self.is_STANDBY() or self.is_SENDING() or self.is_RELEASING()):
+            self.log.error(
+                f"RunnerSim #{self.id} not able to set desire sauce while in {self.state.name} state"
+            )
+            return ComponentReceiveResponses.DENIED
+
+        # If resetting desire_sauce (only at Main Controller request 8)
+        if self._desire_sauce_id:
+            self.log.warning(
+                f"RunnerSim #{self.id} desire sauce reset to {self.sauce_containers[desire_sauce_id].sauce_name} "
+                f"(was {self.sauce_containers[self._desire_sauce_id].sauce_name})."
+            )
+
+        # Set desire sauce
+        else:
+            self.log.info(
+                f"RunnerSim #{self.id} desire sauce set to {self.sauce_containers[desire_sauce_id].sauce_name}."
+            )
+
+        self._desire_sauce_id = desire_sauce_id
+        return ComponentReceiveResponses.CONFIRMED
+
+    def _set_release_volume(self, volume: int) -> ComponentReceiveResponses:
+        """Handler data that requested by Runner request 3 and Main Controller request 9"""
         # Not able to set heat degree while not in STANDBY, SENDING, or RELEASING state
         if not (self.is_STANDBY() or self.is_SENDING() or self.is_RELEASING()):
             self.log.error(
@@ -202,9 +223,44 @@ class RunnerSim(ComponentSim):
         self._release_volume = volume
         return ComponentReceiveResponses.CONFIRMED
 
+    def _set_refill_done(self, data: int) -> ComponentReceiveResponses:
+        """Handler data that requested by Runner request 4 and Main Controller request 10"""
+        # Not able to set refill done while not in REFILLING state
+        if not self.is_REFILLING():
+            self.log.error(
+                f"RunnerSim #{self.id} not able to set refill done while in {self.state.name} state"
+            )
+            return ComponentReceiveResponses.DENIED
+
+        # Set refill done
+        else:
+            self.log.info(
+                f"RunnerSim #{self.id} got notified that "
+                f"{self.sauce_containers[self._desire_sauce_id].sauce_name} refill is done."
+            )
+
+        self.sauce_containers[self._desire_sauce_id].refill()
+        self._error_code = RunnerErrors.NO_ERROR
+        return ComponentReceiveResponses.CONFIRMED
+
     """
     Physical functions
     """
+
+    @property
+    def _is_refill_done(self) -> bool:
+        return not self._is_desire_sauce_need_refill
+
+    @property
+    def _is_desire_sauce_need_refill(self) -> bool:
+        """Check if the desire sauce needs refill"""
+        if self._desire_sauce_id and self._release_volume:
+            return (
+                self.sauce_containers[self._desire_sauce_id].current_capacity < 20
+                or self._release_volume
+                > self.sauce_containers[self._desire_sauce_id].current_capacity
+            )
+        return False
 
     @property
     def _is_at_home_position(self) -> bool:
@@ -265,7 +321,7 @@ class RunnerSim(ComponentSim):
         if self._is_release_done:
             return
 
-        self._released += 1
+        self._released += self.sauce_containers[self._desire_sauce_id].release(1)
         self.log.info(
             f"RunnerSim #{self.id} releasing sauce to Wok #{self._target_wok} "
             f"(released {self._released}, target {self._release_volume}) ..."
@@ -274,6 +330,43 @@ class RunnerSim(ComponentSim):
     """
     Runner Operations logic functions
     """
+
+    @property
+    def states(self):
+        return RunnerStates
+
+    @property
+    def transitions(self):
+        # The transitions for the finite state machine
+        transitions = [
+            {
+                "trigger": "go_to_send_runner",
+                "source": RunnerStates.STANDBY,
+                "dest": RunnerStates.SENDING,
+            },
+            {
+                "trigger": "go_to_release",
+                "source": RunnerStates.SENDING,
+                "dest": RunnerStates.RELEASING,
+            },
+            {
+                "trigger": "go_to_retrieve_runner",
+                "source": RunnerStates.RELEASING,
+                "dest": RunnerStates.RETRIEVING,
+            },
+            {
+                "trigger": "go_to_refill",
+                "source": RunnerStates.STANDBY,
+                "dest": RunnerStates.REFILLING,
+            },
+            {
+                "trigger": "go_to_standby",
+                "source": [RunnerStates.REFILLING, RunnerStates.RETRIEVING],
+                "dest": RunnerStates.STANDBY,
+                "before": "_reset",
+            },
+        ]
+        return transitions
 
     def _transit_state(self) -> None:
         """The logic of state transition
@@ -292,8 +385,16 @@ class RunnerSim(ComponentSim):
         6. The Runner will cycle back to the first step
 
         """
-        if self.is_STANDBY() and self._target_wok:
-            self.go_to_send_runner()
+        if (
+            self.is_STANDBY()
+            and self._target_wok
+            and self._desire_sauce_id
+            and self._release_volume
+        ):
+            if not self._is_desire_sauce_need_refill:
+                self.go_to_send_runner()
+            else:
+                self.go_to_refill()
 
         elif self.is_SENDING() and self._is_arrive_target_wok and self._release_volume:
             self.go_to_release()
@@ -301,7 +402,9 @@ class RunnerSim(ComponentSim):
         elif self.is_RELEASING() and self._is_release_done:
             self.go_to_retrieve_runner()
 
-        elif self.is_RETRIEVING() and self._is_at_home_position:
+        elif (self.is_RETRIEVING() and self._is_at_home_position) or (
+            self.is_REFILLING() and self._is_refill_done
+        ):
             self.go_to_standby()
 
     @property
@@ -318,6 +421,12 @@ class RunnerSim(ComponentSim):
     def _standby_state_actions(self) -> None:
         if self._target_wok is None:
             self._request_code = RunnerRequestCodes.SET_TARGET_WOK
+        elif self._desire_sauce_id is None:
+            self._request_code = RunnerRequestCodes.SET_DESIRE_SAUCE
+        elif self._release_volume is None:
+            self._request_code = RunnerRequestCodes.SET_RELEASE_VOLUME
+        else:
+            self._release_code = RunnerRequestCodes.NO_REQUEST
 
     def _sending_state_actions(self) -> None:
         self._adjust_runner_position(self.wok_positions[self._target_wok])
@@ -331,4 +440,9 @@ class RunnerSim(ComponentSim):
         self._adjust_runner_position(self.home_position)
 
     def _refilling_state_actions(self) -> None:
-        pass
+        if not self._is_refill_done:
+            self._request_code = RunnerRequestCodes.SET_REFILL_DONE
+            self._error_code = RunnerErrors.NEED_REFILL
+        else:
+            self._request_code = RunnerRequestCodes.NO_REQUEST
+            self._error_code = RunnerErrors.NO_ERROR
