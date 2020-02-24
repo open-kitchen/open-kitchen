@@ -7,7 +7,7 @@ from messages.runner_message import MasterRunnerRequestCodes
 
 
 if __name__ == "__main__":
-    """This main function should only be use to debug
+    f"""This main function should only be use to debug
 
     It contains a command line interface to control a Sauce Runner simulation.
     This simulation will simulate the hardware level behavior of a Sauce Runner
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     8-bits message as designed in OK Communication Message Specification.
 
     To debug, install requirements and requirements-dev then run
-    >>> python RunnerSim.py
+    >>> python {__file__}.py
     """
 
     # Create a colored log stream handler with custom format
