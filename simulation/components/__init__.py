@@ -12,11 +12,14 @@ from messages.main_controller_message import (
     MasterComponentRequestCodes,
 )
 
-log = colorlog.getLogger("ComponentSim")
-
 
 class ComponentSim(abc.ABC):
     """General Open-Kitchen hardware component"""
+
+    @property
+    def log(self):
+        """Component simulation log"""
+        return colorlog.getLogger(f"{self.__class__.__name__}")
 
     @property
     @abc.abstractmethod
@@ -131,7 +134,9 @@ class ComponentSim(abc.ABC):
 
     def _sim_loop(self) -> None:
         loop_interval_seconds = 0.1
-        log.info(f"{self.__class__.__name__} #{self.id} simulation loop initialized.")
+        self.log.info(
+            f"{self.__class__.__name__} #{self.id} simulation loop initialized."
+        )
 
         while not self._loop_thread_stop_event.is_set():
             # Get state actions and run them
@@ -145,4 +150,4 @@ class ComponentSim(abc.ABC):
             # Rest a bit
             time.sleep(loop_interval_seconds)
 
-        log.info(f"{self.__class__.__name__} #{self.id} simulation terminated.")
+        self.log.info(f"{self.__class__.__name__} #{self.id} simulation terminated.")

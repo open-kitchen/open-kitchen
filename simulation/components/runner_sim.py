@@ -1,5 +1,3 @@
-import colorlog
-
 from components import ComponentSim
 from messages.main_controller_message import ComponentCodes, ComponentReceiveResponses
 from messages.runner_message import (
@@ -7,8 +5,6 @@ from messages.runner_message import (
     RunnerRequestCodes,
     MasterRunnerRequestCodes,
 )
-
-log = colorlog.getLogger("RunnerSim")
 
 
 class SauceContainer:
@@ -105,7 +101,7 @@ class RunnerSim(ComponentSim):
         self.sauce_type = None
         self.current_volume = 100
         # self.sauce_containers = [for i in sauce_container_number]
-        self.wok_positions = {1: 11500, 2: 23000, 3: 34500}  # {Wok ID: runner position}
+        self.wok_positions = {1: 11500, 2: 23000, 3: 34500}  # {Wok ID: sim position}
         self.home_position = 500
         self.moving_speed = 500
 
@@ -173,13 +169,13 @@ class RunnerSim(ComponentSim):
         """Handler data that requested by Runner request 1 and MainController request 7"""
         # If resetting target Wok (only at Main Controller request 7)
         if self._target_wok:
-            log.warning(
+            self.log.warning(
                 f"RunnerSim #{self.id} reset target to Wok #{target_wok_id} (was Wok #{self._target_wok})."
             )
 
         # Set the target Wok
         else:
-            log.info(f"RunnerSim #{self.id} set target to Wok #{target_wok_id}.")
+            self.log.info(f"RunnerSim #{self.id} set target to Wok #{target_wok_id}.")
 
         self._target_wok = target_wok_id
         return ComponentReceiveResponses.CONFIRMED
@@ -188,20 +184,20 @@ class RunnerSim(ComponentSim):
         """Handler data that requested by Runner request 2 and Main Controller request 8"""
         # Not able to set heat degree while not in STANDBY, SENDING, or RELEASING state
         if not (self.is_STANDBY() or self.is_SENDING() or self.is_RELEASING()):
-            log.error(
+            self.log.error(
                 f"RunnerSim #{self.id} not able to set release volume while in {self.state.name} state"
             )
             return ComponentReceiveResponses.DENIED
 
         # If resetting release volume (only at Main Controller request 8)
         if self._release_volume:
-            log.warning(
+            self.log.warning(
                 f"RunnerSim #{self.id} release volume reset to {volume} (was {self._release_volume})."
             )
 
         # Set release volume
         else:
-            log.info(f"RunnerSim #{self.id} release volume set to {volume}.")
+            self.log.info(f"RunnerSim #{self.id} release volume set to {volume}.")
 
         self._release_volume = volume
         return ComponentReceiveResponses.CONFIRMED
@@ -246,7 +242,7 @@ class RunnerSim(ComponentSim):
         else:
             self._current_position += self.moving_speed
 
-        log.info(
+        self.log.info(
             f"RunnerSim #{self.id} moving (current position {self._current_position}, "
             f"target {target})"
         )
@@ -270,7 +266,7 @@ class RunnerSim(ComponentSim):
             return
 
         self._released += 1
-        log.info(
+        self.log.info(
             f"RunnerSim #{self.id} releasing sauce to Wok #{self._target_wok} "
             f"(released {self._released}, target {self._release_volume}) ..."
         )

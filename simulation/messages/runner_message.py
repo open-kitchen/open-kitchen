@@ -38,7 +38,7 @@ class RunnerRequestCodes(IntEnum):
     def get_description(self):
         request_desc = {
             self.NO_REQUEST: "No request from Sauce Runner",
-            self.SET_TARGET_WOK: "Runner request target runner ID",
+            self.SET_TARGET_WOK: "Runner request target Wok ID",
             self.SET_RELEASE_VOLUME: "Runner request release volume",
         }
         runner_request_code = self.value
