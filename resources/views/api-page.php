@@ -245,7 +245,7 @@
                     <a href="#get-a-restaurant" class="toc-h2 toc-link" data-title="Get a Restaurant">Get a Restaurant</a>
                   </li>
                   <li>
-                    <a href="#create-a-restaurant" class="toc-h2 toc-link" data-title="Create a Restaurant">Create a Restaurant</a>
+                    <a href="#create-restaurant" class="toc-h2 toc-link" data-title="Create Restaurant">Create Restaurant</a>
                   </li>
                   <li>
                     <a href="#update-a-restaurant" class="toc-h2 toc-link" data-title="Update a Restaurant">Update a Restaurant</a>
@@ -296,19 +296,39 @@
               </ul>
           </li>
           <li>
-            <a href="#queue-dishes" class="toc-h1 toc-link" data-title="Queue Dishes">Queue Dishes</a>
+            <a href="#products" class="toc-h1 toc-link" data-title="Products">Products</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-queue-dishes" class="toc-h2 toc-link" data-title="Get Queue Dishes">Get Queue Dishes</a>
+                    <a href="#get-products" class="toc-h2 toc-link" data-title="Get Products">Get Products</a>
                   </li>
                   <li>
-                    <a href="#get-a-queue-dish" class="toc-h2 toc-link" data-title="Get a Queue Dish">Get a Queue Dish</a>
+                    <a href="#get-product" class="toc-h2 toc-link" data-title="Get Product">Get Product</a>
                   </li>
                   <li>
-                    <a href="#update-queue-dish" class="toc-h2 toc-link" data-title="Update Queue Dish">Update Queue Dish</a>
+                    <a href="#create-product" class="toc-h2 toc-link" data-title="Create Product">Create Product</a>
                   </li>
                   <li>
-                    <a href="#delete-queue-dish" class="toc-h2 toc-link" data-title="Delete Queue Dish">Delete Queue Dish</a>
+                    <a href="#update-product" class="toc-h2 toc-link" data-title="Update Product">Update Product</a>
+                  </li>
+                  <li>
+                    <a href="#delete-product" class="toc-h2 toc-link" data-title="Delete Product">Delete Product</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#dishes" class="toc-h1 toc-link" data-title="Dishes">Dishes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-dishes" class="toc-h2 toc-link" data-title="Get Dishes">Get Dishes</a>
+                  </li>
+                  <li>
+                    <a href="#get-dish" class="toc-h2 toc-link" data-title="Get Dish">Get Dish</a>
+                  </li>
+                  <li>
+                    <a href="#update-dish" class="toc-h2 toc-link" data-title="Update Dish">Update Dish</a>
+                  </li>
+                  <li>
+                    <a href="#delete-dish" class="toc-h2 toc-link" data-title="Delete Dish">Delete Dish</a>
                   </li>
               </ul>
           </li>
@@ -350,7 +370,112 @@
               </ul>
           </li>
           <li>
+            <a href="#sauce-bags" class="toc-h1 toc-link" data-title="Sauce Bags">Sauce Bags</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-sauce-bags" class="toc-h2 toc-link" data-title="Get Sauce Bags">Get Sauce Bags</a>
+                  </li>
+                  <li>
+                    <a href="#get-sauce-bag" class="toc-h2 toc-link" data-title="Get Sauce Bag">Get Sauce Bag</a>
+                  </li>
+                  <li>
+                    <a href="#create-sauce-bag" class="toc-h2 toc-link" data-title="Create Sauce Bag">Create Sauce Bag</a>
+                  </li>
+                  <li>
+                    <a href="#update-sauce-bag" class="toc-h2 toc-link" data-title="Update Sauce Bag">Update Sauce Bag</a>
+                  </li>
+                  <li>
+                    <a href="#delete-sauce-bag" class="toc-h2 toc-link" data-title="Delete Sauce Bag">Delete Sauce Bag</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#shopping-carts" class="toc-h1 toc-link" data-title="Shopping Carts">Shopping Carts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-shopping-carts" class="toc-h2 toc-link" data-title="Get Shopping Carts">Get Shopping Carts</a>
+                  </li>
+                  <li>
+                    <a href="#get-shopping-cart" class="toc-h2 toc-link" data-title="Get Shopping Cart">Get Shopping Cart</a>
+                  </li>
+                  <li>
+                    <a href="#create-shopping-cart" class="toc-h2 toc-link" data-title="Create Shopping Cart">Create Shopping Cart</a>
+                  </li>
+                  <li>
+                    <a href="#update-shopping-cart" class="toc-h2 toc-link" data-title="Update Shopping Cart">Update Shopping Cart</a>
+                  </li>
+                  <li>
+                    <a href="#delete-shopping-cart" class="toc-h2 toc-link" data-title="Delete Shopping Cart">Delete Shopping Cart</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#query-helpers" class="toc-h1 toc-link" data-title="Query Helpers">Query Helpers</a>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#models" class="toc-h1 toc-link" data-title="Models">Models</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#chef" class="toc-h2 toc-link" data-title="Chef">Chef</a>
+                  </li>
+                  <li>
+                    <a href="#client" class="toc-h2 toc-link" data-title="Client">Client</a>
+                  </li>
+                  <li>
+                    <a href="#credit" class="toc-h2 toc-link" data-title="Credit">Credit</a>
+                  </li>
+                  <li>
+                    <a href="#coupon" class="toc-h2 toc-link" data-title="Coupon">Coupon</a>
+                  </li>
+                  <li>
+                    <a href="#dish" class="toc-h2 toc-link" data-title="Dish">Dish</a>
+                  </li>
+                  <li>
+                    <a href="#dispenser" class="toc-h2 toc-link" data-title="Dispenser">Dispenser</a>
+                  </li>
+                  <li>
+                    <a href="#inventory" class="toc-h2 toc-link" data-title="Inventory">Inventory</a>
+                  </li>
+                  <li>
+                    <a href="#inventory-item" class="toc-h2 toc-link" data-title="Inventory Item">Inventory Item</a>
+                  </li>
+                  <li>
+                    <a href="#kushki-card" class="toc-h2 toc-link" data-title="Kushki Card">Kushki Card</a>
+                  </li>
+                  <li>
+                    <a href="#kushki-ticket" class="toc-h2 toc-link" data-title="Kushki Ticket">Kushki Ticket</a>
+                  </li>
+                  <li>
+                    <a href="#order" class="toc-h2 toc-link" data-title="Order">Order</a>
+                  </li>
+                  <li>
+                    <a href="#order-item" class="toc-h2 toc-link" data-title="Order Item">Order Item</a>
+                  </li>
+                  <li>
+                    <a href="#product" class="toc-h2 toc-link" data-title="Product">Product</a>
+                  </li>
+                  <li>
+                    <a href="#restaurant" class="toc-h2 toc-link" data-title="Restaurant">Restaurant</a>
+                  </li>
+                  <li>
+                    <a href="#sauce-bag" class="toc-h2 toc-link" data-title="Sauce Bag">Sauce Bag</a>
+                  </li>
+                  <li>
+                    <a href="#shopping-cart" class="toc-h2 toc-link" data-title="Shopping Cart">Shopping Cart</a>
+                  </li>
+                  <li>
+                    <a href="#shopping-cart-item" class="toc-h2 toc-link" data-title="Shopping Cart Item">Shopping Cart Item</a>
+                  </li>
+                  <li>
+                    <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
+                  </li>
+                  <li>
+                    <a href="#wok" class="toc-h2 toc-link" data-title="Wok">Wok</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -774,7 +899,7 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
  -->
-<h2 id='create-a-restaurant'>Create a Restaurant</h2>
+<h2 id='create-restaurant'>Create Restaurant</h2>
 <blockquote>
 <p>POST = https://node.chefsurf.io/api/restaurants</p>
 </blockquote>
@@ -1822,7 +1947,532 @@ ID | The ID of the kitten to delete
 <p>This endpoint deletes a specific inventoryItem.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE - https://node.chefsurf.io/api/inventory-items/item_id</code></p>
-<h1 id='queue-dishes'>Queue Dishes</h1><h2 id='get-queue-dishes'>Get Queue Dishes</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+<h1 id='products'>Products</h1><h2 id='get-products'>Get Products</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/products'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">requestProducts</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tuesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"wednesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"thursday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"friday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"saturday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grains_bowl_category"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gram"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"measurementUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"calories"</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"5dd9797f12256f10e83bb9c7"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"5dd9797f12256f10e83bb9c9"</span><span class="p">,</span><span class="w">
+                </span><span class="err">...</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"drinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"5dd9840a64bebe12632fb79e"</span><span class="p">,</span><span class="w">
+                </span><span class="err">...</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"desserts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"5dd9840a64bebe12632fb7a1"</span><span class="p">,</span><span class="w">
+                </span><span class="err">...</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9797f12256f10e83bb9c8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb933"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elote Bowl"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organic arugula,</span><span class="se">\n</span><span class="s2">        warm quinoa,</span><span class="se">\n</span><span class="s2">        cilantro,</span><span class="se">\n</span><span class="s2">        shredded cabbage,</span><span class="se">\n</span><span class="s2">        spicy sunflower seeds,</span><span class="se">\n</span><span class="s2">        tomato,</span><span class="se">\n</span><span class="s2">        tortilla chips,</span><span class="se">\n</span><span class="s2">        goat cheese,</span><span class="se">\n</span><span class="s2">        roasted corn + peppers,</span><span class="se">\n</span><span class="s2">        lime cilantro jalapeno vinaigrette"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-23T19:10:02.600Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-23T18:25:03.203Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of products that the staff / chef can see under the same ownership.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://node.chefsurf.io/api/products</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>where_title</td>
+<td>apply a title condition to the query. i.e <strong>Elote Bowl</strong></td>
+</tr>
+<tr>
+<td>like_title</td>
+<td>apply a title condition to the query where it finds any possible match not the exact title, i.e <strong>Elote</strong>, that will bring Elote Bowl in the request response.</td>
+</tr>
+<tr>
+<td>where_price</td>
+<td>apply a price condition to the query i.e <strong>12000</strong></td>
+</tr>
+<tr>
+<td>where_category</td>
+<td>apply a category condition to the query i.e <strong>greens_grains_bowl_category</strong></td>
+</tr>
+<tr>
+<td>where_availability.monday</td>
+<td>apply a availability condition to specific day to the query i.e <strong>true</strong></td>
+</tr>
+</tbody></table>
+<h2 id='get-product'>Get Product</h2>
+<blockquote>
+<p>GET - https://node.chefsurf.io/open-kitchen/products/:product_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/products'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">requestProduct</span><span class="p">(</span><span class="nx">product_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">product_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tuesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wednesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thursday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"friday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"saturday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grains_bowl_category"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gram"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measurementUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calories"</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9797f12256f10e83bb9c7"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9797f12256f10e83bb9c9"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"drinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9840a64bebe12632fb79e"</span><span class="p">,</span><span class="w">
+           </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"desserts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9840a64bebe12632fb7a1"</span><span class="p">,</span><span class="w">
+            </span><span class="err">....</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9797f12256f10e83bb9c8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb933"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elote Bowl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organic arugula,</span><span class="se">\n</span><span class="s2">        warm quinoa,</span><span class="se">\n</span><span class="s2">        cilantro,</span><span class="se">\n</span><span class="s2">        shredded cabbage,</span><span class="se">\n</span><span class="s2">        spicy sunflower seeds,</span><span class="se">\n</span><span class="s2">        tomato,</span><span class="se">\n</span><span class="s2">        tortilla chips,</span><span class="se">\n</span><span class="s2">        goat cheese,</span><span class="se">\n</span><span class="s2">        roasted corn + peppers,</span><span class="se">\n</span><span class="s2">        lime cilantro jalapeno vinaigrette"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-23T19:10:02.600Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-23T18:25:03.203Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves one product by the ID.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://node.chefsurf.io/open-kitchen/products/:product_id</code></p>
+
+<!-- ### URL Parameters -->
+
+<!--
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to delete
+ -->
+<h2 id='create-product'>Create Product</h2>
+<blockquote>
+<p>POST = https://node.chefsurf.io/api/products</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/products'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">createProduct</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tuesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wednesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thursday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"friday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"saturday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grains_bowl_category"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gram"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measurementUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calories"</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9797f12256f10e83bb9c7"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9797f12256f10e83bb9c9"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"drinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9840a64bebe12632fb79e"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"desserts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9840a64bebe12632fb7a1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e1b5b97ab6f9f1a03679d05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elote Bowl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organic arugula,</span><span class="se">\n</span><span class="s2">        warm quinoa,</span><span class="se">\n</span><span class="s2">        cilantro,</span><span class="se">\n</span><span class="s2">        shredded cabbage,</span><span class="se">\n</span><span class="s2">        spicy sunflower seeds,</span><span class="se">\n</span><span class="s2">        tomato,</span><span class="se">\n</span><span class="s2">        tortilla chips,</span><span class="se">\n</span><span class="s2">        goat cheese,</span><span class="se">\n</span><span class="s2">        roasted corn + peppers,</span><span class="se">\n</span><span class="s2">        lime cilantro jalapeno vinaigrette"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-12T17:47:03.314Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-12T17:47:03.314Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to create a new product. if you create a new product you need to be aware that you need to make sure to only pass the fillable properties. otherwise it will throw an exception or it will be overriden by the authUser information.</p>
+<h2 id='update-product'>Update Product</h2>
+<blockquote>
+<p>PUT - https://node.chefsurf.io/api/products/product_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/products'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">updateProduct</span><span class="p">(</span><span class="nx">product_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">product_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Sample Data ( you can send the params you want to be updated in your request )</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elote Bowl Updated"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tuesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wednesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thursday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"friday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"saturday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grains_bowl_category"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gram"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measurementUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calories"</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9797f12256f10e83bb9c7"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9797f12256f10e83bb9c9"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"drinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9840a64bebe12632fb79e"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"desserts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9840a64bebe12632fb7a1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e1b5b97ab6f9f1a03679d05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elote Bowl Updated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organic arugula,</span><span class="se">\n</span><span class="s2">        warm quinoa,</span><span class="se">\n</span><span class="s2">        cilantro,</span><span class="se">\n</span><span class="s2">        shredded cabbage,</span><span class="se">\n</span><span class="s2">        spicy sunflower seeds,</span><span class="se">\n</span><span class="s2">        tomato,</span><span class="se">\n</span><span class="s2">        tortilla chips,</span><span class="se">\n</span><span class="s2">        goat cheese,</span><span class="se">\n</span><span class="s2">        roasted corn + peppers,</span><span class="se">\n</span><span class="s2">        lime cilantro jalapeno vinaigrette"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-12T17:49:41.358Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-12T17:47:03.314Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to modify the product, not a lot of the properties can be modified and there are formats that must be followed otherwise it will throw an error.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PUT - https://node.chefsurf.io/api/products/product_id</code></p>
+<h3 id='fillable-properties'>Fillable properties</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category</td>
+<td>String</td>
+<td>You can modify the category the product belongs to.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Number</td>
+<td>you can modify the price of the product.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>You can modify the description of the product.</td>
+</tr>
+<tr>
+<td>position</td>
+<td>Numner</td>
+<td>You can change the order of the product, sorting is based on this property.</td>
+</tr>
+<tr>
+<td>measurement</td>
+<td>String</td>
+<td>You can specify the measurement of the product content, it could be any of this values [&#39;gram&#39;, &#39;kilogram&#39;, &#39;oz&#39;, &#39;piece&#39;, &#39;none&#39;].</td>
+</tr>
+<tr>
+<td>measurementUnit</td>
+<td>Number</td>
+<td>You can specify the units depending of the measurement selected.</td>
+</tr>
+<tr>
+<td>calories</td>
+<td>Number</td>
+<td>You can specify the number of calories the dish contains ( without the aditional toppings the client might add to it ).</td>
+</tr>
+<tr>
+<td>attachments</td>
+<td>Array<ObjectID></td>
+<td>You can add upto 5 pictures you want for the product.</td>
+</tr>
+<tr>
+<td>availability</td>
+<td>Map<Boolean></td>
+<td>You can specify which days of the week, this product will be visible.</td>
+</tr>
+<tr>
+<td>ingredients</td>
+<td>Array<ObjectID></td>
+<td>You can add all the ingredients needed for the product and specify all the details on the ProductIngredient model.</td>
+</tr>
+<tr>
+<td>drinks</td>
+<td>Array<ObjectID></td>
+<td>You can add all the drinks needed for the product and specify all the details on the ProductIngredient model.</td>
+</tr>
+<tr>
+<td>desserts</td>
+<td>Array<ObjectID></td>
+<td>You can add all the desserts needed for the product and specify all the details on the ProductIngredient model.</td>
+</tr>
+</tbody></table>
+<h3 id='non-fillable'>Non fillable</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>ObjectID</td>
+<td>Primary key.</td>
+</tr>
+<tr>
+<td>restaurant</td>
+<td>ObjectID</td>
+<td>Restaurant Object ID.</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>ObjectID</td>
+<td>Ower Object ID.</td>
+</tr>
+<tr>
+<td>createdBy</td>
+<td>ObjectID</td>
+<td>User Object ID.</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>DateTime</td>
+<td>Update timestamps - auto generated.</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>DateTime</td>
+<td>Create timestamps - auto generated.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-product'>Delete Product</h2>
+<blockquote>
+<p>DELETE - https://node.chefsurf.io/api/products/product_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/products'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @param {String} product_id
+*/</span>
+<span class="nx">deleteProduct</span><span class="p">(</span><span class="nx">product_id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">product_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="p">{},</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"monday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tuesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wednesday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"thursday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"friday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"saturday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sunday"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grains_bowl_category"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gram"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"measurementUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"calories"</span><span class="p">:</span><span class="w"> </span><span class="mi">580</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9797f12256f10e83bb9c7"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9797f12256f10e83bb9c9"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"drinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9840a64bebe12632fb79e"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"desserts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5dd9840a64bebe12632fb7a1"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e1b5b97ab6f9f1a03679d05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elote Bowl Updated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organic arugula,</span><span class="se">\n</span><span class="s2">        warm quinoa,</span><span class="se">\n</span><span class="s2">        cilantro,</span><span class="se">\n</span><span class="s2">        shredded cabbage,</span><span class="se">\n</span><span class="s2">        spicy sunflower seeds,</span><span class="se">\n</span><span class="s2">        tomato,</span><span class="se">\n</span><span class="s2">        tortilla chips,</span><span class="se">\n</span><span class="s2">        goat cheese,</span><span class="se">\n</span><span class="s2">        roasted corn + peppers,</span><span class="se">\n</span><span class="s2">        lime cilantro jalapeno vinaigrette"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb937"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-12T17:49:41.358Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-12T17:47:03.314Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-03T06:24:06.698Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>If you are trying to delete a product that it has been deleted, you will get an exception: 404.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Record not found."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a specific product.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE - https://node.chefsurf.io/api/products/product_id</code></p>
+<h1 id='dishes'>Dishes</h1><h2 id='get-dishes'>Get Dishes</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
   <span class="nx">HttpClient</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
 
@@ -1911,7 +2561,7 @@ ID | The ID of the kitten to delete
 <td>apply a cooking time condition to the query i.e <strong>2</strong>.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-queue-dish'>Get a Queue Dish</h2>
+<h2 id='get-dish'>Get Dish</h2>
 <blockquote>
 <p>GET - https://node.chefsurf.io/open-kitchen/dishes/:queue_dish_id</p>
 </blockquote>
@@ -2020,7 +2670,7 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
  -->
-<h2 id='update-queue-dish'>Update Queue Dish</h2>
+<h2 id='update-dish'>Update Dish</h2>
 <blockquote>
 <p>PUT - https://node.chefsurf.io/api/open-kitchen/dishes/queue_dish_id</p>
 </blockquote>
@@ -2148,7 +2798,7 @@ ID | The ID of the kitten to delete
 <td>it&#39;s a representation of the cooking time in minutes, to know how long the dish will be in the wok.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-queue-dish'>Delete Queue Dish</h2>
+<h2 id='delete-dish'>Delete Dish</h2>
 <blockquote>
 <p>DELETE - https://node.chefsurf.io/api/open-kitchen/dishes/queue_dish_id</p>
 </blockquote>
@@ -2481,7 +3131,7 @@ ID | The ID of the kitten to delete
   <span class="nx">HttpClient</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/dispensers'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/dispensers'</span><span class="p">;</span>
 
 <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">}</span>
@@ -2522,7 +3172,7 @@ ID | The ID of the kitten to delete
 </span></code></pre>
 <p>This endpoint retrieves a list of dispensers that the staff / chef can see under the same ownership.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://node.chefsurf.io/api/dispensers</code></p>
+<p><code>GET https://node.chefsurf.io/api/open-kitchen/dispensers</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2531,12 +3181,20 @@ ID | The ID of the kitten to delete
 </tr>
 </thead><tbody>
 <tr>
-<td>where_name</td>
-<td>apply a name condition to the query. i.e <strong>Satee</strong></td>
+<td>where_active</td>
+<td>apply a &#39;active&#39; condition to the query. i.e <strong>true</strong></td>
 </tr>
 <tr>
-<td>where_domain</td>
-<td>apply a domain condition to the query i.e <strong>comesate.com</strong></td>
+<td>where_inventoryItem</td>
+<td>apply a &#39;inventoryItem&#39; condition to the query i.e <strong>5dd9790312256f10e83bb93f</strong></td>
+</tr>
+<tr>
+<td>where&lt;_currentLoad</td>
+<td>apply a &#39;currentLoad&#39; condition to the query i.e <strong>10</strong></td>
+</tr>
+<tr>
+<td>where_identifier</td>
+<td>apply a &#39;identifier&#39; condition to the query i.e <strong>disp001</strong></td>
 </tr>
 </tbody></table>
 <h2 id='get-a-dispenser'>Get a Dispenser</h2>
@@ -2547,7 +3205,7 @@ ID | The ID of the kitten to delete
   <span class="nx">HttpClient</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/dispensers'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/dispensers'</span><span class="p">;</span>
 
 <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">}</span>
@@ -2583,7 +3241,7 @@ ID | The ID of the kitten to delete
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves one restaurant by the ID.</p>
+<p>This endpoint retrieves one dispenser by the ID.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://node.chefsurf.io/open-kitchen/dispensers/:dispenser_id</code></p>
 
@@ -2596,13 +3254,13 @@ ID | The ID of the kitten to delete
  -->
 <h2 id='create-a-dispenser'>Create a Dispenser</h2>
 <blockquote>
-<p>POST = https://node.chefsurf.io/api/dispensers</p>
+<p>POST = https://node.chefsurf.io/api/open-kitchen/dispensers</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code>  <span class="kr">import</span> <span class="p">{</span>
   <span class="nx">HttpClient</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/dispensers'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/dispensers'</span><span class="p">;</span>
 
 <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">}</span>
@@ -2640,13 +3298,13 @@ ID | The ID of the kitten to delete
 <p>This endpoint allows you to create a new dispenser. if you create a new dispenser you need to be aware that you need to make sure to add a identifier that is not taken already. otherwise it will throw an exception.</p>
 <h2 id='update-a-dispenser'>Update a Dispenser</h2>
 <blockquote>
-<p>PUT - https://node.chefsurf.io/api/dispensers/dispenser_id</p>
+<p>PUT - https://node.chefsurf.io/api/open-kitchen/dispensers/dispenser_id</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
   <span class="nx">HttpClient</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/dispensers'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/dispensers'</span><span class="p">;</span>
 
 <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">}</span>
@@ -2692,7 +3350,7 @@ ID | The ID of the kitten to delete
 </span></code></pre>
 <p>This endpoint allows you to modify the dispenser, not all of the properties can be modified and there are formats that must be followed otherwise it will throw an error.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>PUT - https://node.chefsurf.io/api/dispensers/dispenser_id</code></p>
+<p><code>PUT - https://node.chefsurf.io/api/open-kitchen/dispensers/dispenser_id</code></p>
 <h3 id='fillable-properties'>Fillable properties</h3>
 <table><thead>
 <tr>
@@ -2773,13 +3431,13 @@ ID | The ID of the kitten to delete
 </tbody></table>
 <h2 id='delete-dispenser'>Delete Dispenser</h2>
 <blockquote>
-<p>DELETE - https://node.chefsurf.io/api/dispensers/dispenser_id</p>
+<p>DELETE - https://node.chefsurf.io/api/open-kitchen/dispensers/dispenser_id</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
   <span class="nx">HttpClient</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/dispensers'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/dispensers'</span><span class="p">;</span>
 
 <span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">}</span>
@@ -2829,7 +3487,809 @@ ID | The ID of the kitten to delete
 </span></code></pre>
 <p>This endpoint deletes a specific dispenser.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE - https://node.chefsurf.io/api/dispensers/dispenser_id</code></p>
+<p><code>DELETE - https://node.chefsurf.io/api/open-kitchen/dispensers/dispenser_id</code></p>
+<h1 id='sauce-bags'>Sauce Bags</h1><h2 id='get-sauce-bags'>Get Sauce Bags</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/sauce-bags'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">requestSauceBags</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currentLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e118e9c11a8820b7ea66efa"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inventoryItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790312256f10e83bb93f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teriyaki Sauce"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_teri_sauce"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:28:11.412Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:22:04.868Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of sauce bags that the staff / chef can see under the same ownership.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://node.chefsurf.io/api/open-kitchen/sauce-bags</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>where_inventoryItem</td>
+<td>apply a &#39;inventoryItem&#39; condition to the query. i.e <strong>5dd9790312256f10e83bb93f</strong></td>
+</tr>
+<tr>
+<td>where_active</td>
+<td>apply a &#39;active&#39; condition to the query i.e <strong>true</strong></td>
+</tr>
+<tr>
+<td>where_identifier</td>
+<td>apply a &#39;identifier&#39; condition to the query i.e <strong>sg_001</strong></td>
+</tr>
+</tbody></table>
+<h2 id='get-sauce-bag'>Get Sauce Bag</h2>
+<blockquote>
+<p>GET - https://node.chefsurf.io/open-kitchen/sauce-bags/:sauce_bag_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/sauce-bags'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">requestSauceBag</span><span class="p">(</span><span class="nx">sauce_bag_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">sauce_bag_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e118e9c11a8820b7ea66efa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inventoryItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790312256f10e83bb93f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oil"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_oil"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:28:11.412Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:22:04.868Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves one sauce bag by the ID.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://node.chefsurf.io/open-kitchen/sauce-bags/:sauce_bag_id</code></p>
+
+<!-- ### URL Parameters -->
+
+<!--
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to delete
+ -->
+<h2 id='create-sauce-bag'>Create Sauce Bag</h2>
+<blockquote>
+<p>POST = https://node.chefsurf.io/api/open-kitchen/sauce-bags</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/sauce-bags'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">createSauceBag</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e118e9c11a8820b7ea66efa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inventoryItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790312256f10e83bb93f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soy Sauce"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_soys"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:22:04.868Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:22:04.868Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to create a new sauce bag. if you create a new sauge bag you need to be aware that you need to make sure to add an identifier that is not taken already. otherwise it will throw an exception.</p>
+<h2 id='update-sauce-bag'>Update Sauce Bag</h2>
+<blockquote>
+<p>PUT - https://node.chefsurf.io/api/open-kitchen/sauce-bags/sauce_bag_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/sauce-bags'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">updateSauceBag</span><span class="p">(</span><span class="nx">sauce_bag_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">sauce_bag_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Sample Data ( you can send the params you want to be updated in your request )</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This sauce bag sometimes releases more content than normal"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This sauce bag sometimes releases more content than normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e118e9c11a8820b7ea66efa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inventoryItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790312256f10e83bb93f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soy Sauce"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_soys"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:22:04.868Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:22:04.868Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to modify the sauce bag, not all of the properties can be modified and there are formats that must be followed otherwise it will throw an error.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PUT - https://node.chefsurf.io/api/open-kitchen/sauce-bags/sauce_bag_id</code></p>
+<h3 id='fillable-properties'>Fillable properties</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>You can modify the label (human friendly identifier)</td>
+</tr>
+<tr>
+<td>identifier</td>
+<td>String</td>
+<td>You can modify the identifier ( it has to be unique )</td>
+</tr>
+<tr>
+<td>inventoryItem</td>
+<td>ObjectID</td>
+<td>You can assign an InventoryItem to the sauce bag to track statistics.</td>
+</tr>
+<tr>
+<td>capacity</td>
+<td>Number</td>
+<td>You can set the capacity the sauce bag has (maximum load)</td>
+</tr>
+<tr>
+<td>currentLoad</td>
+<td>Number</td>
+<td>You can set the current load (so we can notify the staff about low quantities).</td>
+</tr>
+<tr>
+<td>active</td>
+<td>Boolean</td>
+<td>You can Enable/Disable the sauce bag.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String</td>
+<td>You can add some notes to the sauce bag in case there are some special instructions.</td>
+</tr>
+</tbody></table>
+<h3 id='non-fillable'>Non fillable</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>ObjectID</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td>restaurant</td>
+<td>ObjectID</td>
+<td>Restaurant Object ID</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>ObjectID</td>
+<td>Ower Object ID</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>DateTime</td>
+<td>Update timestamps - auto generated.</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>DateTime</td>
+<td>Create timestamps - auto generated.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-sauce-bag'>Delete Sauce Bag</h2>
+<blockquote>
+<p>DELETE - https://node.chefsurf.io/api/open-kitchen/sauce-bags/sauce_bag_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/open-kitchen/sauce-bags'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @param {String} sauce_bag_id
+*/</span>
+<span class="nx">deleteSauceBag</span><span class="p">(</span><span class="nx">sauce_bag_id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">sauce_bag_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="p">{},</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currentLoad"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This sauce bag sometimes releases more content than normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e118e9c11a8820b7ea66efa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inventoryItem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790312256f10e83bb93f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soy Sauce"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sg_soys"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790112256f10e83bb932"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:22:04.868Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:22:04.868Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-05T07:30:56.096Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>If you are trying to delete a sauce bag that it has been deleted, you will get an exception: 404.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Record not found."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a specific sauce bag.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE - https://node.chefsurf.io/api/open-kitchen/sauce-bags/sauce_bag_id</code></p>
+<h1 id='shopping-carts'>Shopping Carts</h1><h2 id='get-shopping-carts'>Get Shopping Carts</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/shopping-carts'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">requestShoppingCarts</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"shoppingCartItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5e52fb397896c40fb0833efc"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"creditsUsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">10960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e40da7bdd54ce1b2f57d7ec"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0dd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0de"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-23T22:22:49.495Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-10T04:22:19.400Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves the latest active shopping cart the user has. this endpoint is useful if you don&#39;t know the shopping cart id that is active at the moment.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://node.chefsurf.io/api/shopping-carts</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>where_completed</td>
+<td>apply a &#39;completed&#39; condition to the query. i.e <strong>true</strong></td>
+</tr>
+<tr>
+<td>where_active</td>
+<td>apply a &#39;active&#39; condition to the query i.e <strong>true</strong></td>
+</tr>
+<tr>
+<td>where_total</td>
+<td>apply a &#39;total&#39; condition to the query i.e <strong>25000</strong></td>
+</tr>
+</tbody></table>
+<h2 id='get-shopping-cart'>Get Shopping Cart</h2>
+<blockquote>
+<p>GET - https://node.chefsurf.io/open-kitchen/shopping-carts/:shopping_cart_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/shopping-carts'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">requestShoppingCart</span><span class="p">(</span><span class="nx">shopping_cart_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">shopping_cart_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">params</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"shoppingCartItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5e52fb397896c40fb0833efc"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"creditsUsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">10960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e40da7bdd54ce1b2f57d7ec"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0dd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0de"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-23T22:22:49.495Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-10T04:22:19.400Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves one shopping cart by the ID.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://node.chefsurf.io/open-kitchen/shopping-carts/:shopping_cart_id</code></p>
+
+<!-- ### URL Parameters -->
+
+<!--
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to delete
+ -->
+<h2 id='create-shopping-cart'>Create Shopping Cart</h2>
+<blockquote>
+<p>POST = https://node.chefsurf.io/api/shopping-carts</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>  <span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/shopping-carts'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">createShoppingCart</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Sample Data when creating a new shopping cart</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"newItem"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">//...shoppingCartItemData</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"coupon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3de5970157956f10d23bc628"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creditsUsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"shoppingCartItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5e52fb397896c40fb0833efc"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"creditsUsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">10960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e40da7bdd54ce1b2f57d7ec"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0dd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0de"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-23T22:22:49.495Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-10T04:22:19.400Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to create a new shopping cart. you cannot have two active shopping carts since we need to complete order first to open a new cart.</p>
+<h2 id='update-shopping-cart'>Update Shopping Cart</h2>
+<blockquote>
+<p>PUT - https://node.chefsurf.io/api/shopping-carts/shopping_cart_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/shopping-carts'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="nx">updateShoppingCart</span><span class="p">(</span><span class="nx">shopping_cart_id</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">shopping_cart_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Sample Data ( you can send the params you want to be updated in your request )</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"shoppingCartItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5e52fb397896c40fb0833efc"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"creditsUsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">10960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e40da7bdd54ce1b2f57d7ec"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0dd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0de"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-23T22:22:49.495Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-10T04:22:19.400Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint allows you to modify the shopping cart, not all of the properties can be modified and there are formats that must be followed otherwise it will throw an error.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PUT - https://node.chefsurf.io/api/shopping-carts/shopping_cart_id</code></p>
+<h3 id='fillable-properties'>Fillable properties</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completed</td>
+<td>Boolean</td>
+<td>true or false, this will define when the cart has been completed based on the order Object ID assigment.</td>
+</tr>
+<tr>
+<td>coupon</td>
+<td>ObjectID</td>
+<td>Coupon Object ID.</td>
+</tr>
+<tr>
+<td>creditsUsed</td>
+<td>Number</td>
+<td>Quantity of credits used - pending to create Credit Object ID.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>ObjectID</td>
+<td>Order Object ID.</td>
+</tr>
+</tbody></table>
+<h3 id='non-fillable'>Non fillable</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>ObjectID</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td>restaurant</td>
+<td>ObjectID</td>
+<td>Restaurant Object ID</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>ObjectID</td>
+<td>Ower Object ID</td>
+</tr>
+<tr>
+<td>user</td>
+<td>ObjectID</td>
+<td>User Object ID</td>
+</tr>
+<tr>
+<td>updatedAt</td>
+<td>DateTime</td>
+<td>Update timestamps - auto generated.</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>DateTime</td>
+<td>Create timestamps - auto generated.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-shopping-cart'>Delete Shopping Cart</h2>
+<blockquote>
+<p>DELETE - https://node.chefsurf.io/api/shopping-carts/shopping_cart_id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span>
+  <span class="nx">HttpClient</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/common/http'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="s1">'https://node.chefsurf.io/api/shopping-carts'</span><span class="p">;</span>
+
+<span class="nx">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">HttpClient</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * @param {String} shopping_cart_id
+*/</span>
+<span class="nx">deleteShoppingCart</span><span class="p">(</span><span class="nx">shopping_cart_id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">shopping_cart_id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="p">{},</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`JWT </span><span class="p">${</span><span class="nx">jwt_token</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"shoppingCartItems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5e52fb397896c40fb0833efc"</span><span class="p">,</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"creditsUsed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"taxes"</span><span class="p">:</span><span class="w"> </span><span class="mi">960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">10960</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e40da7bdd54ce1b2f57d7ec"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"restaurant"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dd9790212256f10e83bb934"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0dd"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5dfc657506b7c674c1fbf0de"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-23T22:22:49.495Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-10T04:22:19.400Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-23T22:30:00.400Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>If you are trying to delete a shopping cart that it has been deleted, you will get an exception: 404.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotFound"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Record not found."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a specific shopping cart.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>DELETE - https://node.chefsurf.io/api/shopping-carts/shopping_cart_id</code></p>
+<h1 id='query-helpers'>Query Helpers</h1>
+<p>Our API supports different kind of conditions, at the moment we have a limited set of conditions and they only work as &#39;AND&#39; conditions not &#39;OR&#39; conditions... yet!</p>
+
+<p>Here are all the examples of conditions you could do in the platform when you query a list of records and you want to limit the responses with certain conditions you are looking for.</p>
+
+<table><thead>
+<tr>
+<th>Condition</th>
+<th>Example</th>
+<th>Query param</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>where_</td>
+<td>where_identifier</td>
+<td>{ where_identifier: &#39;text_here&#39; }</td>
+</tr>
+<tr>
+<td>in_</td>
+<td>in_type</td>
+<td>{ in_type: [&#39;available&#39;, &#39;waiting_for_ingredients&#39;],}</td>
+</tr>
+<tr>
+<td>like_</td>
+<td>like_name</td>
+<td>{ like_name: &#39;chicken&#39;}</td>
+</tr>
+<tr>
+<td>wherenot_</td>
+<td>wherenot_category</td>
+<td>{ wherenot_category: &#39;grains_bowl_category&#39; }</td>
+</tr>
+<tr>
+<td>where&lt;_</td>
+<td>where&lt;_capacity</td>
+<td>{ where&lt;_capacity: 10 }</td>
+</tr>
+<tr>
+<td>where&gt;_</td>
+<td>where&gt;_currentLoad</td>
+<td>{ where&gt;_currentLoad: 5}</td>
+</tr>
+<tr>
+<td>where&lt;=_</td>
+<td>where&lt;=_capacity</td>
+<td>{ where&lt;=_capacity: 5 }</td>
+</tr>
+<tr>
+<td>where&gt;=_</td>
+<td>where&gt;=_currentLoad</td>
+<td>{ where&gt;=_currentLoad: 5 }</td>
+</tr>
+<tr>
+<td>where-not-null_</td>
+<td>where-not-null_inventoryItem</td>
+<td>{ where-not-null_inventoryItem: true }</td>
+</tr>
+<tr>
+<td>where-null_</td>
+<td>where-null_inventoryItem</td>
+<td>{ where-null_inventoryItem: true }</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>The API uses the following error codes:</p>
 
@@ -2888,7 +4348,1507 @@ ID | The ID of the kitten to delete
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+<h1 id='models'>Models</h1><h2 id='chef'>Chef</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">ChefSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">jobTitle</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'Chef'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">active</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='client'>Client</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">ClientSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">allowCashPayments</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">identityNumber</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">phone</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">active</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">lastAddressUsed</span><span class="p">:</span> <span class="p">{</span>
 
+    <span class="p">},</span>
+    <span class="na">lastPaymentMethodUsed</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'cash'</span><span class="p">,</span> <span class="s1">'credit_card'</span><span class="p">,</span> <span class="s1">'credits'</span><span class="p">,</span> <span class="s1">'rappi'</span><span class="p">],</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='credit'>Credit</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">CreditSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">order</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Order'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">reason</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">amount</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">invitation</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Invitation'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">referenceCredit</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Credit'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">type</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'invite'</span><span class="p">,</span> <span class="s1">'transaction'</span><span class="p">,</span> <span class="s1">'refund'</span><span class="p">,</span> <span class="s1">'gift'</span><span class="p">,</span> <span class="s1">'super_admin_granted'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">grantedBy</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">grantedAt</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='coupon'>Coupon</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">CouponSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">creator</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">category</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'food_discount'</span><span class="p">,</span> <span class="s1">'order_discount'</span><span class="p">,</span> <span class="s1">'delivery_discount'</span><span class="p">,</span> <span class="s1">'waive_delivery'</span><span class="p">,</span> <span class="s1">'waive_food'</span><span class="p">],</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">type</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'percentage'</span><span class="p">,</span> <span class="s1">'amount'</span><span class="p">],</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">value</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">currency</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'cop'</span><span class="p">,</span> <span class="s1">'mxn'</span><span class="p">,</span> <span class="s1">'usd'</span><span class="p">,</span> <span class="s1">'cad'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'cop'</span>
+    <span class="p">},</span>
+    <span class="na">availability</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'all_chefs'</span><span class="p">,</span> <span class="s1">'exclusive_chef'</span><span class="p">,</span> <span class="s1">'exclusive_product'</span><span class="p">],</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'all_chefs'</span>
+    <span class="p">},</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">chef</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Chef'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">startDate</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Date</span>
+    <span class="p">},</span>
+    <span class="na">endDate</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Date</span>
+    <span class="p">},</span>
+    <span class="na">availableForInDays</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">invitation</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">code</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">conditions</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">minQuantity</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+            <span class="na">min</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="na">maxQuantity</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span>
+        <span class="p">},</span>
+        <span class="na">minProducts</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="na">min</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="na">maxProducts</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="mi">99</span>
+        <span class="p">},</span>
+        <span class="na">onlyIfPairs</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="na">usageLimit</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+            <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="na">min</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">usages</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Order'</span>
+    <span class="p">}]</span>
+<span class="p">});</span>
+</code></pre><h2 id='dish'>Dish</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">DishSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">dishName</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s2">``</span>
+    <span class="p">},</span>
+    <span class="na">dishPicture</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Attachment'</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">product</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Product'</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">priority</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'low'</span><span class="p">,</span> <span class="s1">'normal'</span><span class="p">,</span> <span class="s1">'urgent'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'normal'</span>
+    <span class="p">},</span>
+    <span class="na">status</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'queue'</span><span class="p">,</span> <span class="s1">'cooking'</span><span class="p">,</span> <span class="s1">'packing'</span><span class="p">,</span> <span class="s1">'finished'</span><span class="p">,</span> <span class="s1">'failed'</span><span class="p">,</span> <span class="s1">'cancelled'</span><span class="p">,</span> <span class="s1">'on_review'</span><span class="p">],</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'queue'</span>
+    <span class="p">},</span>
+    <span class="na">sortOrder</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">simplifiedId</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'----'</span><span class="p">,</span>
+        <span class="c1">// required: true</span>
+    <span class="p">},</span>
+    <span class="na">cookingTime</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="c1">// required: true</span>
+    <span class="p">},</span>
+    <span class="na">pendingIngredients</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'DishIngredient'</span><span class="p">,</span>
+    <span class="p">}],</span>
+    <span class="na">addedIngredients</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'DishIngredient'</span><span class="p">,</span>
+    <span class="p">}],</span>
+    <span class="na">failedIngredients</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'DishIngredient'</span><span class="p">,</span>
+    <span class="p">}],</span>
+    <span class="na">orderItem</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'OrderItem'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">customer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">wok</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Wok'</span><span class="p">,</span>
+        <span class="na">require</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='dispenser'>Dispenser</h2>
+<blockquote>
+<p>Schema Definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">DispenserSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">label</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">identifier</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">inventoryItem</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'InventoryItem'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">capacity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">currentLoad</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">active</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">notes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='inventory'>Inventory</h2>
+<blockquote>
+<p>Schema Definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">InventorySchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">maxCapacity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">min</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">max</span><span class="p">:</span> <span class="mi">9999</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">},</span>
+    <span class="na">sendAlertsOnLowInventory</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">alertOnQuantity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">min</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">current</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='inventory-item'>Inventory Item</h2>
+<blockquote>
+<p>Schema definition </p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">InventoryItemSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">inventory</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Inventory'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">category</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'ingredient'</span><span class="p">,</span> <span class="s1">'drink'</span><span class="p">,</span> <span class="s1">'dessert'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'ingredient'</span>
+    <span class="p">},</span>
+    <span class="na">type</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'base'</span><span class="p">,</span> <span class="s1">'veggie'</span><span class="p">,</span> <span class="s1">'dressing'</span><span class="p">,</span> <span class="s1">'protein'</span><span class="p">,</span> <span class="s1">'extra'</span><span class="p">,</span> <span class="s1">'drink'</span><span class="p">,</span> <span class="s1">'dessert'</span><span class="p">,</span> <span class="s1">'topping'</span><span class="p">,</span> <span class="s1">'premium'</span><span class="p">,</span> <span class="s1">'none'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">origin</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'dispenser'</span><span class="p">,</span> <span class="s1">'cold_bar'</span><span class="p">,</span> <span class="s1">'fridge'</span><span class="p">,</span> <span class="s1">'other'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'dispenser'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">otherOrigin</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">title</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">description</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">onStock</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">stockQuantity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">max</span><span class="p">:</span> <span class="mi">9999</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="na">onProduction</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">productionQuantity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">max</span><span class="p">:</span> <span class="mi">9999</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="na">referenceId</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'---'</span>
+    <span class="p">},</span>
+    <span class="na">maxProductionCapacity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">min</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">max</span><span class="p">:</span> <span class="mi">9999</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">50</span>
+    <span class="p">},</span>
+    <span class="na">price</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="na">measurement</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'gram'</span><span class="p">,</span> <span class="s1">'kilogram'</span><span class="p">,</span> <span class="s1">'oz'</span><span class="p">,</span> <span class="s1">'piece'</span><span class="p">,</span> <span class="s1">'none'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">measurementUnit</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">totalMeasurement</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'gram'</span><span class="p">,</span> <span class="s1">'kilogram'</span><span class="p">,</span> <span class="s1">'oz'</span><span class="p">,</span> <span class="s1">'piece'</span><span class="p">,</span> <span class="s1">'none'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">totalMeasurementUnits</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">priceForRawItem</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="na">pictures</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">SchemaTypes</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Attachment'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">}]</span>
+<span class="p">});</span>
+</code></pre><h2 id='kushki-card'>Kushki Card</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">KushkiCardSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">last4</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">expMonth</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">expYear</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">cvv</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">subscriptionId</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">token</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">active</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">type</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'single_charge'</span><span class="p">,</span> <span class="s1">'subscription'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'single_charge'</span>
+    <span class="p">},</span>
+    <span class="na">singlePaymentAmount</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">currency</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'COP'</span><span class="p">,</span> <span class="s1">'USD'</span><span class="p">,</span> <span class="s1">'CAD'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'COP'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</code></pre><h2 id='kushki-ticket'>Kushki Ticket</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">KushkiTicketSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">kushkiCard</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'KushkiCard'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">ticketNumber</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">set</span><span class="p">:</span> <span class="nx">_encryptIt</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">token</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">set</span><span class="p">:</span> <span class="nx">_encryptIt</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">requiresWebhook</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">currencyCode</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'COP'</span><span class="p">,</span> <span class="s1">'USD'</span><span class="p">,</span> <span class="s1">'CAD'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">ip</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">set</span><span class="p">:</span> <span class="nx">_encryptIt</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">maskedCardNumber</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">approvedTransactionAmount</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span>
+    <span class="p">},</span>
+    <span class="na">subtotalIva</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">subtotalIva0</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">responseCode</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">transactionType</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">approvalCode</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">transactionStatus</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">requestAmount</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">type</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'single_charge'</span><span class="p">,</span> <span class="s1">'subscription'</span><span class="p">,</span> <span class="s1">'refund'</span><span class="p">,</span> <span class="s1">'void'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'single_charge'</span>
+    <span class="p">},</span>
+    <span class="na">details</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">,</span>
+        <span class="na">set</span><span class="p">:</span> <span class="nx">_encryptDetails</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='order'>Order</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">OrderSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">shoppingCart</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ShoppingCart'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">shoppingCartItems</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ShoppingCartItem'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}],</span>
+    <span class="na">references</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">shoppingCartItems</span><span class="p">:</span> <span class="p">[],</span> <span class="c1">//@deprecated</span>
+        <span class="na">sellingWeek</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="p">},</span>
+    <span class="na">customer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">type</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'client'</span><span class="p">,</span> <span class="s1">'chef'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'client'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">referenceOrder</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Order'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">receivingMethod</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'delivery'</span><span class="p">,</span> <span class="s1">'eat_here'</span><span class="p">,</span> <span class="s1">'to_go'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'eat_here'</span>
+    <span class="p">},</span>
+    <span class="na">delivery</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">pickup</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">clientLocation</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">deliveryFee</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">subTotal</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">discount</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="na">taxes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">total</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">paymentMethod</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'cash'</span><span class="p">,</span> <span class="s1">'credit_card'</span><span class="p">,</span> <span class="s1">'credits'</span><span class="p">,</span> <span class="s1">'cash_and_credits'</span><span class="p">,</span> <span class="s1">'credit_card_and_credits'</span><span class="p">],</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">cancellationReason</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">transaction</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Transaction'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">status</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'draft'</span><span class="p">,</span> <span class="s1">'placed'</span><span class="p">,</span> <span class="s1">'preparing_order'</span><span class="p">,</span> <span class="s1">'delivering'</span><span class="p">,</span> <span class="s1">'ready_for_pickup'</span><span class="p">,</span> <span class="s1">'at_address'</span><span class="p">,</span> <span class="s1">'complete'</span><span class="p">,</span> <span class="s1">'refunded'</span><span class="p">,</span> <span class="s1">'cancelled'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'draft'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">foodStatus</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'not_started'</span><span class="p">,</span> <span class="s1">'preparing'</span><span class="p">,</span> <span class="s1">'cooked'</span><span class="p">,</span> <span class="s1">'packed'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'not_started'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">paymentStatus</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'pending'</span><span class="p">,</span> <span class="s1">'validating'</span><span class="p">,</span> <span class="s1">'paid'</span><span class="p">,</span> <span class="s1">'rejected'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'pending'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">deliveryStatus</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'pending'</span><span class="p">,</span> <span class="s1">'delivering'</span><span class="p">,</span> <span class="s1">'at_address'</span><span class="p">,</span> <span class="s1">'delivered'</span><span class="p">,</span> <span class="s1">'returned'</span><span class="p">,</span> <span class="s1">'user_not_showed_up'</span><span class="p">,</span> <span class="s1">'at_front'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'pending'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="c1">// selectedTime: {</span>
+    <span class="c1">//     type: mongoose.Schema.Types.String,</span>
+    <span class="c1">//     default: '12:00:00'</span>
+    <span class="c1">// },</span>
+    <span class="c1">// selectedDate: {</span>
+    <span class="c1">//     type: mongoose.Schema.Types.String,</span>
+    <span class="c1">// },</span>
+    <span class="na">payUResponses</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="na">coupon</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+            <span class="na">ref</span><span class="p">:</span> <span class="s1">'Coupon'</span>
+        <span class="p">},</span>
+        <span class="na">reference</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="na">credit</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Credit'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">contactPhone</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span>
+    <span class="p">},</span>
+    <span class="na">origin</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'web'</span><span class="p">,</span> <span class="s1">'android'</span><span class="p">,</span> <span class="s1">'ios'</span><span class="p">,</span> <span class="s1">'bot'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'web'</span>
+    <span class="p">},</span>
+    <span class="na">appVersion</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'not_set'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">orderItems</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'OrderItem'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}]</span>
+<span class="p">});</span>
+</code></pre><h2 id='order-item'>Order Item</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">OrderItemSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">customer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">order</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Order'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">date</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span>
+    <span class="p">},</span>
+    <span class="na">time</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span>
+    <span class="p">},</span>
+    <span class="na">dateTime</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span>
+    <span class="p">},</span>
+    <span class="na">shoppingCartItem</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ShoppingCartItem'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">complete</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">references</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">shoppingCartItem</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="na">status</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'placed'</span><span class="p">,</span> <span class="s1">'queue'</span><span class="p">,</span> <span class="s1">'cooking'</span><span class="p">,</span> <span class="s1">'delivering'</span><span class="p">,</span> <span class="s1">'ready_for_pickup'</span><span class="p">,</span> <span class="s1">'at_address'</span><span class="p">,</span> <span class="s1">'complete'</span><span class="p">,</span> <span class="s1">'returned'</span><span class="p">,</span> <span class="s1">'cancelled'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'placed'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">priority</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'low'</span><span class="p">,</span> <span class="s1">'normal'</span><span class="p">,</span> <span class="s1">'urgent'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'normal'</span>
+    <span class="p">},</span>
+    <span class="na">product</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Product'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">total</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</code></pre><h2 id='product'>Product</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">ProductSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">category</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">'grains_bowl_category'</span><span class="p">,</span>
+            <span class="s1">'greens_grains_bowl_category'</span><span class="p">,</span>
+            <span class="s1">'greens_bowl_category'</span><span class="p">,</span>
+            <span class="s1">'pita_category'</span><span class="p">,</span>
+            <span class="s1">'mini_pita_category'</span><span class="p">,</span>
+            <span class="s1">'soup_pita_category'</span><span class="p">,</span>
+            <span class="s1">'drink'</span><span class="p">,</span>
+            <span class="s1">'none'</span>
+        <span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">title</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">price</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">description</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">position</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">measurement</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'gram'</span><span class="p">,</span> <span class="s1">'kilogram'</span><span class="p">,</span> <span class="s1">'oz'</span><span class="p">,</span> <span class="s1">'piece'</span><span class="p">,</span> <span class="s1">'none'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'none'</span>
+    <span class="p">},</span>
+    <span class="na">measurementUnit</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">calories</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">attachments</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Attachment'</span>
+    <span class="p">}],</span>
+    <span class="na">availability</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">monday</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+            <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="na">tuesday</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+            <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="na">wednesday</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+            <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="na">thursday</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+            <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="na">friday</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+            <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="na">saturday</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+            <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="na">sunday</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+            <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">ingredients</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ProductIngredient'</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}],</span>
+    <span class="na">drinks</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ProductIngredient'</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}],</span>
+    <span class="na">desserts</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ProductIngredient'</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}],</span>
+    <span class="na">cookingTime</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">createdBy</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongooseType</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</code></pre><h2 id='restaurant'>Restaurant</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">RestaurantSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoTypes</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoTypes</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">chefs</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoTypes</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Chef'</span>
+    <span class="p">}],</span>
+    <span class="na">logo</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">background</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">location</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">automatedKitchen</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">deliveryAvailable</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">pickUpAvailable</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">cashPaymentAvailable</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">creditCardPaymentAvailable</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">domain</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoTypes</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='sauce-bag'>Sauce Bag</h2>
+<blockquote>
+<p>Schema definiton</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">SauceBagSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">label</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">identifier</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">inventoryItem</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'InventoryItem'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">capacity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">currentLoad</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">active</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">notes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre><h2 id='shopping-cart'>Shopping Cart</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">ShoppingCartSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'User'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">completed</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">order</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Order'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">startDay</span><span class="p">:</span> <span class="p">{</span> <span class="c1">//will be removed</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">endDay</span><span class="p">:</span> <span class="p">{</span> <span class="c1">//will be removed</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">dates</span><span class="p">:</span> <span class="p">[],</span> <span class="c1">//will be removed</span>
+    <span class="na">shoppingCartItems</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ShoppingCartItem'</span>
+    <span class="p">}],</span>
+    <span class="na">coupon</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">_id</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+            <span class="na">ref</span><span class="p">:</span> <span class="s1">'Coupon'</span>
+        <span class="p">},</span>
+        <span class="na">reference</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="na">creditsUsed</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="na">subTotal</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">discount</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="na">taxes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">total</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</code></pre><h2 id='shopping-cart-item'>Shopping Cart Item</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">ShoppingCartItemSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">shoppingCart</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ShoppingCart'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">product</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Product'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">quantity</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">productPrice</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">subTotal</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">total</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">notes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">selectedDate</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">date</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span> <span class="c1">//string now</span>
+        <span class="na">dayInEnglish</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">dayInSpanish</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">dayNumber</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">time</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+            <span class="na">default</span><span class="p">:</span> <span class="s1">'12:00:00'</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">type</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'drink'</span><span class="p">,</span> <span class="s1">'dish'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'dish'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">selectedIngredients</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'ShoppingCartItemIngredient'</span><span class="p">,</span>
+    <span class="p">}],</span>
+    <span class="na">drinkDetails</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">ingredients</span><span class="p">:</span> <span class="p">[{}],</span>
+    <span class="na">customerName</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<p>The shopping cart items are essential for our proper functionality of the order flow inside Satee, it&#39;s not mandatory to follow this but it&#39;s recommended since OpenKitchen works better with all this models connected properly. Your integration will work at the best shape if you use our ChefSurf api&#39;s to create this data for your restaurant website/app.</p>
+<h2 id='user'>User</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">UserSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">role</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'chef'</span><span class="p">,</span> <span class="s1">'staff'</span><span class="p">,</span> <span class="s1">'restaurant_owner'</span><span class="p">,</span> <span class="s1">'client'</span><span class="p">,</span> <span class="s1">'delivery_guy'</span><span class="p">,</span> <span class="s1">'chefsurf_admin'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'client'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">chef</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Chef'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">client</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Client'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">deliveryGuy</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'DeliveryGuy'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">superAdmin</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">Schema</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'SuperAdmin'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">firstName</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">lastName</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">username</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">phone</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">celullar</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">dob</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Date</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">email</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">pictureUrl</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">active</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">selectedLanguage</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'english'</span><span class="p">,</span> <span class="s1">'spanish'</span><span class="p">,</span> <span class="s1">'portuguese'</span><span class="p">,</span> <span class="s1">'french'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'spanish'</span>
+    <span class="p">},</span>
+    <span class="na">password</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">location</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">nationality</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">gender</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'male'</span><span class="p">,</span> <span class="s1">'female'</span><span class="p">,</span> <span class="s1">'none'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'none'</span>
+    <span class="p">},</span>
+    <span class="na">banned</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">onboardStep</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Number</span>
+    <span class="p">},</span>
+    <span class="na">onboardType</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'chef'</span><span class="p">,</span> <span class="s1">'restaurant'</span><span class="p">,</span> <span class="s1">'client'</span><span class="p">,</span> <span class="s1">'delivery_guy'</span><span class="p">,</span> <span class="s1">'chefsurf_admin'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'client'</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">isEmailVerified</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">isVerified</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">selfCreated</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">googleId</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">facebookId</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">requestToken</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">currency</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span><span class="s1">'cop'</span><span class="p">,</span> <span class="s1">'mxn'</span><span class="p">,</span> <span class="s1">'usd'</span><span class="p">,</span> <span class="s1">'cad'</span><span class="p">],</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'cop'</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</code></pre><h2 id='wok'>Wok</h2>
+<blockquote>
+<p>Schema definition</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">WokSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">restaurant</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Restaurant'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">owner</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Owner'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">index</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">label</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">identifier</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">status</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">enum</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">'available'</span><span class="p">,</span>
+            <span class="s1">'waiting_for_ingredients'</span><span class="p">,</span>
+            <span class="s1">'cooking'</span><span class="p">,</span>
+            <span class="s1">'dispensing'</span><span class="p">,</span>
+            <span class="s1">'cleaning'</span>
+        <span class="p">],</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">'available'</span>
+    <span class="p">},</span>
+    <span class="na">hasErrors</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Boolean</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">errorCode</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">notes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">String</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="s1">' '</span>
+    <span class="p">},</span>
+    <span class="na">dish</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ObjectId</span><span class="p">,</span>
+        <span class="na">ref</span><span class="p">:</span> <span class="s1">'Dish'</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">default</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="na">temperature</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">cookingTime</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">types</span><span class="p">.</span><span class="nb">Number</span><span class="p">,</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
