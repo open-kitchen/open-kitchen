@@ -180,17 +180,6 @@ async def transit_runner_state(runner_id: int, dest_state: RunnerStates):
         runner.request(MasterComponentRequestCodes.GET_STATE_CODE)
     )
 
-    # # Reset runner
-    # if dest_state == RunnerStates.STANDBY and current_state in [
-    #     RunnerStates.SENDING,
-    #     RunnerStates.RELEASING,
-    # ]:
-    #     master_request_code = MasterRunnerRequestCodes.RECONFIG_RUNNER
-    #     response = (
-    #         f"reconfigure Sauce Runner #{runner_id} "
-    #         f"(erased target wok ID, desire sauce ID, and release volume)."
-    #     )
-
     # Reset (Force retrieve) runner
     if dest_state == RunnerStates.RETRIEVING and current_state in [
         RunnerStates.SENDING,

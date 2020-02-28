@@ -78,7 +78,6 @@ class RunnerSim(ComponentSim):
 
         # Sauce Runner attributes
         self.sauce_type = None
-        # self.current_volume = 100
         self.sauce_containers = dict(
             [
                 (i, SauceContainer(sauce_id=i, sauce_name=f"Sauce #{i}"))
@@ -102,6 +101,17 @@ class RunnerSim(ComponentSim):
         # RunnerSim loop Thread start
         self._reset()
         self.start()
+
+    def _reset(self, data=None) -> ComponentReceiveResponses:
+        """when Wok naturally goes back to STANDBY state"""
+        # Reset operation attributes
+        self._target_wok = None
+        self._desire_sauce_id = None
+        self._release_volume = None
+        self._released = 0
+        self._is_wok_ready = False
+
+        return ComponentReceiveResponses.CONFIRMED
 
     """
     Runner Input/Output functions
@@ -138,29 +148,8 @@ class RunnerSim(ComponentSim):
             RunnerRequestCodes.SET_WOK_IS_READY: self._set_wok_ready,
         }
 
-    def _reset(self, data=None) -> ComponentReceiveResponses:
-        """Handle request code 6 or when Wok naturally goes back to STANDBY state"""
-
-        # # If reset by master
-        # if data is not None:
-        #     if self.is_COOKING():
-        #         self.error_code = WokErrors.COOK_TERMINATED_BEFORE_DONE
-        #         log.error(f"WokSim #{self.id} {self.error_code.get_description()}")
-        #         # return WokReceiveResponses.DENIED # TODO: Need to clarify how to recover from error
-        #         self.reset()
-
-        # Reset operation attributes
-        self._target_wok = None
-        self._desire_sauce_id = None
-        self._release_volume = None
-        self._released = 0
-        self._is_wok_ready = False
-
-        # return self._reconfig(data=data)
-        return ComponentReceiveResponses.CONFIRMED
-
     def _force_retrieve(self, data: int) -> ComponentReceiveResponses:
-        """MainController request 6"""
+        """Handler MainController request 6"""
         # Check state
         if self.is_REFILLING():
             self.error_code = RunnerErrors.NOT_ABLE_TO_RETRIEVE
@@ -422,18 +411,28 @@ class RunnerSim(ComponentSim):
     def _transit_state(self) -> None:
         """The logic of state transition
 
-        1. The Runner will initialize in the `standby` state, which will
-            - Wait for the main controller to set the target wok.
-        2. After the above parameter are set, the Wok goes into the `moving to wok` state which will
-            - Move runner to the target Wok, and
-            - Wait for the main controller to set release volume.
-        3. Once the main controller set the release volume and Runner arrived target Wok, it goes into the
-        `releasing` state which will
-            - Release the desired sauce volume.
-        4. Once the desired sauce volume been released, the Runner will enter the `moving back` state which will
-            - Move the Runner back to the original position.
-        5. Finally, the Runner will go to the `standby` state when it arrive the original position.
-        6. The Runner will cycle back to the first step
+        1. The Runner will initialize in the `STANDBY` state, which will
+            - Wait for the main controller to set the target wok ID.
+            - Wait for the main controller to set the desire sauce ID.
+            - Wait for the main controller to set the release volume.
+
+        2(a). After the above parameter are set, and the desire sauce load is greater than 20%, the Runner goes
+        into the `SENDING` state which will
+            - Move runner to the target Wok position, and
+            - Wait for the main controller to notify if Wok is ready.
+        3(a). Once the main controller notify that the target Wok is ready to receive sauce and it arrive the target
+        Wok position, it goes into the `RELEASING` state which will
+            - Release the desired sauce by the volume been set.
+        4(a). Once the desired sauce volume been released, the Runner will enter the `moving back` state which will
+            - Move the Runner back to the original (home) position.
+        5(a). Finally, the Runner will go to the `STANDBY` state when it arrive the original (home) position.
+        6(a). The Runner will cycle back to the first step
+
+        2(b). After the above parameter are set, and the desire sauce load is not greater than 20%, the Runner goes
+        into the `REFILLING` state which will
+            - Wait main controller to notify if the refilling is done.
+        3(b). Once the main controller notified that refilling is done, Runner goes back to `STANDBY` state (cycle
+        back to the first step).
 
         """
         if (

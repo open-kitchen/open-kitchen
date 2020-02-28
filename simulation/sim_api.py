@@ -18,13 +18,13 @@ log = logging.getLogger(f"Simulation API")
 @app.on_event("startup")
 async def startup_event():
     await runner_sim_interface.startup_event(args)
-    log.info(f"Runner simulation has been initialized.")
+    log.info(f"Open-Kitchen simulation has been initialized.")
 
 
 @app.on_event("shutdown")
 async def shutdown_event():
     await runner_sim_interface.shutdown_event()
-    log.info(f"Runner simulation has been turned off.")
+    log.info(f"Open-Kitchen simulation has been triggered to turn off.")
 
 
 if __name__ == "__main__":
@@ -32,17 +32,17 @@ if __name__ == "__main__":
     runner_sim_interface.argparser_setup(arg_parser)
     args = arg_parser.parse_args()
 
-    app.include_router(
-        runner_sim_interface.runner_pi_sim,
-        prefix="/runner",
-        tags=["runner"],
-        responses={404: {"description": "Not found"}},
-    )
     # app.include_router(
     #     wok_sim_interface.router,
     #     prefix="/wok",
     #     tags=["wok"],
     #     responses={404: {"description": "Not found"}},
     # )
+    app.include_router(
+        runner_sim_interface.runner_pi_sim,
+        prefix="/runner",
+        tags=["runner"],
+        responses={404: {"description": "Not found"}},
+    )
 
     uvicorn.run(app)
