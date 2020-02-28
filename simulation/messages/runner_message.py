@@ -9,7 +9,7 @@ Main Controller to Runner messages
 """
 
 MASTER_RUNNER_REQ_DESC_MAP = CodeDescMap(
-    RESET_RUNNER="request to reset runner",
+    FORCE_RETRIEVE_RUNNER="request to reset (force retrieve) runner",
     RESET_TARGET_WOK="request to set target Wok ID",
     RESET_DESIRE_SAUCE="request to set desire sauce ID",
     RESET_RELEASE_VOLUME="request to set release volume",
@@ -66,10 +66,15 @@ class RunnerErrors(IntEnum):
 
     NO_ERROR = 0
     NEED_REFILL = 1
+    NOT_ABLE_TO_RETRIEVE = 2
 
     def get_description(self):
         # The Wok error code and description map
-        err_desc = {self.NO_ERROR: "no error", self.NEED_REFILL: "need refill"}
+        err_desc = {
+            self.NO_ERROR: "no error",
+            self.NEED_REFILL: "need refill",
+            self.NOT_ABLE_TO_RETRIEVE: "not able to retrieve at current state",
+        }
         err_code = self.value
         return err_desc.get(err_code, f"No description for Error {err_code}")
 

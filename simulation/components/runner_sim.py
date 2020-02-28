@@ -82,7 +82,7 @@ class RunnerSim(ComponentSim):
         self.sauce_containers = dict(
             [
                 (i, SauceContainer(sauce_id=i, sauce_name=f"Sauce #{i}"))
-                for i in range(sauce_container_number)
+                for i in range(1, sauce_container_number + 1)
             ]
         )
         self.wok_positions = {1: 11500, 2: 23000, 3: 34500}  # {Wok ID: sim position}
@@ -115,7 +115,7 @@ class RunnerSim(ComponentSim):
 
         # Runner special requests
         runner_request_handlers = {
-            MasterRunnerRequestCodes.RESET_RUNNER: self._reset,
+            MasterRunnerRequestCodes.FORCE_RETRIEVE_RUNNER: self._force_retrieve,
             MasterRunnerRequestCodes.RESET_TARGET_WOK: self._set_target_wok,
             MasterRunnerRequestCodes.RESET_DESIRE_SAUCE: self._set_desire_sauce,
             MasterRunnerRequestCodes.RESET_RELEASE_VOLUME: self._set_release_volume,
@@ -159,6 +159,18 @@ class RunnerSim(ComponentSim):
         # return self._reconfig(data=data)
         return ComponentReceiveResponses.CONFIRMED
 
+    def _force_retrieve(self, data: int) -> ComponentReceiveResponses:
+        """MainController request 6"""
+        # Check state
+        if self.is_REFILLING():
+            self.error_code = RunnerErrors.NOT_ABLE_TO_RETRIEVE
+            self.log.error(f"RunnerSim #{self.id} {self.error_code.get_description()}")
+            return ComponentReceiveResponses.DENIED
+
+        # Force retrieve runner
+        self.force_retrieve_runner()
+        return ComponentReceiveResponses.CONFIRMED
+
     def _set_target_wok(self, target_wok_id: int) -> ComponentReceiveResponses:
         """Handler data that requested by Runner request 1 and MainController request 7"""
         # Check if desire Wok ID is valid
@@ -180,6 +192,10 @@ class RunnerSim(ComponentSim):
 
     def _set_desire_sauce(self, desire_sauce_id: int) -> ComponentReceiveResponses:
         """Handler data that requested by Runner request 2 and Main Controller request 8"""
+        # Check if desire sauce ID is valid
+        if desire_sauce_id not in self.sauce_containers:
+            return ComponentReceiveResponses.DENIED
+
         # Not able to set heat desire sauce while not in STANDBY, SENDING, or RELEASING state
         if not (self.is_STANDBY() or self.is_SENDING() or self.is_RELEASING()):
             self.log.error(
@@ -205,6 +221,10 @@ class RunnerSim(ComponentSim):
 
     def _set_release_volume(self, volume: int) -> ComponentReceiveResponses:
         """Handler data that requested by Runner request 3 and Main Controller request 9"""
+        # Check if release volume is valid
+        if volume <= 0:
+            return ComponentReceiveResponses.DENIED
+
         # Not able to set heat degree while not in STANDBY, SENDING, or RELEASING state
         if not (self.is_STANDBY() or self.is_SENDING() or self.is_RELEASING()):
             self.log.error(
@@ -376,6 +396,16 @@ class RunnerSim(ComponentSim):
                 "dest": RunnerStates.RETRIEVING,
             },
             {
+                "trigger": "force_retrieve_runner",
+                "source": [
+                    RunnerStates.STANDBY,
+                    RunnerStates.SENDING,
+                    RunnerStates.RELEASING,
+                    RunnerStates.RETRIEVING,
+                ],
+                "dest": RunnerStates.RETRIEVING,
+            },
+            {
                 "trigger": "go_to_refill",
                 "source": RunnerStates.STANDBY,
                 "dest": RunnerStates.REFILLING,
@@ -408,8 +438,8 @@ class RunnerSim(ComponentSim):
         """
         if (
             self.is_STANDBY()
-            and self._target_wok
-            and self._desire_sauce_id
+            and self._target_wok is not None
+            and self._desire_sauce_id is not None
             and self._release_volume
         ):
             if not self._is_desire_sauce_need_refill:
@@ -417,12 +447,7 @@ class RunnerSim(ComponentSim):
             else:
                 self.go_to_refill()
 
-        elif (
-            self.is_SENDING()
-            and self._is_arrive_target_wok
-            and self._release_volume
-            and self._is_wok_ready
-        ):
+        elif self.is_SENDING() and self._is_arrive_target_wok and self._is_wok_ready:
             self.go_to_release()
 
         elif self.is_RELEASING() and self._is_release_done:
