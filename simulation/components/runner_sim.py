@@ -1,3 +1,5 @@
+from typing import List
+
 from components import ComponentSim
 from messages.main_controller_message import ComponentCodes, ComponentReceiveResponses
 from messages.runner_message import (
@@ -16,27 +18,29 @@ class SauceContainer:
 
     """
 
-    def __init__(self, sauce_id, sauce_name, capacity=None):
+    def __init__(self, sauce_id, sauce_name, capacity=200, current_capacity=None):
         """Constructor
 
         Args:
             sauce_id (str or in): The sauce ID, identify the sauce type
-            capacity (int): The current capacity of the sauce (0-100)
+            capacity (int): The full capacity of the sauce container
+            current_capacity (int): The current capacity of the sauce
 
         """
         self.id = sauce_id
-        if capacity is None:
-            capacity = self.full_capacity
-        self._capacity = capacity
         self.sauce_name = sauce_name
+        self._capacity = capacity
+        if current_capacity is None:
+            current_capacity = self.capacity
+        self._current_capacity = current_capacity
 
     @property
-    def full_capacity(self) -> int:
-        return 100
+    def capacity(self) -> int:
+        return self._capacity
 
     @property
     def current_capacity(self) -> int:
-        return self._capacity
+        return self._current_capacity
 
     def release(self, volume: int) -> int:
         """Release sauce from this sauce container
@@ -49,27 +53,32 @@ class SauceContainer:
 
         """
         # Log the current capacity before release
-        before_release_capacity = self._capacity
+        before_release_capacity = self._current_capacity
 
         # If the remaining amount is enough to release
-        if self._capacity - volume > 0:
-            self._capacity -= volume
+        if self._current_capacity - volume > 0:
+            self._current_capacity -= volume
 
         # If the remaining amount is enough to release
         else:
-            self._capacity = 0
+            self._current_capacity = 0
 
         # Calculate the released capacity
-        released_volume = before_release_capacity - self._capacity
+        released_volume = before_release_capacity - self._current_capacity
         return released_volume
 
     def refill(self) -> None:
         """Refill the sauce container"""
-        self._capacity = self.full_capacity
+        self._current_capacity = self.capacity
 
 
 class RunnerSim(ComponentSim):
-    def __init__(self, id: int, sauce_container_number: int = 4) -> None:
+    def __init__(
+        self,
+        id: int,
+        sauce_container_number: int = 4,
+        sauce_container_config: List[dict] or None = None,
+    ) -> None:
         super().__init__(
             component_id=id,
             component_code=ComponentCodes.RUNNER,
@@ -84,6 +93,23 @@ class RunnerSim(ComponentSim):
                 for i in range(1, sauce_container_number + 1)
             ]
         )
+        if sauce_container_config is not None:
+            self.sauce_containers = dict(
+                [
+                    (
+                        i,
+                        SauceContainer(
+                            sauce_id=i,
+                            sauce_name=f"{sauce_container_config[i - 1]['identifier']}",
+                            capacity=sauce_container_config[i - 1]["capacity"],
+                            current_capacity=sauce_container_config[i - 1][
+                                "current_load"
+                            ],
+                        ),
+                    )
+                    for i in range(1, len(sauce_container_config) + 1)
+                ]
+            )
         self.wok_positions = {1: 11500, 2: 23000, 3: 34500}  # {Wok ID: sim position}
         self.home_position = 500
         self.moving_speed = 500

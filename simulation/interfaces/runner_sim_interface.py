@@ -1,5 +1,6 @@
 import logging
 from argparse import ArgumentParser, Namespace
+from copy import deepcopy
 from enum import Enum
 from typing import Optional
 
@@ -18,6 +19,7 @@ from messages.runner_message import (
     RunnerStates,
     RunnerErrors,
     RunnerRequestCodes,
+    SauceCodes,
 )
 
 log = logging.getLogger(f"Runner Simulation API")
@@ -25,6 +27,16 @@ log.setLevel(logging.DEBUG)
 
 runner_pi_sim = APIRouter()
 runners = []
+sauce_bags_config = [
+    {"identifier": SauceCodes.PadS, "capacity": 200, "current_load": 100},
+    {"identifier": SauceCodes.BiryaniS, "capacity": 200, "current_load": 100},
+    {"identifier": SauceCodes.DinaS, "capacity": 200, "current_load": 100},
+    {"identifier": SauceCodes.CurryS, "capacity": 200, "current_load": 100},
+    {"identifier": SauceCodes.TeriS, "capacity": 200, "current_load": 100},
+    {"identifier": SauceCodes.LomoS, "capacity": 200, "current_load": 100},
+    {"identifier": SauceCodes.CuzS, "capacity": 200, "current_load": 100},
+]
+sauce_bag_num = 4
 
 
 def argparser_setup(arg_parser: ArgumentParser) -> ArgumentParser:
@@ -33,9 +45,22 @@ def argparser_setup(arg_parser: ArgumentParser) -> ArgumentParser:
 
 
 async def startup_event(args: Namespace):
-    global runners
+    global runners, sauce_bag_num
     sauce_bag_num = args.sauce_bag_num
-    runners = [RunnerSim(id=1, sauce_container_number=sauce_bag_num)]
+    if sauce_bag_num > len(sauce_bags_config):
+        log.error(
+            f"Not able to have {sauce_bag_num} sauce bags since there are only "
+            f"{len(sauce_bags_config)} sauce configurations. "
+            f"Set to max sauce bag number {len(sauce_bags_config)}"
+        )
+        sauce_bag_num = len(sauce_bags_config)
+    runners = [
+        RunnerSim(
+            id=1,
+            sauce_container_number=sauce_bag_num,
+            sauce_container_config=sauce_bags_config[:sauce_bag_num],
+        )
+    ]
     log.info(
         f"{len(runners)} Runner simulation(s) has been initialized. Runner has {sauce_bag_num} sauce bags."
     )
@@ -58,8 +83,18 @@ class ErrorResponse(Enum):
     """The error responses for the simulation interaction endpoints"""
 
     @staticmethod
+    def sauce_bag_not_found(runner_id: int, sauce_bag_id: int):
+        """Sauce container does not exist"""
+        return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={
+                "Error": f"Sauce Bag #{sauce_bag_id} in Runner #{runner_id} not found."
+            },
+        )
+
+    @staticmethod
     def runner_not_found(runner_id: int):
-        """Wok does not exist"""
+        """Runner does not exist"""
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
             content={"Error": f"Wok #{runner_id} not found."},
@@ -153,6 +188,28 @@ async def config_runner(runner_id: int, runner_config: RunnerConfig):
             status_code=status.HTTP_400_BAD_REQUEST, content={"Error": response}
         )
     return {"Runner response": response}
+
+
+@runner_pi_sim.get("/{runner_id}/sauce/{sauce_container_id}/status")
+async def get_sauce_status(sauce_bag_id: int, runner_id: int = 1):
+    # Get the specific Runner by id
+    runner = get_runner_by_id(runner_id)
+    if runner is None:
+        return ErrorResponse.runner_not_found(runner_id)
+
+    # Handle API call
+    # Get the sauce status
+    raw_response = runner.request(
+        MasterRunnerRequestCodes.GET_SAUCE_BAG_STATUS, data=sauce_bag_id
+    )
+    if raw_response == ComponentReceiveResponses.DENIED:
+        return ErrorResponse.sauce_bag_not_found(runner_id, sauce_bag_id=sauce_bag_id)
+
+    sauce_load = raw_response
+    sauce_status = deepcopy(sauce_bags_config[sauce_bag_id - 1])
+    sauce_status["identifier"] = sauce_status["identifier"].get_description()
+    sauce_status["current_load"] = sauce_load
+    return {f"Sauce #{sauce_bag_id} status": f"{sauce_status}"}
 
 
 @runner_pi_sim.get("/{runner_id}/state")
