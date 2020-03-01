@@ -15,6 +15,7 @@ MASTER_RUNNER_REQ_DESC_MAP = CodeDescMap(
     RESET_RELEASE_VOLUME="request to set release volume",
     SET_REFILL_DONE="request to set refill done",
     SET_WOK_IS_READY="request to set Wok is ready",
+    GET_SAUCE_BAG_STATUS="request sauce bag status",
 )
 
 MasterRunnerRequestCodes = OKComponentCodeEnum(
@@ -88,3 +89,17 @@ class RunnerStates(IntEnum, EnhanceEnum):
     RELEASING = auto()
     RETRIEVING = auto()
     REFILLING = auto()
+
+
+SAUCE_CODE_DESC_MAP = CodeDescMap(
+    PadS="“Pad Thai” Sauce (Bangkok Bowl)",
+    BiryaniS="Biryani Sauce (Istanbul Bowl)",
+    DinaS="Dinamita Sauce (Tokyo Bowl)",
+    CurryS="Curry Sauce (New Delhi Bowl)",
+    TeriS="Teriyaki Sauce (Beirut Bowl)",
+    LomoS="Salsa Lomo saltado (Lima Bowl)",
+    CuzS="Cuzco Sauce (Cuzco Bowl)",
+)
+
+SauceCodes = OKComponentCodeEnum("SauceCodes", list(SAUCE_CODE_DESC_MAP))
+SauceCodes.set_description(SAUCE_CODE_DESC_MAP)

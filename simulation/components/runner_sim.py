@@ -131,6 +131,7 @@ class RunnerSim(ComponentSim):
             MasterRunnerRequestCodes.RESET_RELEASE_VOLUME: self._set_release_volume,
             MasterRunnerRequestCodes.SET_REFILL_DONE: self._set_refill_done,
             MasterRunnerRequestCodes.SET_WOK_IS_READY: self._set_wok_ready,
+            MasterRunnerRequestCodes.GET_SAUCE_BAG_STATUS: self._get_sauce_bag_status,
         }
 
         # Combines all handlers
@@ -179,10 +180,12 @@ class RunnerSim(ComponentSim):
         self._target_wok = target_wok_id
         return ComponentReceiveResponses.CONFIRMED
 
-    def _set_desire_sauce(self, desire_sauce_id: int) -> ComponentReceiveResponses:
+    def _set_desire_sauce(
+        self, desire_sauce_container_id: int
+    ) -> ComponentReceiveResponses:
         """Handler data that requested by Runner request 2 and Main Controller request 8"""
         # Check if desire sauce ID is valid
-        if desire_sauce_id not in self.sauce_containers:
+        if desire_sauce_container_id not in self.sauce_containers:
             return ComponentReceiveResponses.DENIED
 
         # Not able to set heat desire sauce while not in STANDBY, SENDING, or RELEASING state
@@ -195,17 +198,19 @@ class RunnerSim(ComponentSim):
         # If resetting desire_sauce (only at Main Controller request 8)
         if self._desire_sauce_id:
             self.log.warning(
-                f"RunnerSim #{self.id} desire sauce reset to {self.sauce_containers[desire_sauce_id].sauce_name} "
+                f"RunnerSim #{self.id} desire sauce reset to "
+                f"{self.sauce_containers[desire_sauce_container_id].sauce_name} "
                 f"(was {self.sauce_containers[self._desire_sauce_id].sauce_name})."
             )
 
         # Set desire sauce
         else:
             self.log.info(
-                f"RunnerSim #{self.id} desire sauce set to {self.sauce_containers[desire_sauce_id].sauce_name}."
+                f"RunnerSim #{self.id} desire sauce set to "
+                f"{self.sauce_containers[desire_sauce_container_id].sauce_name}."
             )
 
-        self._desire_sauce_id = desire_sauce_id
+        self._desire_sauce_id = desire_sauce_container_id
         return ComponentReceiveResponses.CONFIRMED
 
     def _set_release_volume(self, volume: int) -> ComponentReceiveResponses:
@@ -273,6 +278,19 @@ class RunnerSim(ComponentSim):
         self._is_wok_ready = True
         return ComponentReceiveResponses.CONFIRMED
 
+    def _get_sauce_bag_status(self, sauce_container_id: int):
+        """Handler Main Controller request 12"""
+        # Container not found
+        if sauce_container_id not in self.sauce_containers:
+            self.log.error(
+                f"RunnerSim #{self.id} not able to get status of sauce container #{sauce_container_id}"
+            )
+            return ComponentReceiveResponses.DENIED
+
+        # Get sauce bag status
+        return self.sauce_containers[sauce_container_id].current_capacity
+
+    # Not able to set wok ready while not in SENDING state
     """
     Physical functions
     """

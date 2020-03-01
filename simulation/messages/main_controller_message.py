@@ -1,6 +1,4 @@
-from enum import IntEnum
-
-from messages import OKComponentCodeEnum, CodeDescMap
+from messages import EnhanceEnum, OKComponentCodeEnum, CodeDescMap
 
 """
 Main Controller to Component messages (general)
@@ -32,7 +30,7 @@ class ComponentCodes(OKComponentCodeEnum):
     TRANSPORTATION_BAND = 4
 
 
-class ComponentReceiveResponses(IntEnum):
+class ComponentReceiveResponses(int, EnhanceEnum):
 
     DENIED = 0
     CONFIRMED = 1

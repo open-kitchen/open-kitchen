@@ -9,7 +9,11 @@ from messages.main_controller_message import (
     ComponentCodes,
     ComponentReceiveResponses,
 )
-from messages.runner_message import RunnerErrors, RunnerRequestCodes
+from messages.runner_message import (
+    MasterRunnerRequestCodes,
+    RunnerErrors,
+    RunnerRequestCodes,
+)
 
 
 def setup_logging(log_names: List[str], level=logging.INFO) -> None:
@@ -44,8 +48,37 @@ def setup_logging(log_names: List[str], level=logging.INFO) -> None:
         log.addHandler(ch)
 
 
-def i2c_data_refine(sim: RunnerSim, data: str):
+"""
+RunnerSim
+"""
+
+
+def runner_i2c_data_refine(sim: RunnerSim, request_code: int, data: str):
     return int(data)
+
+
+def runner_i2c_response_refine(
+    sim: RunnerSim, request_code: int, data: str, response: int
+):
+    if request_code == MasterRunnerRequestCodes.GET_SAUCE_BAG_STATUS:
+        if response not in ComponentReceiveResponses.values():
+            response_description = (
+                f"Sauce #{runner_i2c_data_refine(sim, request_code, data)} "
+                f"current load is {response}"
+            )
+        else:
+            response_description = (
+                f"{ComponentReceiveResponses(response).name}. "
+                f"Not able to get status of Sauce #{runner_i2c_data_refine(sim, request_code, data)}"
+            )
+    else:
+        response_description = f"{ComponentReceiveResponses(response).name}"
+    return response_description
+
+
+"""
+WokSim
+"""
 
 
 # def wok_i2c_data_refine(sim: WokSim, component_request_code: int, data: str):
@@ -92,7 +125,8 @@ if __name__ == "__main__":
         sim = RunnerSim(id=1)
         errors = RunnerErrors
         requests = RunnerRequestCodes
-        i2c_data_refine_rules = i2c_data_refine
+        i2c_data_refine_rules = runner_i2c_data_refine
+        i2c_response_refine_rules = runner_i2c_response_refine
 
     states = sim.states
 
@@ -114,8 +148,8 @@ if __name__ == "__main__":
                     MasterComponentRequestCodes.GET_ERROR_CODE,
                     MasterComponentRequestCodes.GET_REQUEST_CODE,
                 ]:
-                    data = input("I2C data > ")
-                    data = i2c_data_refine_rules(sim, data)
+                    raw_data = input("I2C data > ")
+                    data = i2c_data_refine_rules(sim, command, raw_data)
 
                 # Perform request
                 response = sim.request(request_code=int(command), data=data)
@@ -130,7 +164,9 @@ if __name__ == "__main__":
                 elif command == MasterComponentRequestCodes.GET_REQUEST_CODE:
                     response_description = f"{requests(response).get_description()}"
                 else:
-                    response_description = f"{ComponentReceiveResponses(response).name}"
+                    response_description = i2c_response_refine_rules(
+                        sim, command, raw_data, response
+                    )
 
                 # Display response code and description in log
                 log.debug(f"I2C respond: {response} ({response_description})")
