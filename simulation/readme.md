@@ -70,7 +70,7 @@ python sim_cli.py
 ```
 
 After you run the previous command, you should see something like the following screenshot,
-![](../../../docs/img/runner_sim_001.png)
+![](../docs/img/runner_sim_001.png)
 
 Now, you can send requests as the main controller to control the Runner. Every time you send a
  request, the Runner should respond with a code number. The following table shows the request types that can be done and
@@ -143,7 +143,7 @@ python sim_api.py --sauce-bag-num <number_of_simulated_sauce_bags>
 ```
 
 The UI should look like the screenshot below,
-![](../../../docs/img/runner_i2c_sim_001.png)
+![](../docs/img/runner_i2c_sim_001.png)
 
 
 
