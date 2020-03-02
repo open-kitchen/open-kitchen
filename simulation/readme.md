@@ -26,7 +26,20 @@ Once the virtual environment has been setup, follow the directory `simulation` i
 
 # Sauce Runner Behavior
 
-![](../docs/img/3.runner_workflow_diagram.jpg)
+### Runner States
+
+The runner will have the following states
+
+| State code | Description                |
+|:-----------|:---------------------------|
+| 1          | Standby                    |
+| 2          | Sending                    |
+| 3          | Releasing                  |
+| 4          | Retrieving                 |
+| 5          | Refilling                  |
+
+
+### Workflow
 
 The runner_sim is the core of hardware-level, single runner simulation. It simulates the behavior of a runner which
  will only receive I2C requests from the main controller (Raspberry Pi) and respond based on which requests have been
@@ -59,6 +72,12 @@ back to the first step).
     - Move the Runner back to the original (home) position.
 5. (a) Finally, the Runner will go to the `STANDBY` state when it arrive the original (home) position.
 6. (a) The Runner will cycle back to the first step
+
+
+### Workflow Diagram
+You can check the following diagram for the runner simulation workflow discribed above,
+
+![](../docs/img/3.runner_workflow_diagram.jpg)
 
 
 
