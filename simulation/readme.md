@@ -26,6 +26,8 @@ Once the virtual environment has been setup, follow the directory `simulation` i
 
 # Sauce Runner Behavior
 
+![](../docs/img/3.runner_workflow_diagram.jpg)
+
 The runner_sim is the core of hardware-level, single runner simulation. It simulates the behavior of a runner which
  will only receive I2C requests from the main controller (Raspberry Pi) and respond based on which requests have been
   sent from the main controller. The overall workflow cycle of the Runner component is explained in the next 6 points:
@@ -140,6 +142,11 @@ You can using the following command to launch a human friendly simulation with a
 .0.0.1:8000/docs`,
 ```bash
 python sim_api.py --sauce-bag-num <number_of_simulated_sauce_bags>
+```
+
+You can also using the following command to bring up the API interface without specify the sauce bag number. In this case, the sace number will set to default value 4.
+```bash
+python sim_api.py
 ```
 
 The UI should look like the screenshot below,
