@@ -1,4 +1,4 @@
-from typing import List
+from typing import Union, Dict, List
 
 from components import ComponentSim
 from messages.main_controller_message import ComponentCodes, ComponentReceiveResponses
@@ -18,7 +18,9 @@ class SauceContainer:
 
     """
 
-    def __init__(self, sauce_id, sauce_name, capacity=200, current_capacity=None):
+    def __init__(
+        self, sauce_id, sauce_name, capacity=200, current_capacity=None
+    ) -> None:
         """Constructor
 
         Args:
@@ -86,7 +88,6 @@ class RunnerSim(ComponentSim):
         )
 
         # Sauce Runner attributes
-        self.sauce_type = None
         self.sauce_containers = dict(
             [
                 (i, SauceContainer(sauce_id=i, sauce_name=f"Sauce #{i}"))
@@ -144,7 +145,7 @@ class RunnerSim(ComponentSim):
     """
 
     @property
-    def _request_handlers(self):
+    def _request_handlers(self) -> Dict:
         """Request handlers"""
         # Grab general component request handlers
         general_component_request_handlers = super()._request_handlers
@@ -165,7 +166,7 @@ class RunnerSim(ComponentSim):
         return runner_request_handlers
 
     @property
-    def _receive_handlers(self):
+    def _receive_handlers(self) -> Dict:
         """Receiving handlers"""
         return {
             RunnerRequestCodes.SET_TARGET_WOK: self._set_target_wok,
@@ -304,7 +305,9 @@ class RunnerSim(ComponentSim):
         self._is_wok_ready = True
         return ComponentReceiveResponses.CONFIRMED
 
-    def _get_sauce_bag_status(self, sauce_container_id: int):
+    def _get_sauce_bag_status(
+        self, sauce_container_id: int
+    ) -> Union[ComponentReceiveResponses, int]:
         """Handler Main Controller request 12"""
         # Container not found
         if sauce_container_id not in self.sauce_containers:
@@ -406,11 +409,11 @@ class RunnerSim(ComponentSim):
     """
 
     @property
-    def states(self):
+    def states(self) -> RunnerStates:
         return RunnerStates
 
     @property
-    def transitions(self):
+    def transitions(self) -> List[Dict]:
         # The transitions for the finite state machine
         transitions = [
             {
@@ -502,7 +505,7 @@ class RunnerSim(ComponentSim):
             self.go_to_standby()
 
     @property
-    def _state_actions(self):
+    def _state_actions(self) -> Dict:
         """Actions to execute in each states"""
         return {
             RunnerStates.STANDBY: self._standby_state_actions,
