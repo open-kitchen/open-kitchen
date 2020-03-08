@@ -76,16 +76,6 @@ class WokSim(ComponentSim):
             WokRequestCodes.SET_WOK_IS_EMPTY: self._set_wok_is_empty,
         }
 
-    def request(self, request_code, data=0) -> int:
-        """Got request from main controller"""
-        response = ComponentReceiveResponses.DENIED
-
-        if request_code in self._request_handlers:
-            request_handler = self._request_handlers[request_code]
-            response = request_handler(data)
-
-        return response
-
     def _get_component_code(self, data) -> ComponentCodes:
         """Handle request code 1"""
         return ComponentCodes.WOK

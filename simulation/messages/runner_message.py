@@ -70,7 +70,7 @@ class RunnerErrors(IntEnum):
     NOT_ABLE_TO_RETRIEVE = 2
 
     def get_description(self):
-        # The Wok error code and description map
+        # The error code and description map
         err_desc = {
             self.NO_ERROR: "no error",
             self.NEED_REFILL: "need refill",

@@ -130,7 +130,7 @@ class RunnerSim(ComponentSim):
         self.start()
 
     def _reset(self, data=None) -> ComponentReceiveResponses:
-        """when Wok naturally goes back to STANDBY state"""
+        """when Runner naturally goes back to STANDBY state"""
         # Reset operation attributes
         self._target_wok = None
         self._desire_sauce_id = None
@@ -319,7 +319,6 @@ class RunnerSim(ComponentSim):
         # Get sauce bag status
         return self.sauce_containers[sauce_container_id].current_capacity
 
-    # Not able to set wok ready while not in SENDING state
     """
     Physical functions
     """
@@ -516,7 +515,7 @@ class RunnerSim(ComponentSim):
         }
 
     def _standby_state_actions(self) -> None:
-        self._release_code = RunnerRequestCodes.NO_REQUEST
+        self._request_code = RunnerRequestCodes.NO_REQUEST
         if self._target_wok is None:
             self._request_code = RunnerRequestCodes.SET_TARGET_WOK
         elif self._desire_sauce_id is None:
@@ -525,7 +524,7 @@ class RunnerSim(ComponentSim):
             self._request_code = RunnerRequestCodes.SET_RELEASE_VOLUME
 
     def _sending_state_actions(self) -> None:
-        self._release_code = RunnerRequestCodes.NO_REQUEST
+        self._request_code = RunnerRequestCodes.NO_REQUEST
         if not self._is_wok_ready:
             self._request_code = RunnerRequestCodes.SET_WOK_IS_READY
 
