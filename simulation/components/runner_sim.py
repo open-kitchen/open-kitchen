@@ -1,4 +1,4 @@
-from typing import Union, Dict, List
+from typing import Union, Dict, List, Type
 
 from components import ComponentSim
 from messages.main_controller_message import ComponentCodes, ComponentReceiveResponses
@@ -408,7 +408,7 @@ class RunnerSim(ComponentSim):
     """
 
     @property
-    def states(self) -> RunnerStates:
+    def states(self) -> Type[RunnerStates]:
         return RunnerStates
 
     @property

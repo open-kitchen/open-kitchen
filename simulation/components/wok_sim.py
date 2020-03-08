@@ -1,5 +1,5 @@
 import time
-from typing import Dict, List
+from typing import Dict, List, Type
 
 from components import ComponentSim
 from messages.main_controller_message import ComponentCodes, ComponentReceiveResponses
@@ -318,7 +318,7 @@ class WokSim(ComponentSim):
     """
 
     @property
-    def states(self) -> WokStates:
+    def states(self) -> Type[WokStates]:
         return WokStates
 
     @property
