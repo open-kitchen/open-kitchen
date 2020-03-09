@@ -153,9 +153,9 @@ The following table represents the request types from the Runner to the main con
 | Request code | Request Description                     | Data  | Response | Response Description
 |:-------------|:----------------------------------------|:------|:---------|:--------------------
 | 0            | No request                              |
-| 1            | Request to set target Wok ID            |       | uint8    | Heat degrees
-| 2            | Request to set desire sauce bag ID      |       | uint8    | Cooking duration in seconds
-| 3            | Request to set release volume           |       | string   | Order id
+| 1            | Request to set target Wok ID            |       | uint8    | Target Wok ID
+| 2            | Request to set desire sauce bag ID      |       | uint8    | Desire sauce bag ID
+| 3            | Request to set release volume           |       | string   | Desire sauce release volume
 | 4            | Request to confirm if refill is done    |       | 0        | Denied
 |              |                                         |       | 1        | Confirmed
 | 5            | Request to confirm if wok is ready      |       | 0        | Denied
