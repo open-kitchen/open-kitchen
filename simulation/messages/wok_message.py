@@ -75,8 +75,8 @@ class WokStates(IntEnum, EnhanceEnum):
     """Wok states"""
 
     # ERROR = 255
-    WAITING_ORDER = auto()
-    WAITING_INGREDIENT = auto()
+    WAITING_FOR_PARAMETERS = auto()
+    WAITING_FOR_INGREDIENTS = auto()
     COOKING = auto()
     DISPENSING_FOOD = auto()
     CLEANING = auto()

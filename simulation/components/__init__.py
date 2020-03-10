@@ -140,8 +140,9 @@ class ComponentSim(abc.ABC):
 
         while not self._loop_thread_stop_event.is_set():
             # Get state actions and run them
-            state_actions = self._state_actions[self.state]
-            state_actions()
+            if self.states(self.state) in self._state_actions:
+                state_actions = self._state_actions[self.state]
+                state_actions()
 
             # Update state if meet the requirements
             with self._transition_lock:

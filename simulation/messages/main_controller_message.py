@@ -24,6 +24,7 @@ Component to Main Controller messages (general)
 
 
 class ComponentCodes(OKComponentCodeEnum):
+    OTHER = 0
     WOK = 1
     DISPENSER = 2
     RUNNER = 3
