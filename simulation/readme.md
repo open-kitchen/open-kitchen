@@ -47,30 +47,40 @@ The runner_sim is the core of hardware-level, single runner simulation. It simul
 
 
 1. The Runner will initialize in the `STANDBY` state, which will
+
     - Wait for the main controller to set the target wok ID.
     - Wait for the main controller to set the desire sauce ID.
-    - Wait for the main controller to set the release volume.
+    - Wait for the main controller to set the volume to be released.
+   
 
 2.
-    (a) After the above parameter are set, and the desire sauce load is greater than 20%, the Runner goes
+    (a) After the above parameters are set, and the desire sauce load is greater than 20%, the Runner goes
 into the `SENDING` state which will
+
     - Move runner to the target Wok position, and
     - Wait for the main controller to notify if Wok is ready.
+    
 
-    (b). After the above parameter are set, and the desire sauce load is not greater than 20%, the Runner goes
+    (b). After the above parameters are set, but if the desire sauce load is not greater than 20%, the Runner goes
 into the `REFILLING` state which will
-    - Wait main controller to notify if the refilling is done.
-3.
-    (a). Once the main controller notify that the target Wok is ready to receive sauce and it arrive the target
-Wok position, it goes into the `RELEASING` state which will
-    - Release the desired sauce by the volume been set.
 
-    (b). Once the main controller notified that refilling is done, Runner goes back to `STANDBY` state (cycle
+    - Wait for main controller to notify if the refilling is done.
+3.
+    (a). Once the main controller notifies that the target Wok is ready to receive sauce and if the runner has arrived to the
+    target Wok position, then it will go to `RELEASING` state which will
+    
+    - Release the desired sauce by the volume already set.
+
+    (b). Once the main controller notifies that refilling is done, the Runner will go back to `STANDBY` state (cycle
 back to the first step).
+
 4.
-    (a). Once the desired sauce volume been released, the Runner will enter the `moving back` state which will
+    (a). Once the desired sauce volume is released, the Runner will enter the `moving back` state which will
+    
     - Move the Runner back to the original (home) position.
-5. (a) Finally, the Runner will go to the `STANDBY` state when it arrive the original (home) position.
+    
+5. (a) Finally, the Runner will go to the `STANDBY` state when it arrives to the original (home) position.
+
 6. (a) The Runner will cycle back to the first step
 
 
@@ -143,9 +153,9 @@ The following table represents the request types from the Runner to the main con
 | Request code | Request Description                     | Data  | Response | Response Description
 |:-------------|:----------------------------------------|:------|:---------|:--------------------
 | 0            | No request                              |
-| 1            | Request to set target Wok ID            |       | uint8    | Heat degrees
-| 2            | Request to set desire sauce bag ID      |       | uint8    | Cooking duration in seconds
-| 3            | Request to set release volume           |       | string   | Order id
+| 1            | Request to set target Wok ID            |       | uint8    | Target Wok ID
+| 2            | Request to set desire sauce bag ID      |       | uint8    | Desire sauce bag ID
+| 3            | Request to set release volume           |       | string   | Desire sauce release volume
 | 4            | Request to confirm if refill is done    |       | 0        | Denied
 |              |                                         |       | 1        | Confirmed
 | 5            | Request to confirm if wok is ready      |       | 0        | Denied
@@ -157,13 +167,13 @@ The following table represents the request types from the Runner to the main con
 
 # Human Friendly Simulation
 
-You can using the following command to launch a human friendly simulation with a RESTful API interface at `http://127
+You can use the following command to launch a human friendly simulation with a RESTful API interface at `http://127
 .0.0.1:8000/docs`,
 ```bash
 python sim_api.py --sauce-bag-num <number_of_simulated_sauce_bags>
 ```
 
-You can also using the following command to bring up the API interface without specify the sauce bag number. In this case, the sace number will set to default value 4.
+You can also use the following command to bring up the API interface without specifing the quantity of sauce bags. In this case, the sauce quantity will set to default value 4.
 ```bash
 python sim_api.py
 ```
