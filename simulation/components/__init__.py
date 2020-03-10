@@ -1,7 +1,7 @@
 import abc
 import threading
 import time
-from typing import Any
+from typing import Any, Type, List, Dict
 
 import colorlog
 from transitions import Machine
@@ -23,13 +23,13 @@ class ComponentSim(abc.ABC):
 
     @property
     @abc.abstractmethod
-    def transitions(self):
+    def transitions(self) -> List[Dict]:
         """The transitions for the finite state machine"""
         return []
 
     @property
     @abc.abstractmethod
-    def states(self):
+    def states(self) -> Type[Any]:
         """The states for the finite state machine"""
         return []
 

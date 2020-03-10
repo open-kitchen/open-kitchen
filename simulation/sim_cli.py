@@ -1,9 +1,12 @@
+import argparse
 import logging
 from typing import List
 
 import colorlog
 
 from components.runner_sim import RunnerSim
+from components.wok_sim import WokSim
+from messages.wok_message import MasterWokRequestCodes, WokErrors, WokRequestCodes
 from messages.main_controller_message import (
     MasterComponentRequestCodes,
     ComponentCodes,
@@ -14,6 +17,8 @@ from messages.runner_message import (
     RunnerErrors,
     RunnerRequestCodes,
 )
+
+COMPONENTS = ["wok", "runner"]
 
 
 def setup_logging(log_names: List[str], level=logging.INFO) -> None:
@@ -81,18 +86,40 @@ WokSim
 """
 
 
-# def wok_i2c_data_refine(sim: WokSim, component_request_code: int, data: str):
-#     if (
-#         sim.request(
-#             request_code=MasterRunnerRequestCodes.GET_REQUEST_CODE, data=0
-#         ) == WokRequestCodes.SET_ORDER_ID
-#     ):
-#     # if (component_request_code == WokRequestCodes.SET_ORDER_ID):
-#         refined_data = data
-#     else:
-#         refined_data = i2c_data_refine(sim=sim, component_request_code=component_request_code, data=data)
-#
-#     return refined_data
+def wok_i2c_data_refine(sim: WokSim, request_code: int, data: str):
+    if (
+        request_code == MasterComponentRequestCodes.RESPOND_REQUEST
+        and sim.request(
+            request_code=MasterComponentRequestCodes.GET_REQUEST_CODE, data=0
+        )
+        == WokRequestCodes.SET_ORDER_ID
+    ):
+        return data
+    else:
+        return int(data)
+
+
+def wok_i2c_response_refine(
+    sim: RunnerSim, request_code: int, data: str, response: int
+):
+    response_description = f"{ComponentReceiveResponses(response).name}"
+    return response_description
+
+
+"""
+The Main
+"""
+
+
+def argparser_setup(arg_parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
+    arg_parser.add_argument(
+        "--component",
+        required=True,
+        type=str,
+        choices=COMPONENTS,
+        help=f"The componnet in one of {COMPONENTS}",
+    )
+    return arg_parser
 
 
 if __name__ == "__main__":
@@ -107,6 +134,11 @@ if __name__ == "__main__":
     >>> python {__file__}
 
     """
+    # Setup config
+    arg_parser = argparse.ArgumentParser()
+    argparser_setup(arg_parser)
+    config = arg_parser.parse_args()
+
     # Create logger for this file
     log = colorlog.getLogger(f"{__file__}")
 
@@ -115,18 +147,30 @@ if __name__ == "__main__":
     transition_log.name = "StateMachine"
 
     # Setup all the logging
-    setup_logging(["RunnerSim", "transitions.core"])
+    setup_logging(["WokSim", "RunnerSim", "transitions.core"])
     setup_logging([f"{__file__}"], level=logging.DEBUG)
 
-    sim_component = "Runner"
+    sim_component = config.component
 
-    if sim_component == "Runner":
-        # Create a sim simulation
+    if sim_component == "wok":
+        # Create a runner sim simulation
+        sim = WokSim(id=1)
+        errors = WokErrors
+        commands = MasterWokRequestCodes
+        requests = WokRequestCodes
+        i2c_data_refine_rules = wok_i2c_data_refine
+        i2c_response_refine_rules = wok_i2c_response_refine
+    elif sim_component == "runner":
+        # Create a runner sim simulation
         sim = RunnerSim(id=1)
         errors = RunnerErrors
+        commands = MasterRunnerRequestCodes
         requests = RunnerRequestCodes
         i2c_data_refine_rules = runner_i2c_data_refine
         i2c_response_refine_rules = runner_i2c_response_refine
+    else:
+        log.critical(f"The component {sim_component} is not supported.")
+        exit(-1)
 
     states = sim.states
 
@@ -140,6 +184,10 @@ if __name__ == "__main__":
             elif type(eval(command)) is int:
                 # Got command, grab data if needed
                 command = int(command)
+                # Display main controller's request code and description in log
+                log.debug(
+                    f"I2C request: {command} ({commands(command).get_description()})"
+                )
                 data = 0
                 response_description = ""
                 if command not in [
@@ -172,5 +220,5 @@ if __name__ == "__main__":
                 log.debug(f"I2C respond: {response} ({response_description})")
 
         except Exception as e:
-            print(e)
+            log.error(e)
             continue
