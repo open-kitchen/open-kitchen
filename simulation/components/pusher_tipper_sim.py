@@ -193,12 +193,16 @@ class PusherTipperSim(ComponentSim):
         return ComponentReceiveResponses.CONFIRMED
 
     def _set_wok_ready(self, data: int = 1) -> ComponentReceiveResponses:
-        self._wok_ready = bool(data)
-        return ComponentReceiveResponses.CONFIRMED
+        if not (self.is_TIPPING() or self.is_EJECTING()):
+            self._wok_ready = bool(data)
+            return ComponentReceiveResponses.CONFIRMED
+        return ComponentReceiveResponses.DENIED
 
     def _set_eject_done(self, data: int = 1) -> ComponentReceiveResponses:
-        self._is_ejecting_done = bool(data)
-        return ComponentReceiveResponses.CONFIRMED
+        if self.is_EJECTING():
+            self._is_ejecting_done = bool(data)
+            return ComponentReceiveResponses.CONFIRMED
+        return ComponentReceiveResponses.DENIED
 
     """
     Physical functions
