@@ -18,7 +18,7 @@ class WokSim(ComponentSim):
         super().__init__(
             component_id=id,
             component_code=ComponentCodes.WOK,
-            initial_state=WokStates.WAITING_ORDER,
+            initial_state=WokStates.WAITING_FOR_PARAMETERS,
         )
 
         # Wok attributes
@@ -175,7 +175,9 @@ class WokSim(ComponentSim):
         """Handler data that requested by Wok request 2 and Main Controller request 7"""
         # Not able to set heat degree while not in WAITING ORDER, WAITING INGREDIENT, or COOKING state
         if not (
-            self.is_WAITING_ORDER() or self.is_WAITING_INGREDIENT() or self.is_COOKING()
+            self.is_WAITING_FOR_PARAMETERS()
+            or self.is_WAITING_FOR_INGREDIENTS()
+            or self.is_COOKING()
         ):
             self.log.error(
                 f"WokSim #{self.id} not able to set temperature while in {self.state.name} state"
@@ -195,7 +197,9 @@ class WokSim(ComponentSim):
         """Handler data that requested by Wok request 3 and Main Controller request 8"""
         # Not able to set cooking duration while not in WAITING ORDER, WAITING INGREDIENT, or COOKING state
         if not (
-            self.is_WAITING_ORDER() or self.is_WAITING_INGREDIENT() or self.is_COOKING()
+            self.is_WAITING_FOR_PARAMETERS()
+            or self.is_WAITING_FOR_INGREDIENTS()
+            or self.is_COOKING()
         ):
             self.log.error(
                 f"WokSim #{self.id} not able to set cook duration while in {self.state.name} state"
@@ -327,12 +331,12 @@ class WokSim(ComponentSim):
         transitions = [
             {
                 "trigger": "configured_order",
-                "source": WokStates.WAITING_ORDER,
-                "dest": WokStates.WAITING_INGREDIENT,
+                "source": WokStates.WAITING_FOR_PARAMETERS,
+                "dest": WokStates.WAITING_FOR_INGREDIENTS,
             },
             {
                 "trigger": "cook",
-                "source": WokStates.WAITING_INGREDIENT,
+                "source": WokStates.WAITING_FOR_INGREDIENTS,
                 "dest": WokStates.COOKING,
             },
             {
@@ -349,16 +353,16 @@ class WokSim(ComponentSim):
             {
                 "trigger": "reconfig",
                 "source": [
-                    WokStates.WAITING_ORDER,
-                    WokStates.WAITING_INGREDIENT,
+                    WokStates.WAITING_FOR_PARAMETERS,
+                    WokStates.WAITING_FOR_INGREDIENTS,
                     WokStates.COOKING,
                 ],
-                "dest": WokStates.WAITING_ORDER,
+                "dest": WokStates.WAITING_FOR_PARAMETERS,
             },
             {
                 "trigger": "reset",
                 "source": "*",
-                "dest": WokStates.WAITING_ORDER,
+                "dest": WokStates.WAITING_FOR_PARAMETERS,
                 "before": "_reset",
             },
         ]
@@ -387,7 +391,7 @@ class WokSim(ComponentSim):
 
         # If Wok is configured if the order id, cook duration, and temperature are set (point 1 and 2)
         if (
-            self.is_WAITING_ORDER()
+            self.is_WAITING_FOR_PARAMETERS()
             and self._real_wok_degrees
             and self._is_temperature_set
             and self._cook_seconds
@@ -396,7 +400,7 @@ class WokSim(ComponentSim):
             self.configured_order()
 
         # If Wok has ingredients ready then start to cook (point 3)
-        elif self.is_WAITING_INGREDIENT() and self._ingredients_ready:
+        elif self.is_WAITING_FOR_INGREDIENTS() and self._ingredients_ready:
             self.cook()
 
         # If Wok done cooking when the cooked time is mare than configured cook duration (point 4)
@@ -419,14 +423,14 @@ class WokSim(ComponentSim):
     def _state_actions(self) -> Dict:
         """Actions to execute in each states"""
         return {
-            WokStates.WAITING_ORDER: self._waiting_order_state_actions,
-            WokStates.WAITING_INGREDIENT: self._waiting_ingredient_state_actions,
+            WokStates.WAITING_FOR_PARAMETERS: self._waiting_for_parameters_state_actions,
+            WokStates.WAITING_FOR_INGREDIENTS: self._waiting_for_ingredients_state_actions,
             WokStates.COOKING: self._cooking_state_actions,
             WokStates.DISPENSING_FOOD: self._dispensing_food_state_actions,
             WokStates.CLEANING: self._cleaning_state_actions,
         }
 
-    def _waiting_order_state_actions(self) -> None:
+    def _waiting_for_parameters_state_actions(self) -> None:
         """Actions while WAITING ORDER state"""
         # Update Wok request code
         self._request_code = WokRequestCodes.NO_REQUEST
@@ -448,7 +452,7 @@ class WokSim(ComponentSim):
         if self._heat_degrees:
             self._adjust_wok_temperature()
 
-    def _waiting_ingredient_state_actions(self) -> None:
+    def _waiting_for_ingredients_state_actions(self) -> None:
         """Actions while WAITING INGREDIENTS state"""
         # Update Wok request code
         self._request_code = (

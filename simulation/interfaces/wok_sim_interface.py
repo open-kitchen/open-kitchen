@@ -67,7 +67,7 @@ class ErrorResponse(Enum):
         """Method not allow"""
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
-            content={"Error": f"Wok #{wok_id} {message}."},
+            content={"Error": f"Wok #{wok_id} {message}"},
         )
 
 
@@ -85,12 +85,15 @@ async def config_cooking(wok_id: int, wok_config: WokConfig):
         return ErrorResponse.wok_not_found(wok_id)
 
     # Check if in waiting order state
-    if wok.request(MasterWokRequestCodes.GET_STATE_CODE) != WokStates.WAITING_ORDER:
+    if (
+        wok.request(MasterWokRequestCodes.GET_STATE_CODE)
+        != WokStates.WAITING_FOR_PARAMETERS
+    ):
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
             content={
                 "Error": f"To set [cooking_temperature, cooking_time, order_id] the Wok #{wok_id}, "
-                f"has to be in STATE: {WokStates.WAITING_ORDER.name}."
+                f"has to be in STATE: {WokStates.WAITING_FOR_PARAMETERS.name}."
             },
         )
 
@@ -181,9 +184,9 @@ async def transit_wok_state(wok_id: int, dest_state: WokStates):
     current_state = WokStates(wok.request(MasterWokRequestCodes.GET_STATE_CODE))
 
     # Reconfigure
-    if dest_state == WokStates.WAITING_ORDER and current_state in [
-        WokStates.WAITING_ORDER,
-        WokStates.WAITING_INGREDIENT,
+    if dest_state == WokStates.WAITING_FOR_PARAMETERS and current_state in [
+        WokStates.WAITING_FOR_PARAMETERS,
+        WokStates.WAITING_FOR_INGREDIENTS,
         WokStates.COOKING,
     ]:
         master_request_code = MasterWokRequestCodes.RECONFIG_WOK
@@ -196,7 +199,7 @@ async def transit_wok_state(wok_id: int, dest_state: WokStates):
 
     # Set ingredients is ready
     elif (
-        current_state == WokStates.WAITING_INGREDIENT
+        current_state == WokStates.WAITING_FOR_INGREDIENTS
         and dest_state == WokStates.COOKING
         and wok.request(MasterWokRequestCodes.GET_REQUEST_CODE)
         == WokRequestCodes.SET_INGREDIENTS_READY
