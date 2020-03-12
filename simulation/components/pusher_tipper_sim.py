@@ -36,6 +36,9 @@ class ConveyorSim(ComponentSim):
     def _reset(self):
         self.payload_positions = 0
 
+    def reset(self):
+        self._reset()
+
     """
     Input/Output functions
     """
@@ -92,7 +95,6 @@ class ConveyorSim(ComponentSim):
                 "trigger": "turn_on",
                 "source": ConveyorStates.OFF,
                 "dest": ConveyorStates.ON,
-                "before": "_reset",
             },
             {
                 "trigger": "turn_off",
@@ -127,6 +129,7 @@ class PusherTipperSim(ComponentSim):
         )
         # Attributes
         self.pushing_process_seconds = 5
+        self.tipper_position = 0
         self.tipping_process_seconds = 2
         self.ejecting_process_seconds = 1
         self.conveyor = conveyor
@@ -155,6 +158,8 @@ class PusherTipperSim(ComponentSim):
         self._wok_ready = False
         self._is_ejecting_done = False
         self._activated = False
+
+        self.conveyor.reset()
 
         return ComponentReceiveResponses.CONFIRMED
 
@@ -193,15 +198,21 @@ class PusherTipperSim(ComponentSim):
         return ComponentReceiveResponses.CONFIRMED
 
     def _set_wok_ready(self, data: int = 1) -> ComponentReceiveResponses:
-        if not (self.is_TIPPING() or self.is_EJECTING()):
+        if not self.is_EJECTING():
             self._wok_ready = bool(data)
             return ComponentReceiveResponses.CONFIRMED
+
+        self.log.error(f"Not able to set wok is ready during {self.state.name} state.")
         return ComponentReceiveResponses.DENIED
 
     def _set_eject_done(self, data: int = 1) -> ComponentReceiveResponses:
         if self.is_EJECTING():
             self._is_ejecting_done = bool(data)
             return ComponentReceiveResponses.CONFIRMED
+
+        self.log.error(
+            f"Not able to notify ejecting is done during {self.state.name} state."
+        )
         return ComponentReceiveResponses.DENIED
 
     """
@@ -229,8 +240,9 @@ class PusherTipperSim(ComponentSim):
     @property
     def _is_cup_arrived(self) -> bool:
         if (
-            self.position_on_conveyor - self.conveyor.payload_positions
-        ) < self.conveyor.linear_speed * 2:
+            abs(self.position_on_conveyor - self.conveyor.payload_positions)
+            < self.conveyor.linear_speed * 2
+        ):
             return True
         return False
 
@@ -300,11 +312,34 @@ class PusherTipperSim(ComponentSim):
         return transitions
 
     def _transit_state(self) -> None:
-        if (
-            self.is_STANDBY()
-            and self._activated
-            and self.conveyor.state == ConveyorStates.ON
-        ):
+        """
+        The state transitions are base on the following 6 steps,
+
+        1. The Pusher-tipper will initialize in the `STANDBY` state, which will
+            - Wait for the main controller to set it activated. The main controller will only activate a
+              Pusher-tipper group if there is a cup needs to be sent to the corresponding wok associated
+              with the Pusher-tipper group.
+
+        2. After being set to activated, the Pusher-tipper group goes into the `TRANSPORTING` state which will
+            - Turn on the conveyor in the OFTA if cup is not been detect by the Pusher-tipper's cup sensor.
+            - Wait for the cup being transferred to the position in front of the Pusher.
+            - True off the conveyor in the OFTA once the cup is arrived the Pusher-tipper location.
+
+        3. Pusher-tipper will enter the `PUSHING` state once the cup is arrive. In this state it will
+            - Check if tipper is at home position.
+            - Start pushing the cup to tipper if tipper is at home, otherwise control tipper to go back home position.
+
+        4. Pusher-tipper will enter the `TIPPING` state once the pushing is done. In thi state it will
+            - Check if the Wok is at waiting for ingredients state (that means Wok is ready).
+            - Dump the food ingredient into to Wok if it's ready.
+
+        5. After dumping the food ingredients into the Wok, Pusher-tipper group will enter `EJECTING` state which will
+            - Eject the cup from tipper into an area to wash cups.
+
+        6. Once the cup been ejected, the Pusher-tipper will cycle back to `STANDBY` state.
+
+        """
+        if self.is_STANDBY() and self._activated:
             self.go_to_transporting()
         elif (
             self.is_TRANSPORTING()
@@ -312,7 +347,7 @@ class PusherTipperSim(ComponentSim):
             and self.conveyor.state == ConveyorStates.OFF
         ):
             self.go_to_pushing()
-        elif self.is_PUSHING() and self._is_pushing_done and self._wok_ready:
+        elif self.is_PUSHING() and self._is_pushing_done:
             self.go_to_tipping()
         elif self.is_TIPPING() and self._is_tipping_done:
             self.go_to_ejecting()
@@ -334,28 +369,35 @@ class PusherTipperSim(ComponentSim):
         self._request_code = PusherTipperRequestCodes.NO_REQUEST
         if not self._activated:
             self._request_code = PusherTipperRequestCodes.SET_ACTIVATE
-        else:
-            self._signal_conveyor_on()
 
     def _transporting_state_actions(self) -> None:
         self._request_code = PusherTipperRequestCodes.NO_REQUEST
+
+        # Check if the cup is arrived
         if self._is_cup_arrived:
             self._signal_conveyor_off()
-        elif self.conveyor.payload_positions % (self.conveyor.linear_speed * 5) == 0:
+        else:
+            self._signal_conveyor_on()
+
+        # Log info
+        if self.conveyor.payload_positions % (self.conveyor.linear_speed * 5) == 0:
             self.log.info(
                 f"{self.__class__.__name__} #{self.id} cup at position "
                 f"{self.conveyor.payload_positions} (target position {self.position_on_conveyor})"
             )
 
     def _pushing_state_actions(self) -> None:
-        # Request notify wok is ready
         self._request_code = PusherTipperRequestCodes.NO_REQUEST
-        if not self._wok_ready:
-            self._request_code = PusherTipperRequestCodes.SET_WOK_IS_READY
-        # Log pushing processed time
-        if self.pushing_start_time is None:
+
+        # Check if tipper is at home position
+        if self.tipper_position != 0:
+            self.tipper_position -= self.tipper_position / abs(self.tipper_position)
+
+        # Start pushing
+        elif self.pushing_start_time is None:
             self.pushing_start_time = datetime.datetime.now()
         else:
+            # Log pushing processed time
             processed_secs = (
                 datetime.datetime.now() - self.pushing_start_time
             ).total_seconds()
@@ -370,9 +412,19 @@ class PusherTipperSim(ComponentSim):
                 )
 
     def _tipping_state_actions(self) -> None:
-        if self.tipping_start_time is None:
+        # Request notify wok is ready
+        self._request_code = PusherTipperRequestCodes.NO_REQUEST
+        if not self._wok_ready:
+            self._request_code = PusherTipperRequestCodes.SET_WOK_IS_READY
+
+        # Start tipping
+        elif self.tipping_start_time is None:
             self.tipping_start_time = datetime.datetime.now()
         else:
+            # Control tipper position to dump ingredients
+            self.tipper_position += 1
+
+            # log message
             processed_secs = (
                 datetime.datetime.now() - self.tipping_start_time
             ).total_seconds()
