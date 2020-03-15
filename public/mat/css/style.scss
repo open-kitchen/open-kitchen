@@ -1,0 +1,586 @@
+$bgOne: rgb(74, 210, 255);
+
+$bgTwo: rgba(0, 148, 255, 1);
+
+$imgSize: 600px;
+
+$breakpoints: (xs: 650px,
+    sm: 960px,
+    md: 1250px,
+    lg: 1910px);
+
+html {
+    height: 100%;
+    min-height: 100vh;
+    font-family: 'Cabin', sans-serif;
+}
+
+body {
+    height: 3000px;
+    overflow-x: hidden; //horizontal
+    background-color: rgb(74, 210, 255);
+    /* For browsers that do not support gradients */
+    background-image: repeating-linear-gradient($bgOne, $bgTwo);
+}
+
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    margin-top: 0px;
+    font-size: 27px;
+    font-weight: 300;
+}
+
+h4 {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: 400;
+}
+
+.w-full {
+    width: 100% !important;
+}
+
+.p {
+    padding: 16px;
+}
+
+#header {
+    z-index: 20 !important;
+
+    div {
+        z-index: 20 !important;
+    }
+}
+
+#v-sign-img {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    top: -3px;
+    margin-left: 15px;
+}
+
+#mat-logo {
+    width: auto;
+    height: 100px;
+    position: relative;
+    left: -20px;
+}
+
+#header-actions {
+    height: 100px;
+
+    .md-button {
+        background-color: $bgTwo;
+        color: white;
+        margin-right: 20px;
+        padding: 5px;
+        width: 120px;
+        border-radius: 5px;
+    }
+}
+
+#first-section {
+    z-index: 1;
+
+    div {
+        position: relative;
+        top: -100px;
+        color: white;
+        padding: 20px;
+        text-align: center;
+
+        h1 {
+            font-weight: 800;
+            padding-bottom: 25px;
+        }
+    }
+}
+
+.driving-img {
+    width: $imgSize;
+    position: relative;
+    top: -100px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#road {
+    z-index: 10;
+
+    img {
+        width: 100%;
+        height: 2000px;
+        position: absolute;
+        top: 395px;
+        left: -160px;
+        z-index: inherit;
+    }
+}
+
+#second-section {
+    z-index: 20 !important;
+    color: white;
+    position: relative;
+    top: 80px;
+    left: 110px;
+
+    img {
+        width: 300px;
+        z-index: inherit;
+    }
+
+    h1 {
+        margin-top: 0px;
+    }
+}
+
+#second-section-actions {
+    z-index: 20 !important;
+
+    img {
+        z-index: inherit;
+        width: 200px !important;
+        padding: 4px;
+    }
+}
+
+#third-section {
+    z-index: 20;
+    color: white !important;
+    padding: 20px;
+
+    div {
+        width: 100%;
+    }
+
+    h3 {
+        margin-bottom: 0px;
+    }
+
+    img {
+        width: 38px;
+        margin: 5px;
+        margin-right: 16px;
+    }
+}
+
+#forth-section {
+    padding-top: 100px;
+    color: white;
+
+    div {
+        margin-top: 50px;
+        margin-left: 50px;
+        height: 510px;
+
+        .md-button {
+            background-color: #03d3fe !important;
+            color: white !important;
+            padding: 8px;
+            width: 130px;
+            border-radius: 6px;
+        }
+    }
+
+    img {
+        width: 50%;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+}
+
+#sixth-section {
+    margin-top: 50px;
+
+    img {
+        width: 100%;
+        box-shadow: 0 10px 20px 0 rgba(0, 51, 204, 0.1);
+    }
+}
+
+#footer {
+    color: white;
+    padding: 10px;
+
+    content {
+        width: 50%;
+    }
+
+    div {
+        padding: 8px;
+        width: 50%;
+    }
+
+    img {
+        width: 120px;
+        margin: 4px;
+    }
+
+    i {
+        font-size: 30px;
+        margin: 5px;
+    }
+}
+
+.m-r {
+    margin-right: 16px;
+}
+
+#rights-reserved-section {
+    position: relative;
+    top: 100px;
+    color: white;
+}
+
+@media (min-width: map-get($breakpoints, lg)) {
+
+    body {
+        height: 4000px;
+    }
+
+    h1 {
+        font-size: 80px;
+    }
+
+    h2 {
+        font-size: 60px;
+    }
+
+    h3 {
+        font-size: 50px;
+    }
+
+    .driving-img {
+        width: 50%;
+        position: relative;
+        top: -100px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        box-shadow: 0 10px 20px 0 rgba(0, 51, 204, 0.1);
+    }
+
+    #second-section img {
+        width: 550px;
+        z-index: inherit;
+    }
+
+    #second-section-actions img {
+        width: 300px !important;
+    }
+
+    #third-section img {
+        width: 80px;
+        margin: 20px;
+        margin-right: 25px;
+    }
+
+    #road {
+        z-index: 10;
+
+        img {
+            width: 100%;
+            height: 3000px;
+            position: absolute;
+            top: 695px;
+            left: -360px;
+            z-index: inherit;
+        }
+    }
+
+    #forth-section {
+        div {
+            top: 380px;
+            position: relative;
+            width: 25%;
+            left: 150px;
+        }
+    }
+
+}
+
+@media (max-width: map-get($breakpoints, lg)) and (min-width: map-get($breakpoints, md)) {
+    body {
+        height: 3300px;
+    }
+
+    .driving-img {
+        width: 750px;
+    }
+
+    #header-actions .md-button.md-button {
+        padding: 16px;
+        font-size: 28px;
+        min-width: 230px;
+    }
+
+    #road {
+
+        img {
+            width: 100%;
+            height: 2150px;
+            position: absolute;
+            top: 525px;
+            left: -360px;
+            z-index: inherit;
+        }
+    }
+}
+
+@media (max-width: 1600px) and (min-width: 1251px) {
+    #road {
+        img {
+            left: -250px;
+        }
+    }
+}
+
+@media (max-width: 1100px) and (min-width: 961px) {
+    #road {
+        img {
+            top: 280px !important;
+            height: 1700px;
+            left: -130px !important;
+        }
+    }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+
+    body {
+        height: 3000px;
+    }
+
+    #third-section {
+        position: relative;
+        top: 100px;
+        left: 0px;
+    }
+
+    .driving-img {
+        width: 50%;
+        position: relative;
+        top: -100px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    #road {
+
+        img {
+            width: 100%;
+            height: 1850px;
+            position: absolute;
+            top: 450px;
+            left: -200px;
+            z-index: inherit;
+        }
+    }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+
+    body {
+        height: 2450px;
+    }
+
+    .driving-img {
+        width: 50%;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    #road {
+        img {
+            height: 1700px;
+            position: absolute;
+            top: 300px;
+            left: -125px;
+        }
+    }
+
+    #third-section {
+        position: relative;
+        top: 50px;
+        left: 25px;
+    }
+
+    #forth-section {
+        div {
+            margin-top: 50px;
+            margin-left: 50px;
+            height: 410px;
+        }
+    }
+
+}
+
+@media (max-width: 850px) and (min-width: 780px) {
+    #road {
+        img {
+            top: 280px;
+            height: 1620px;
+            left: -90px;
+        }
+    }
+}
+
+@media (max-width: 820px) and (min-width: 650px) {
+    #third-section {
+        left: 20px !important;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    #second-section {
+        left: 75px;
+    }
+
+    #second-section-actions img {
+        width: 160px !important;
+    }
+}
+
+@media (max-width: 780px) and (min-width: map-get($breakpoints, xs)) {
+    #road {
+        img {
+            top: 260px;
+            height: 1500px;
+            left: -70px;
+        }
+    }
+
+    #sixth-section {
+        margin-top: -40px;
+    }
+}
+
+@media (max-width: map-get($breakpoints, xs)) {
+
+    body {
+        height: 1650px;
+    }
+
+    #road {
+        display: none;
+    }
+
+    #header {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #xs-first-section {
+        width: 100%;
+        z-index: 2;
+        color: white;
+
+        img {
+            border-radius: 0px;
+        }
+    }
+
+    #xs-slogan {
+        z-index: 4;
+        position: relative;
+        top: 160px;
+        width: 50%;
+        left: 25px;
+    }
+
+    .driving-img {
+        position: absolute;
+        width: 100%;
+        top: 0px !important;
+    }
+
+    #xs-second-section {
+        position: relative;
+        z-index: 2;
+        top: 100px;
+        color: white;
+
+        h1 {
+            position: relative;
+            top: -35px;
+            padding: 16px;
+            margin: 0px;
+            text-align: center;
+        }
+
+    }
+
+    #second-section-actions {
+        z-index: inherit;
+        width: 170px !important;
+        padding: 4px;
+    }
+
+    #xs-third-section {
+        background-color: white;
+        color: black;
+        width: 100%;
+        position: relative;
+        top: 100px;
+        width: 100%;
+        padding: 16px;
+        box-shadow: 0 10px 20px 0 rgba(0, 51, 204, 0.1);
+
+        h3 {
+            margin-bottom: 0px;
+        }
+
+        h4 {
+            color: #808080c4;
+        }
+
+        img {
+            width: 48px;
+            margin-right: 20px;
+        }
+
+        div {
+            padding-top: 20px;
+            padding-left: 8px;
+            padding-right: 8px;
+            width: 100%;
+        }
+    }
+
+    #xs-footer {
+        padding: 16px;
+        position: relative;
+        top: 100px;
+        color: white;
+
+        i {
+            font-size: 30px;
+            margin-right: 6px;
+        }
+    }
+}

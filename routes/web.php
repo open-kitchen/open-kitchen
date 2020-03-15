@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::get('/api', function() {
     return view('api-page');
 });
+
+
+Route::get('gomat', function() {
+    return view('mat');
+});

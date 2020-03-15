@@ -1,0 +1,110 @@
+body {
+  height: 2500px;
+  background-color: #4ad2ff;
+  /* For browsers that do not support gradients */
+  background-image: linear-gradient(#4ad2ff, #0094ff); }
+
+.w-full {
+  width: 100%; }
+
+.p {
+  padding: 16px; }
+
+#header {
+  z-index: 2 !important; }
+  #header div {
+    z-index: 2 !important; }
+
+#v-sign-img {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  top: -3px;
+  margin-left: 15px; }
+
+#mat-logo {
+  width: auto;
+  height: 100px;
+  position: relative;
+  left: -20px; }
+
+#header-actions {
+  height: 100px; }
+  #header-actions .md-button {
+    background-color: #0094ff;
+    color: white;
+    margin-right: 20px;
+    padding: 5px;
+    width: 120px;
+    border-radius: 5px; }
+
+#first-section {
+  z-index: 1; }
+  #first-section div {
+    position: relative;
+    top: -100px;
+    color: white;
+    padding: 20px;
+    text-align: center; }
+    #first-section div h1 {
+      font-weight: 800;
+      padding-bottom: 25px; }
+
+#road {
+  z-index: 1; }
+  #road img {
+    width: 100%;
+    height: 2000px;
+    position: absolute;
+    top: 500px;
+    left: -160px;
+    z-index: inherit; }
+
+#second-section {
+  width: 600px;
+  z-index: 2 !important;
+  color: white;
+  position: relative;
+  top: 80px;
+  left: 100px; }
+  #second-section img {
+    width: 300px;
+    z-index: inherit; }
+  #second-section h2 {
+    margin-bottom: 35px; }
+
+#second-section-actions {
+  z-index: 2 !important; }
+  #second-section-actions img {
+    z-index: inherit;
+    width: 200px !important;
+    padding: 4px; }
+
+@media (max-width: 650) {
+  #first-section {
+    width: 100%; }
+    #first-section div {
+      top: -20px; }
+
+  #second-section {
+    left: 0px;
+    top: 0px; } }
+@media (max-width: 960) {
+  #first-section img {
+    width: 350px !important; }
+
+  #second-section {
+    left: 0px;
+    top: 0px; } }
+@media (max-width: 1280) {
+  .driving-img {
+    width: 350px; } }
+@media (max-width: 1920) {
+  #first-section {
+    width: 100%; }
+    #first-section div {
+      top: -20px; }
+
+  #second-section {
+    left: 0px;
+    top: 0px; } }
