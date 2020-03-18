@@ -49,25 +49,25 @@ The pusher_tipper_sim is the core of hardware-level, single Pusher-tipper group 
 
 1. The Pusher-tipper will initialize in the `STANDBY` state, which will
     - Wait for the main controller to set it activated. The main controller will only activate a Pusher-tipper group
-     if there is a cup needs to be sent to the corresponding wok associated with the Pusher-tipper group.
+     if there is a cup in need to be sent to the corresponding wok associated with the Pusher-tipper group.
 
-2. After being set to activated, the Pusher-tipper group goes into the `TRANSPORTING` state which will
+2. After it gets activated, the Pusher-tipper group goes into the `TRANSPORTING` state which will
     - Turn on the conveyor in the OFTA if cup is not been detect by the Pusher-tipper's cup sensor.
-    - Wait for the cup being transferred to the position in front of the Pusher.
-    - True off the conveyor in the OFTA once the cup is arrived the Pusher-tipper location.
+    - Wait for the cup to be transferred in front of the Pusher.
+    - True off the conveyor in the OFTA once the cup has arrived the Pusher-tipper location.
 
-3. Pusher-tipper will enter the `PUSHING` state once the cup is arrive. In this state it will
-    - Check if tipper is at home position.
-    - Start pushing the cup to tipper if tipper is at home, otherwise control tipper to go back home position.
+3. Pusher-tipper will enter the `PUSHING` state once the cup has arrived. In this state it will
+    - Check for the position of the tipper and make sure it is on the *home* position.
+    - Push the cup to the tipper, when tipper is in *home* position.
 
 4. Pusher-tipper will enter the `TIPPING` state once the pushing is done. In thi state it will
-    - Check if the Wok is at waiting for ingredients state (that means Wok is ready).
-    - Dump the food ingredient into to Wok if it's ready.
+    - Check if the Wok is at the *waiting for ingredients* state.
+    - Dispense the cups contents into the designated wok once it is ready.
 
-5. After dumping the food ingredients into the Wok, Pusher-tipper group will enter `EJECTING` state which will
-    - Eject the cup from tipper into an area to wash cups.
+5. After dispensing the cup's contents into the wok, Pusher-tipper group will enter `EJECTING` state which will
+    - Eject the cup from the tipper into an area to wash the cups.
 
-6. Once the cup been ejected, the Pusher-tipper will cycle back to `STANDBY` state.
+6. Once the cup has been ejected, the Pusher-tipper will cycle back to `STANDBY` state.
 
 
 ### Workflow Diagram
@@ -108,8 +108,8 @@ Now, you can send requests as the main controller to control the Pusher-tipper g
 | 3            | Get error code      |       | 0        | No errors
 | 4            | Get Pusher-tipper request code |       | 0        | No request
 |              |                     |       | 1        | Request to activate
-|              |                     |       | 2        | Request to set Wok is ready
-|              |                     |       | 3        | Rrequest to notify if ejecting is done
+|              |                     |       | 2        | Request to set Wok is in ready position or waiting for ingredients state
+|              |                     |       | 3        | Request to notify when cup ejection is done
 | 5            | Respond Runner request | uint8 | 0        | Failed to save data and/or not able to setup
 |              |                     |       | 1        | Successfully save data and/or setup
 | 6            | Activate Pusher-tipper | uint8 | 0        | Failed
@@ -140,13 +140,13 @@ The following table represents the request types from the Pusher-tipper to the m
 
 # Human Friendly Simulation
 
-You can using the following command to launch a human friendly simulation with a RESTful API interface at `http://127
+You can use the following command to launch a human friendly simulation with a RESTful API interface at `http://127
 .0.0.1:8000/docs`,
 ```bash
 python sim_api.py --wok-num <number_of_simulated_wok>
 ```
 
-You can also using the following command to bring up the API interface without specify the wok quantity. In this case
+You can use the following command to bring up the API interface without specify the wok quantity. In this case
 , the number of simulated wok will set to default value 2.
 ```bash
 python sim_api.py
@@ -159,4 +159,4 @@ The UI should look like the screenshot below,
 
 
 # The End
-That's how you can use OFTA simulation.
+That's how you can use the OFTA simulation.
