@@ -47,14 +47,14 @@ The pusher_tipper_sim is the core of hardware-level, single Pusher-tipper group 
    component is explained in the next 6 points:
 
 
-1. The Pusher-tipper will initialize in the `STANDBY` state, which will
-    - Wait for the main controller to set it activated. The main controller will only activate a Pusher-tipper group
-     if there is a cup in need to be sent to the corresponding wok associated with the Pusher-tipper group.
+1. The Pusher-tipper will initialize in the `STANDBY` state, in which it will
+    - Wait for the main controller to activate it. When a cup is assigned to be sent to a wok, the corresponding
+    Pusher-tipper group associated with wok gets activated. 
 
-2. After it gets activated, the Pusher-tipper group goes into the `TRANSPORTING` state which will
-    - Turn on the conveyor in the OFTA if cup is not been detect by the Pusher-tipper's cup sensor.
-    - Wait for the cup to be transferred in front of the Pusher.
-    - True off the conveyor in the OFTA once the cup has arrived the Pusher-tipper location.
+2. After it gets activated, the Pusher-tipper group goes into the `TRANSPORTING` state, in which 
+    - The conveyor belt is automatically turned on
+    - The cup is then transported in front of the designated Pusher-tipper group.
+    - The conveyor belt is then turned off when the cup is detected in front of the Pusher-tipper group
 
 3. Pusher-tipper will enter the `PUSHING` state once the cup has arrived. In this state it will
     - Check for the position of the tipper and make sure it is on the *home* position.
@@ -62,10 +62,10 @@ The pusher_tipper_sim is the core of hardware-level, single Pusher-tipper group 
 
 4. Pusher-tipper will enter the `TIPPING` state once the pushing is done. In thi state it will
     - Check if the Wok is at the *waiting for ingredients* state.
-    - Dispense the cups contents into the designated wok once it is ready.
+    - Once ready, it will dispense the cup's contents into the designated wok 
 
-5. After dispensing the cup's contents into the wok, Pusher-tipper group will enter `EJECTING` state which will
-    - Eject the cup from the tipper into an area to wash the cups.
+5. After dispensing the cup's contents into the wok, the Pusher-tipper group will enter the `EJECTING` state, in which
+    - The group will eject the cup from the tipper into the washing area of cups
 
 6. Once the cup has been ejected, the Pusher-tipper will cycle back to `STANDBY` state.
 
@@ -123,7 +123,7 @@ Now, you can send requests as the main controller to control the Pusher-tipper g
 The following table represents the request types from the Pusher-tipper to the main controller (Raspberry pi) and the
  meanings of each one of them.
 
-#### Runner to the main controller
+#### Pusher-tipper to the main controller
 | Request code | Request Description                     | Data  | Response | Response Description
 |:-------------|:----------------------------------------|:------|:---------|:--------------------
 | 0            | No request                              |
