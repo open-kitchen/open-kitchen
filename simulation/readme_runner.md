@@ -49,29 +49,32 @@ The runner_sim is the core of hardware-level, single runner simulation. It simul
 1. The Runner will initialize in the `STANDBY` state, which will
     - Wait for the main controller to set the target wok ID.
     - Wait for the main controller to set the desire sauce ID.
-    - Wait for the main controller to set the release volume.
+    - Wait for the main controller to set the sauce release volume.
 
 2.
-    (a) After the above parameter are set, and the desire sauce load is greater than 20%, the Runner goes
-into the `SENDING` state which will
-    - Move runner to the target Wok position, and
-    - Wait for the main controller to notify if Wok is ready.
+    (a) After the above parameters are set and if the desired sauce load is greater than 20%, the Runner initiates the 
+    `SENDING` state in which it will
+    - Direct runner to the designated Wok position, and
+    - Wait for the main controller to notify if Wok is on `WAITING FOR INGREDIENTS`state, aka `READY` state.
 
-    (b). After the above parameter are set, and the desire sauce load is not greater than 20%, the Runner goes
-into the `REFILLING` state which will
-    - Wait main controller to notify if the refilling is done.
-3.
-    (a). Once the main controller notify that the target Wok is ready to receive sauce and it arrive the target
-Wok position, it goes into the `RELEASING` state which will
-    - Release the desired sauce by the volume been set.
-
-    (b). Once the main controller notified that refilling is done, Runner goes back to `STANDBY` state (cycle
+    (b). After the above parameter are set, but if the desire sauce load is NOT greater than 20%, the Runner initiates the
+    `REFILLING` state in which it will
+    - Wait for main controller to notify if the refilling was done.
+    - Once the main controller notifies that refilling is done, the Runner goes back to `STANDBY` state (cycle
 back to the first step).
+
+3.
+    (a). Once the main controller notifies that the designated Wok is ready to receive sauce, the Runner positions itself on 
+    top of the wok and switches to the `RELEASING` state, in which it will
+    - Release the desired sauce by the volume set.
+
 4.
-    (a). Once the desired sauce volume been released, the Runner will enter the `moving back` state which will
-    - Move the Runner back to the original (home) position.
-5. (a) Finally, the Runner will go to the `STANDBY` state when it arrive the original (home) position.
-6. (a) The Runner will cycle back to the first step
+    (a). Once the desired sauce volume has been released, the Runner will enter the `RETRIEVING` state which will
+    - Move the Runner back to the home position.
+    
+5. Finally, once the Runner arrives to the home position, it will switch  into the `STANDBY` state
+
+6. The Runner will cycle back to the first step
 
 
 ### Workflow Diagram
