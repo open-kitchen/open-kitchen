@@ -97,7 +97,7 @@ class ErrorResponse(Enum):
         """Runner does not exist"""
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
-            content={"Error": f"Wok #{runner_id} not found."},
+            content={"Error": f"Runner #{runner_id} not found."},
         )
 
     @staticmethod
@@ -105,7 +105,7 @@ class ErrorResponse(Enum):
         """Method not allow"""
         return JSONResponse(
             status_code=status.HTTP_405_METHOD_NOT_ALLOWED,
-            content={"Error": f"Wok #{runner_id} {message}."},
+            content={"Error": f"Runner #{runner_id} {message}"},
         )
 
 
@@ -286,7 +286,7 @@ async def transit_runner_state(runner_id: int, dest_state: RunnerStates):
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST, content={"Error": response}
         )
-    return {"Wok response": response}
+    return {"Runner response": response}
 
 
 @runner_pi_sim.get("/{runner_id}/error")

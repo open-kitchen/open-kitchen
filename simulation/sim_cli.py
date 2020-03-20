@@ -4,6 +4,7 @@ from typing import List
 
 import colorlog
 
+from components.pusher_tipper_sim import ConveyorSim, PusherTipperSim
 from components.runner_sim import RunnerSim
 from components.wok_sim import WokSim
 from messages.wok_message import MasterWokRequestCodes, WokErrors, WokRequestCodes
@@ -17,8 +18,13 @@ from messages.runner_message import (
     RunnerErrors,
     RunnerRequestCodes,
 )
+from messages.pusher_tipper_message import (
+    MasterPusherTipperRequestCodes,
+    PusherTipperErrors,
+    PusherTipperRequestCodes,
+)
 
-COMPONENTS = ["wok", "runner"]
+COMPONENTS = ["wok", "runner", "OFTA"]
 
 
 def setup_logging(log_names: List[str], level=logging.INFO) -> None:
@@ -99,8 +105,22 @@ def wok_i2c_data_refine(sim: WokSim, request_code: int, data: str):
         return int(data)
 
 
-def wok_i2c_response_refine(
-    sim: RunnerSim, request_code: int, data: str, response: int
+def wok_i2c_response_refine(sim: WokSim, request_code: int, data: str, response: int):
+    response_description = f"{ComponentReceiveResponses(response).name}"
+    return response_description
+
+
+"""
+PusherTipperSim
+"""
+
+
+def pusher_tipper_i2c_data_refine(sim: PusherTipperSim, request_code: int, data: str):
+    return int(data)
+
+
+def pusher_tipper_i2c_response_refine(
+    sim: PusherTipperSim, request_code: int, data: str, response: int
 ):
     response_description = f"{ComponentReceiveResponses(response).name}"
     return response_description
@@ -118,6 +138,9 @@ def argparser_setup(arg_parser: argparse.ArgumentParser) -> argparse.ArgumentPar
         type=str,
         choices=COMPONENTS,
         help=f"The componnet in one of {COMPONENTS}",
+    )
+    arg_parser.add_argument(
+        "--debug", required=False, action="store_true", help=f"Enable debug mode"
     )
     return arg_parser
 
@@ -147,7 +170,11 @@ if __name__ == "__main__":
     transition_log.name = "StateMachine"
 
     # Setup all the logging
-    setup_logging(["WokSim", "RunnerSim", "transitions.core"])
+    setup_logging(["transitions.core"])
+    setup_logging(
+        ["WokSim", "RunnerSim", "PusherTipperSim", "ConveyorSim"],
+        level=logging.DEBUG if config.debug else logging.INFO,
+    )
     setup_logging([f"{__file__}"], level=logging.DEBUG)
 
     sim_component = config.component
@@ -160,6 +187,16 @@ if __name__ == "__main__":
         requests = WokRequestCodes
         i2c_data_refine_rules = wok_i2c_data_refine
         i2c_response_refine_rules = wok_i2c_response_refine
+    elif sim_component == "OFTA":
+        # Create a pusher tipper sim simulation
+        sim = PusherTipperSim(
+            id=1, conveyor=ConveyorSim(id=1), position_on_conveyor=200
+        )
+        errors = PusherTipperErrors
+        commands = MasterPusherTipperRequestCodes
+        requests = PusherTipperRequestCodes
+        i2c_data_refine_rules = pusher_tipper_i2c_data_refine
+        i2c_response_refine_rules = pusher_tipper_i2c_response_refine
     elif sim_component == "runner":
         # Create a runner sim simulation
         sim = RunnerSim(id=1)

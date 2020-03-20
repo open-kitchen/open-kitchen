@@ -4,7 +4,11 @@ import logging
 import uvicorn
 from fastapi import FastAPI
 
-from interfaces import runner_sim_interface, wok_sim_interface
+from interfaces import (
+    runner_sim_interface,
+    wok_sim_interface,
+    pusher_tipper_sim_interface,
+)
 
 app = FastAPI(
     title="Open Kitchen Simulation",
@@ -19,6 +23,7 @@ log = logging.getLogger(f"Simulation API")
 async def startup_event():
     await wok_sim_interface.startup_event(args)
     await runner_sim_interface.startup_event(args)
+    await pusher_tipper_sim_interface.startup_event(args)
     log.info(f"Open-Kitchen simulation has been initialized.")
 
 
@@ -26,6 +31,7 @@ async def startup_event():
 async def shutdown_event():
     await wok_sim_interface.shutdown_event()
     await runner_sim_interface.shutdown_event()
+    await pusher_tipper_sim_interface.shutdown_event()
     log.info(f"Open-Kitchen simulation has been triggered to turn off.")
 
 
@@ -33,6 +39,7 @@ if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser()
     wok_sim_interface.argparser_setup(arg_parser)
     runner_sim_interface.argparser_setup(arg_parser)
+    pusher_tipper_sim_interface.argparser_setup(arg_parser)
     args = arg_parser.parse_args()
 
     app.include_router(
@@ -45,6 +52,12 @@ if __name__ == "__main__":
         runner_sim_interface.runner_pi_sim,
         prefix="/runner",
         tags=["runner"],
+        responses={404: {"description": "Not found"}},
+    )
+    app.include_router(
+        pusher_tipper_sim_interface.pi_sim,
+        prefix="/OFTA",
+        tags=["OFTA"],
         responses={404: {"description": "Not found"}},
     )
 
