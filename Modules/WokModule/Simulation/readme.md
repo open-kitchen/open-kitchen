@@ -25,27 +25,45 @@ Once the virtual environment has been setup, follow the directory `Modules/WokMo
 
 # Wok Behavior
 
+### Wok States
+
+The wok will have the following states
+
+| State code | Description                
+|-----------|---------------------------
+| 1          | Waiting for parameters state    
+| 2          | Waiting for ingredients state
+| 3          | Cooking state              
+| 4          | Dispensing food state      
+| 5          | Cleaning state             
+
+### Workflow
+
 The WokSim is the core of hardware-level, single wok simulation. It simulates the behavior of a wok which will only
  receive I2C requests from the main controller (Raspberry Pi) and respond based on which requests have been sent from the main
   controller. The overall workflow cycle of the Wok component is explained in the next 6 points:
 
-1. The Wok will initialize in the `waiting order` state, which will
+1. The Wok will initialize in the `waiting for parameters` state, which will
     - Wait for the main controller to set the cooking heat temperature.
     - Heat the Wok to the temperature configured.
     - Wait for the main controller to set cooking duration in seconds.
     - Wait for the main controller to pass down the order id.
-2. After the above parameters are set, the Wok goes into the `waiting ingredients` state which will
-    - Wait for the main controller to notify if the ingredients are in the Wok.
+2. After the above parameters are set, the Wok goes into the `waiting for ingredients` state which will
+    - Wait for the main controller to notify if the ingredients are in the Wok. 
 3. Once the main controller confirm the ingredients have been put in the Wok, it goes into the `cooking` state which will
-    - Heat the Wok to the temperature configured and cook for the duration in seconds previously set.
+    - Heat the Wok to the temperature configured and cook for the duration in seconds previously set. 
 4. Once the cooking time has passed, the Wok will enter the `dispensing food` state which will
-    - Drop the Wok content (food) into the bowl.
+    - Drop the Wok content (food) into the bowl. 
 5. Finally, the Wok will go to the `cleaning` state after dropping the dish into a bowl. It will
-    - Clean itself
+    - Clean itself 
 6. The Wok will cycle back to the first step
 
 The Wok also supports changes to the cooking time and temperature in the middle of the `cooking` state, if so, it will reset the Wok.
 
+### Workflow Diagram
+You can check the following diagram for the runner simulation workflow discribed above:
+
+![image](https://user-images.githubusercontent.com/9138358/76275866-00dff280-624a-11ea-9d6e-f0873d3ab59d.png)
 
 
 # WokSim CLI
@@ -69,8 +87,8 @@ Now, you can send requests as the main controller to control the Wok. Every time
 |              |                     |       | 2        | Ingredient dispenser component
 |              |                     |       | 3        | Sauce runner component
 |              |                     |       | 4        | Transporter (Conveyor) component
-| 2            | Get state code      |       | 1        | Waiting for order state
-|              |                     |       | 2        | Waiting for ingredient state
+| 2            | Get state code      |       | 1        | Waiting for parameters state
+|              |                     |       | 2        | Waiting for ingredients state
 |              |                     |       | 3        | Cooking state
 |              |                     |       | 4        | Dispensing food state
 |              |                     |       | 5        | Cleaning state
@@ -84,13 +102,13 @@ Now, you can send requests as the main controller to control the Wok. Every time
 |              |                     |       | 4        | Wok request to notify if ingredients were dispensed inside Wok
 | 5            | Respond Wok request | uint8 | 0        | Wok failed to save data and/or not able to setup
 |              |                     |       | 1        | Wok successfully save data and/or setup
-| 6            | Reset Wok           |       | 0        | Wok failed to reset
+| 6            | (Re)set Wok         | uint8 | 0        | Wok failed to reset
 |              |                     |       | 1        | Wok successfully reset
-| 7            | Reset wok temperature| uint8 | 0        | Wok failed to reset cooking temperature
+| 7            | (Re)set wok temperature| uint8 | 0     | Wok failed to reset cooking temperature
 |              |                     |       | 1        | Wok successfully reset cooking temperature
-| 8            | Reset cooking time  | uint8 | 0        | Wok failed to reset cooking duration
+| 8            | (Re)set cooking time | uint8 | 0      | Wok failed to reset cooking duration
 |              |                     |       | 1        | Wok successfully reset cooking duration
-| 9            | Reconfig wok        | uint8 | 0        | Wok failed to reconfigure
+| 9            | (Re)config wok      | uint8 | 0        | Wok failed to reconfigure
 |              |                     |       | 1        | Wok successfully reconfigured
 | 10           | Force dispense dish | uint8 | 0        | Wok failed to terminate cooking and dispense food
 |              |                     |       | 1        | Wok successfully terminate cooking and dispense food
@@ -125,13 +143,13 @@ Therefore, we can use the I2C request code `4` to check the Wok request code. So
 
  You can repeat the same steps as before but now we need to do the duration and the order id, to do that, we need to send the
  request code `5` to setup the cooking duration and order id. After you finish setting up those
-  three parameters, the Wok should enter `waiting ingredients` state and you should see the screen below:
+  three parameters, the Wok should enter `waiting for ingredients` state and you should see the screen below:
  ![](../../../docs/img/wok_sim_005.png)
 
  Now, the Wok will remain in a waiting state until you confirm that the ingredients are in the Wok. You can confirm that using
  request code `5` and doing a data input = `1`. Then, you should see WokSim moves to the `cooking` state. After the cooking
  time is up, it will go through the `dispensing food` state and `cleaning` state and that's the last state in the loop, which
- means that it will go back to `waiting order` state automatically. The screen that you will see should be similar as the one
+ means that it will go back to `waiting for parameters` state automatically. The screen that you will see should be similar as the one
  below.
  ![](../../../docs/img/wok_sim_006.png)
 
