@@ -110,7 +110,7 @@ Now, you can send requests as the main controller to control the Pusher-tipper g
 |              |                     |       | 1        | Request to activate
 |              |                     |       | 2        | Request to set Wok is in ready position or waiting for ingredients state
 |              |                     |       | 3        | Request to notify when cup ejection is done
-| 5            | Respond Runner request | uint8 | 0        | Failed to save data and/or not able to setup
+| 5            | Respond Pusher-tipper request | uint8 | 0        | Failed to save data and/or not able to setup
 |              |                     |       | 1        | Successfully save data and/or setup
 | 6            | Activate Pusher-tipper | uint8 | 0        | Failed
 |              |                     |       | 1        | Successfully
