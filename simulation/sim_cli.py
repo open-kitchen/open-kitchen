@@ -6,6 +6,7 @@ import colorlog
 
 from components.pusher_tipper_sim import ConveyorSim, PusherTipperSim
 from components.runner_sim import RunnerSim
+from components.runner_hardware import RunnerHardware
 from components.wok_sim import WokSim
 from messages.wok_message import MasterWokRequestCodes, WokErrors, WokRequestCodes
 from messages.main_controller_message import (
@@ -142,6 +143,9 @@ def argparser_setup(arg_parser: argparse.ArgumentParser) -> argparse.ArgumentPar
     arg_parser.add_argument(
         "--debug", required=False, action="store_true", help=f"Enable debug mode"
     )
+    arg_parser.add_argument(
+        "--i2c-addr", required=False, help=f"This is the Aduino I2C address in hex"
+    )
     return arg_parser
 
 
@@ -172,11 +176,16 @@ if __name__ == "__main__":
     # Setup all the logging
     setup_logging(["transitions.core"])
     setup_logging(
-        ["WokSim", "RunnerSim", "PusherTipperSim", "ConveyorSim"],
+        ["WokSim", "RunnerSim", "PusherTipperSim", "ConveyorSim", "RunnerHardware"],
         level=logging.DEBUG if config.debug else logging.INFO,
     )
     setup_logging([f"{__file__}"], level=logging.DEBUG)
 
+    # Hardware simulation
+    if config.i2c_addr:
+        config.i2c_addr = eval(config.i2c_addr)
+        
+    # Software simulation
     sim_component = config.component
 
     if sim_component == "wok":
@@ -199,7 +208,10 @@ if __name__ == "__main__":
         i2c_response_refine_rules = pusher_tipper_i2c_response_refine
     elif sim_component == "runner":
         # Create a runner sim simulation
-        sim = RunnerSim(id=1)
+        if config.i2c_addr:
+            sim = RunnerHardware(address=config.i2c_addr)
+        else:
+            sim = RunnerSim(id=1)
         errors = RunnerErrors
         commands = MasterRunnerRequestCodes
         requests = RunnerRequestCodes

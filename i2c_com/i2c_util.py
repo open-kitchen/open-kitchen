@@ -18,7 +18,9 @@ class I2CDevice:
             data = list(data)
             data = list(map(ord, data))
         elif type(data) is int:
-            data = data
+            data = [data & 0xff]
+        elif type(date) is list:
+            data = list(map(lambda x: int(x) & 0xff, data))
         else:
             raise TypeError("Unsupport data type to send.")
             
