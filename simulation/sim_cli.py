@@ -47,7 +47,7 @@ def setup_logging(log_names: List[str], level=logging.INFO) -> None:
                 "DEBUG": "bold_cyan",
                 "INFO": "green",
                 "WARNING": "yellow",
-                "ERROR": "thin_red",
+                "ERROR": "red",
                 "CRITICAL": "bold_red",
             },
         )
@@ -184,7 +184,7 @@ if __name__ == "__main__":
     # Hardware simulation
     if config.i2c_addr:
         config.i2c_addr = eval(config.i2c_addr)
-        
+
     # Software simulation
     sim_component = config.component
 
