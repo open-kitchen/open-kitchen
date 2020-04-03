@@ -14,7 +14,7 @@ void receiveData(int byteCount) {
   while (Wire.available()) {
     dataBuffer += (char) Wire.read();
   }
-  
+
   if (DEBUG) {
     Serial.println("Receive");
     Serial.println(dataBuffer);
@@ -28,7 +28,7 @@ void receiveData(int byteCount) {
 // Respnse to request
 void sendData() {
   Wire.write(dataBuffer.c_str());
-  
+
   if (DEBUG) {
     Serial.println("Request");
     Serial.println(dataBuffer);
@@ -43,7 +43,7 @@ void setup() {
   Wire.begin(SLAVE_ADDRESS);
   Wire.onReceive(receiveData);
   Wire.onRequest(sendData);
-  
+
   if (DEBUG) {
     Serial.begin(9600); // start serial for debugging
     Serial.println("I2C Ready!");

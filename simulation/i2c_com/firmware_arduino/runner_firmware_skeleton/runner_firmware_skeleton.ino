@@ -17,7 +17,7 @@ typedef void (* StateActions)(void);
  */
 int componentCode = 3;
 
-/* 
+/*
  * State code:
  * 1 --> Standby
  * 2 --> Sending
@@ -95,7 +95,7 @@ int saveDataHandler(int data) {
       return 0;
   }
   return 1;
-  
+
   // if (requestCode == 1) {
   //   targetWok = data;
   // } else if (requestCode == 2) {
@@ -136,7 +136,7 @@ void receiveData(int byteCount) {
     Serial.println("+++++++");
     Serial.println("Receive: ");
   }
-  
+
   receiveLenth = 0;
   while (Wire.available()) {
     dataBuffer[receiveLenth] = Wire.read();
@@ -149,7 +149,7 @@ void receiveData(int byteCount) {
     }
   }
   dataBuffer[receiveLenth] = '\0';
-  
+
   if (DEBUG) {
     char lengthStrBuff[50];
     sprintf(lengthStrBuff, "Received Length: %d", receiveLenth);
@@ -166,15 +166,15 @@ void sendData() {
   if (DEBUG) {
     Serial.println("Sending: ");
   }
-  
+
   for(int i=0; i < sendLenth; i++) {
     Wire.write(sendBuffer[i]);
-    
+
     if (DEBUG) {
       Serial.println(sendBuffer[i]);
     }
   }
-  
+
   sendLenth = 0;
 }
 
@@ -198,17 +198,17 @@ void sendingStateActions() {
 
 /* Releasing state actions */
 void releasingStateActions() {
-  
+
 }
 
 /* Retrieving state actions */
 void retrievingStateActions() {
-  
+
 }
 
 /* Refilling state actions */
 void refillingStateActions() {
-  
+
 }
 
 StateActions stateActions[] = {
@@ -244,10 +244,10 @@ void transitState() {
 
   // elif self.is_SENDING() and self._is_arrive_target_wok and self._is_wok_ready:
   //     self.go_to_release()
-  // 
+  //
   // elif self.is_RELEASING() and self._is_release_done:
   //     self.go_to_retrieve_runner()
-  // 
+  //
   // elif (self.is_RETRIEVING() and self._is_at_home_position) or (
   //     self.is_REFILLING() and self._is_refill_done
   // ):
@@ -263,7 +263,7 @@ void setup() {
   Wire.begin(SLAVE_ADDRESS);
   Wire.onReceive(receiveData);
   Wire.onRequest(sendData);
-  
+
   if (DEBUG) {
     Serial.begin(9600); // start serial for debugging
     Serial.println("I2C Ready!");
