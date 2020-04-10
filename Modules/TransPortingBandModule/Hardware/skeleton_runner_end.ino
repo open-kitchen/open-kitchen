@@ -356,7 +356,7 @@ void transitState() {
                                       // self._is_desire_sauce_need_refill:
       stateCode = 2;                  // self.go_to_send_runner()
     } else {                          // else:
-      stateCode = 5;                  // self.go_to_refill()
+      stateCode = 5;                  // self.go_to_refill
     }
   }
   if (stateCode == 2             // self.is_SENDING()
