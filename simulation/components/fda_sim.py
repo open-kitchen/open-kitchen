@@ -2,13 +2,264 @@ from typing import Dict, List, Type
 
 from components import ComponentSim
 from messages.fda_message import (
-    # FDAErrors,
+    FDAErrors,
     FDADispenserStates,
-    # FDACupTransportationStates,
+    FDACupTransportationStates,
     FDARequestCodes,
     MasterFDARequestCodes,
 )
 from messages.main_controller_message import ComponentCodes, ComponentReceiveResponses
+
+
+class FDACupTransitSim(ComponentSim):
+    def __init__(self, id: int) -> None:
+        super().__init__(
+            component_id=id,
+            component_code=ComponentCodes.DISPENSER,
+            initial_state=FDADispenserStates.STANDBY,
+        )
+
+        # Operation attributes
+        self._target_XY = [None, None]
+        self._dispensing_done = False
+        self._is_more_ingredient = None
+
+        self._cups_in_tower = 1
+        self._table_position = [0, 0]
+
+        self._startup = True
+
+        # FDA Dispenser Sim loop Thread start
+        self._reset()
+        self.start()
+
+    def _reset(self, data=None) -> ComponentReceiveResponses:
+        """when system naturally goes back to STANDBY state"""
+        # Reset operation attributes
+        self._target_XY = [None, None]
+        self._dispensing_done = False
+        self._is_more_ingredient = None
+
+        return ComponentReceiveResponses.CONFIRMED
+
+    """
+    Cup Transit Input/Output functions
+    """
+
+    @property
+    def _request_handlers(self) -> Dict:
+        """Request handlers"""
+        # Grab general component request handlers
+        general_component_request_handlers = super()._request_handlers
+
+        # Dispenser special requests
+        fda_request_handlers = {
+            MasterFDARequestCodes.SET_TABLE_X: self._set_target_table_x,
+            MasterFDARequestCodes.SET_TABLE_Y: self._set_target_table_y,
+            MasterFDARequestCodes.SET_TO_COLLECT_MORE_INGREDIENTS: self._notify_to_collect_more_ingredients,
+            MasterFDARequestCodes.SET_CUP_TOWER_REFILLING_DONE: self._notify_cup_tower_refill_done,
+        }
+
+        # Combines all handlers
+        fda_request_handlers.update(general_component_request_handlers)
+        return fda_request_handlers
+
+    @property
+    def _receive_handlers(self) -> Dict:
+        """Receiving handlers"""
+        return {
+            FDARequestCodes.SET_TABLE_X: self._set_target_table_x,
+            FDARequestCodes.SET_TABLE_Y: self._set_target_table_y,
+            FDARequestCodes.SET_TO_COLLECT_MORE_INGREDIENTS: self._notify_to_collect_more_ingredients,
+            FDARequestCodes.SET_CUP_TOWER_REFILLING_DONE: self._notify_cup_tower_refill_done,
+            FDARequestCodes.SET_DISPENSING_DONE: self._notify_cylinder_dispensing_done,
+        }
+
+    def _set_target_table_x(self, target_x: int) -> ComponentReceiveResponses:
+        """Handler MainController request 9 and FDA request 4"""
+        # Check if target x value is valid
+        if target_x not in range(1, 500):
+            return ComponentReceiveResponses.DENIED
+
+        # If resetting (only at Main Controller request 9)
+        if self._target_XY[0] is not None:
+            self.log.warning(
+                f"FDACupTransitSim #{self.id} reset target X to {target_x} (was {self._target_XY[0]})."
+            )
+
+        # Set the dispensing cylinder number
+        else:
+            self.log.info(f"FDACupTransitSim #{self.id} reset target X to {target_x}.")
+
+        self._target_XY[0] = target_x
+        return ComponentReceiveResponses.CONFIRMED
+
+    def _set_target_table_y(self, target_y: int) -> ComponentReceiveResponses:
+        """Handler MainController request 10 and FDA request 5"""
+        # Check if target y value is valid
+        if target_y not in range(1, 500):
+            return ComponentReceiveResponses.DENIED
+
+        # If resetting (only at Main Controller request 9)
+        if self._target_XY[1] is not None:
+            self.log.warning(
+                f"FDACupTransitSim #{self.id} reset target Y to {target_y} (was {self._target_XY[1]})."
+            )
+
+        # Set the dispensing cylinder number
+        else:
+            self.log.info(f"FDACupTransitSim #{self.id} reset target Y to {target_y}.")
+
+        self._target_XY[1] = target_y
+        return ComponentReceiveResponses.CONFIRMED
+
+    def _notify_to_collect_more_ingredients(
+        self, need_to_collect_more_ingredients: bool
+    ) -> ComponentReceiveResponses:
+        """Handler MainController request 11 and FDA request 6"""
+        self.log.info(
+            f"FDACupTransitSim #{self.id} collecting more ingredient?: {bool(need_to_collect_more_ingredients)}."
+        )
+        self._is_more_ingredient = bool(need_to_collect_more_ingredients)
+        self._target_XY = [
+            None,
+            None,
+        ]  # Reset the target so it can ask next target XY if there is more to collect
+        self._dispensing_done = False  # Reset dispensing flag
+        return ComponentReceiveResponses.CONFIRMED
+
+    def _notify_cup_tower_refill_done(
+        self, number_of_cups_been_refilled: int
+    ) -> ComponentReceiveResponses:
+        """Handler MainController request 12 and FDA request 7"""
+        self.log.info(
+            f"FDACupTransitSim #{self.id} Cup tower refilled {number_of_cups_been_refilled} cups."
+        )
+        self._cups_in_tower = int(number_of_cups_been_refilled)
+        self._error_code = FDAErrors.NO_ERROR
+        return ComponentReceiveResponses.CONFIRMED
+
+    def _notify_cylinder_dispensing_done(
+        self, dispensing_done: bool
+    ) -> ComponentReceiveResponses:
+        """FDA request 8"""
+        self.log.info(
+            f"FDACupTransitSim #{self.id} been notify that cylinder dispensing done is {bool(dispensing_done)}."
+        )
+        self._dispensing_done = bool(dispensing_done)
+        return ComponentReceiveResponses.CONFIRMED
+
+    """
+    Physical functions
+    """
+
+    @property
+    def _is_arrive_table_target(self) -> bool:
+        if (
+            self._target_XY[0] == self._table_position[0]
+            and self._target_XY[1] == self._table_position[1]
+        ):
+            return True
+        return False
+
+    def move_table_to_target(self):
+        """Fake one sec move to target"""
+        self._table_position[0] = self._target_XY[0]
+        self._table_position[1] = self._target_XY[1]
+
+    def _take_one_cup_from_tower(self):
+        self._cups_in_tower -= 1
+
+    """
+    Cup Transit Operations logic functions
+    """
+
+    @property
+    def states(self) -> Type[FDACupTransportationStates]:
+        return FDACupTransportationStates
+
+    @property
+    def transitions(self) -> List[Dict]:
+        # The transitions for the finite state machine
+        transitions = [
+            {
+                "trigger": "go_to_collect",
+                "source": FDACupTransportationStates.STANDBY,
+                "dest": FDACupTransportationStates.COLLECTING,
+                "before": "_take_one_cup_from_tower",
+            },
+            {
+                "trigger": "go_to_cup_tower_refill",
+                "source": self.states.STANDBY,
+                "dest": self.states.CUP_REFILLING,
+            },
+            {
+                "trigger": "go_to_departure",
+                "source": FDACupTransportationStates.COLLECTING,
+                "dest": FDACupTransportationStates.DEPARTING,
+            },
+            {
+                "trigger": "go_to_standby",
+                "source": [self.states.DEPARTING, self.states.CUP_REFILLING],
+                "dest": self.states.STANDBY,
+                "before": "_reset",
+            },
+        ]
+        return transitions
+
+    def _transit_state(self) -> None:
+        """The logic of state transition
+
+        TODO: Doc details here
+
+        """
+        if self.is_STANDBY():
+            if self._cups_in_tower == 0:
+                self.go_to_cup_tower_refill()
+            else:
+                self.go_to_collect()
+
+        elif self.is_COLLECTING() and self._is_more_ingredient is False:
+            self.go_to_departure()
+
+        elif self.is_DEPARTING() or (
+            self.is_CUP_REFILLING() and self._cups_in_tower > 0
+        ):
+            self.go_to_standby()
+
+    @property
+    def _state_actions(self) -> Dict:
+        """Actions to execute in each states"""
+        return {
+            self.states.STANDBY: self._standby_state_actions,
+            self.states.COLLECTING: self._collecting_state_actions,
+            self.states.DEPARTING: self._departing_state_actions,
+            self.states.CUP_REFILLING: self._cup_refilling_state_actions,
+        }
+
+    def _standby_state_actions(self) -> None:
+        pass
+
+    def _collecting_state_actions(self) -> None:
+        self._request_code = FDARequestCodes.NO_REQUEST
+        if not self._target_XY[0]:
+            self._request_code = FDARequestCodes.SET_TABLE_X
+        elif not self._target_XY[1]:
+            self._request_code = FDARequestCodes.SET_TABLE_Y
+        elif not self._dispensing_done:
+            self._request_code = FDARequestCodes.SET_DISPENSING_DONE
+        elif self._is_arrive_table_target:
+            self._request_code = FDARequestCodes.SET_TO_COLLECT_MORE_INGREDIENTS
+        else:
+            self.move_table_to_target()
+
+    def _departing_state_actions(self) -> None:
+        pass
+
+    def _cup_refilling_state_actions(self) -> None:
+        if self._cups_in_tower == 0:
+            self._error_code = FDAErrors.CUP_TOWER_EMPTY
+        self._request_code = FDARequestCodes.SET_CUP_TOWER_REFILLING_DONE
 
 
 class FDADispenserSim(ComponentSim):
@@ -158,7 +409,7 @@ class FDADispenserSim(ComponentSim):
     def _transit_state(self) -> None:
         """The logic of state transition
 
-        1. The FDA Dispenser will initialize in the `STANDBY` state, which will
+        1. The FDA Cup Transit will initialize in the `STANDBY` state, which will
             - Wait for the main controller to set the cylinder number to dispense.
             - Wait for the main controller to set the weight of ingredient to dispense.
 
