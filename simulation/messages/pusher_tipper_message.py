@@ -15,7 +15,7 @@ MASTER_PUSHER_TIPPER_REQ_DESC_MAP = CodeDescMap(
 )
 
 MasterPusherTipperRequestCodes = OKComponentCodeEnum(
-    "MasterRunnerRequestCodes",
+    "MasterPusherTipperRequestCodes",
     list(MASTER_COMPONENT_REQ_DESC_MAP) + list(MASTER_PUSHER_TIPPER_REQ_DESC_MAP),
 )
 MasterPusherTipperRequestCodes.set_description(
