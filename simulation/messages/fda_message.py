@@ -13,6 +13,7 @@ MASTER_FDA_REQ_DESC_MAP = CodeDescMap(
     SET_DISPENSING_CYLINDER_NUMBER="request to set dispensing cylinder number",
     SET_DISPENSING_WEIGHT="request to set dispensing weight in grams",
     SET_CUP_IS_ARRIVED_CYLINDER="request to notify that the cup is arrived the cylinder and ready for dispensing",
+    SET_ENTER_REFILLING="request to enter refilling state",
     # FDA Cup Transportation
     SET_TABLE_X="request to set X target on XY-table",
     SET_TABLE_Y="request to set Y target on XY-table",
@@ -42,12 +43,13 @@ class FDARequestCodes(IntEnum):
     SET_DISPENSING_CYLINDER_NUMBER = 1
     SET_DISPENSING_WEIGHT = 2
     SET_CUP_IS_ARRIVED_CYLINDER = 3
+    SET_CYLINDER_REFILLING_DONE = 4
     # FDA Cup Transportation
-    SET_TABLE_X = 4
-    SET_TABLE_Y = 5
-    SET_TO_COLLECT_MORE_INGREDIENTS = 6
-    SET_CUP_TOWER_REFILLING_DONE = 7
-    SET_DISPENSING_DONE = 8
+    SET_TABLE_X = 5
+    SET_TABLE_Y = 6
+    SET_TO_COLLECT_MORE_INGREDIENTS = 7
+    SET_CUP_TOWER_REFILLING_DONE = 8
+    SET_DISPENSING_DONE = 9
 
     def get_description(self):
         request_desc = {
@@ -58,6 +60,7 @@ class FDARequestCodes(IntEnum):
             self.SET_CUP_IS_ARRIVED_CYLINDER: (
                 "FDA request to notify that the cup is arrived the cylinder and ready for dispensing"
             ),
+            self.SET_CYLINDER_REFILLING_DONE: "FDA request to notify the cylinder refilling is done",
             # FDA Cup Transportation
             self.SET_TABLE_X: "FDA request to set X target on XY-table",
             self.SET_TABLE_Y: "FDA request to set Y target on XY-table",
@@ -104,6 +107,7 @@ class FDADispenserStates(IntEnum, EnhanceEnum):
     STANDBY = auto()
     WEIGHTING = auto()
     DISPENSING = auto()
+    CYLINDER_REFILLING = auto()
 
 
 class FDACupTransportationStates(IntEnum, EnhanceEnum):

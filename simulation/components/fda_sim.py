@@ -75,7 +75,7 @@ class FDACupTransitSim(ComponentSim):
         }
 
     def _set_target_table_x(self, target_x: int) -> ComponentReceiveResponses:
-        """Handler MainController request 9 and FDA request 4"""
+        """Handler MainController request 10 and FDA request 5"""
         # Check if target x value is valid
         if target_x not in range(500, 35501):
             return ComponentReceiveResponses.DENIED
@@ -94,7 +94,7 @@ class FDACupTransitSim(ComponentSim):
         return ComponentReceiveResponses.CONFIRMED
 
     def _set_target_table_y(self, target_y: int) -> ComponentReceiveResponses:
-        """Handler MainController request 10 and FDA request 5"""
+        """Handler MainController request 11 and FDA request 6"""
         # Check if target y value is valid
         if target_y not in range(500, 35501):
             return ComponentReceiveResponses.DENIED
@@ -115,7 +115,7 @@ class FDACupTransitSim(ComponentSim):
     def _notify_to_collect_more_ingredients(
         self, need_to_collect_more_ingredients: bool
     ) -> ComponentReceiveResponses:
-        """Handler MainController request 11 and FDA request 6"""
+        """Handler MainController request 12 and FDA request 7"""
         if bool(need_to_collect_more_ingredients):
             self.log.info(
                 f"FDACupTransitSim #{self.id} been notified to collect more ingredients"
@@ -136,7 +136,7 @@ class FDACupTransitSim(ComponentSim):
     def _notify_cup_tower_refill_done(
         self, number_of_cups_been_refilled: int
     ) -> ComponentReceiveResponses:
-        """Handler MainController request 12 and FDA request 7"""
+        """Handler MainController request 13 and FDA request 8"""
         self.log.info(
             f"FDACupTransitSim #{self.id} Cup tower refilled {number_of_cups_been_refilled} cups."
         )
@@ -147,7 +147,7 @@ class FDACupTransitSim(ComponentSim):
     def _notify_cylinder_dispensing_done(
         self, dispensing_done: bool
     ) -> ComponentReceiveResponses:
-        """FDA request 8"""
+        """FDA request 9"""
         if bool(dispensing_done) is True:
             self.log.info(
                 f"FDACupTransitSim #{self.id} been notified that cylinder dispensing is done."
@@ -303,6 +303,7 @@ class FDADispenserSim(ComponentSim):
         self._dispensing_weight = None
         self._dispensed_weight = 0
         self._is_cup_arrived = False
+        self._cylinder_refill_done = False
 
         self._startup = True
         self._cylinder_load_levels = [100 for _ in range(25)]
@@ -318,6 +319,7 @@ class FDADispenserSim(ComponentSim):
         self._dispensing_weight = None
         self._dispensed_weight = 0
         self._is_cup_arrived = False
+        self._cylinder_refill_done = False
 
         return ComponentReceiveResponses.CONFIRMED
 
@@ -336,6 +338,7 @@ class FDADispenserSim(ComponentSim):
             MasterFDARequestCodes.SET_DISPENSING_CYLINDER_NUMBER: self._set_dispensing_cylinder_number,
             MasterFDARequestCodes.SET_DISPENSING_WEIGHT: self._set_dispensing_weight,
             MasterFDARequestCodes.SET_CUP_IS_ARRIVED_CYLINDER: self._set_cup_is_arrived_cylinder,
+            MasterFDARequestCodes.SET_ENTER_REFILLING: self._set_enter_refill,
         }
 
         # Combines all handlers
@@ -349,6 +352,7 @@ class FDADispenserSim(ComponentSim):
             FDARequestCodes.SET_DISPENSING_CYLINDER_NUMBER: self._set_dispensing_cylinder_number,
             FDARequestCodes.SET_DISPENSING_WEIGHT: self._set_dispensing_weight,
             FDARequestCodes.SET_CUP_IS_ARRIVED_CYLINDER: self._set_cup_is_arrived_cylinder,
+            FDARequestCodes.SET_CYLINDER_REFILLING_DONE: self._set_refill_done,
         }
 
     def _set_dispensing_cylinder_number(
@@ -386,6 +390,18 @@ class FDADispenserSim(ComponentSim):
     def _set_cup_is_arrived_cylinder(self, data: int) -> ComponentReceiveResponses:
         """Handler MainController request 8 and FDA request 3"""
         self._is_cup_arrived = bool(data)
+        return ComponentReceiveResponses.CONFIRMED
+
+    def _set_enter_refill(self, data: int) -> ComponentReceiveResponses:
+        """Handler MainController request 9"""
+        self._cylinder_refill_done = bool(data)
+        if bool(data):
+            self.go_to_refill()
+        return ComponentReceiveResponses.CONFIRMED
+
+    def _set_refill_done(self, data: int) -> ComponentReceiveResponses:
+        """Handler MainController FDA request 4"""
+        self._cylinder_refill_done = bool(data)
         return ComponentReceiveResponses.CONFIRMED
 
     """
@@ -435,8 +451,17 @@ class FDADispenserSim(ComponentSim):
             },
             {
                 "trigger": "go_to_standby",
-                "source": FDADispenserStates.DISPENSING,
+                "source": [
+                    FDADispenserStates.DISPENSING,
+                    FDADispenserStates.CYLINDER_REFILLING,
+                ],
                 "dest": FDADispenserStates.STANDBY,
+                "before": "_reset",
+            },
+            {
+                "trigger": "go_to_refill",
+                "source": "*",
+                "dest": FDADispenserStates.CYLINDER_REFILLING,
                 "before": "_reset",
             },
         ]
@@ -478,7 +503,9 @@ class FDADispenserSim(ComponentSim):
         elif self.is_WEIGHTING() and self._is_weighting_done and self._is_cup_arrived:
             self.go_to_dispense()
 
-        elif self.is_DISPENSING() and self._is_dispensing_done:
+        elif (self.is_DISPENSING() and self._is_dispensing_done) or (
+            self.is_CYLINDER_REFILLING() and self._cylinder_refill_done
+        ):
             self.go_to_standby()
 
     @property
@@ -488,6 +515,7 @@ class FDADispenserSim(ComponentSim):
             FDADispenserStates.STANDBY: self._standby_state_actions,
             FDADispenserStates.WEIGHTING: self._weighting_state_actions,
             FDADispenserStates.DISPENSING: self._dispensing_state_actions,
+            FDADispenserStates.CYLINDER_REFILLING: self._cylinder_refill_state_actions,
         }
 
     def _standby_state_actions(self) -> None:
@@ -514,3 +542,8 @@ class FDADispenserSim(ComponentSim):
             self._cylinder_load_levels[
                 self._dispensing_cylindar_number
             ] -= self._dispensing_weight
+
+    def _cylinder_refill_state_actions(self) -> None:
+        self._request_code = FDARequestCodes.NO_REQUEST
+        if not self._cylinder_refill_done:
+            self._request_code = FDARequestCodes.SET_CYLINDER_REFILLING_DONE

@@ -184,6 +184,19 @@ async def transit_dispenser_state(dispenser_id: int, dest_state: FDADispenserSta
             f"notify Dispenser #{dispenser_id} that cup is arrived target cylinder."
         )
 
+    # Set enter refill state
+    elif dest_state == FDADispenserStates.CYLINDER_REFILLING:
+        master_request_code = MasterFDARequestCodes.SET_ENTER_REFILLING
+        response = f"notify Dispenser #{dispenser_id} enter cylinder refill state."
+
+    # Set cylinder refill done
+    elif (
+        current_state == FDADispenserStates.CYLINDER_REFILLING
+        and dest_state == FDADispenserStates.STANDBY
+    ):
+        master_request_code = MasterComponentRequestCodes.RESPOND_REQUEST
+        response = f"notify Dispenser #{dispenser_id} cylinder refilling is done."
+
     # Method not allow
     else:
         return ErrorResponse.method_not_allow(
