@@ -80,12 +80,14 @@ FDA errors
 class FDAErrors(IntEnum):
 
     NO_ERROR = 0
-    CUP_TOWER_EMPTY = 1
+    CYLINDER_NEED_REFILL = 1
+    CUP_TOWER_EMPTY = 2
 
     def get_description(self):
         # The error code and description map
         err_desc = {
             self.NO_ERROR: "no error",
+            self.CYLINDER_NEED_REFILL: "target cylinder needs refill before it can dispense desire weight",
             self.CUP_TOWER_EMPTY: "cup tower is empty",
         }
         err_code = self.value
@@ -110,18 +112,3 @@ class FDACupTransportationStates(IntEnum, EnhanceEnum):
     COLLECTING = auto()
     DEPARTING = auto()
     CUP_REFILLING = auto()
-
-
-# class ConveyorStates(IntEnum):
-#     ON = auto()
-#     OFF = auto()
-#
-#
-# PUSHER_TIPPER_CONVEYOR_REQ_DESC_MAP = CodeDescMap(
-#     TURN_ON="request to turn on conveyor", TURN_OFF="request to turn off conveyor"
-# )
-#
-# PusherTipperConveyorRequestCodes = OKComponentCodeEnum(
-#     "PusherTipperConveyorRequestCodes", list(PUSHER_TIPPER_CONVEYOR_REQ_DESC_MAP)
-# )
-# PusherTipperConveyorRequestCodes.set_description(PUSHER_TIPPER_CONVEYOR_REQ_DESC_MAP)

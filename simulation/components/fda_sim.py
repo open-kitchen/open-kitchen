@@ -24,10 +24,9 @@ class FDACupTransitSim(ComponentSim):
         self._dispensing_done = False
         self._is_more_ingredient = None
 
-        self._cups_in_tower = 1
-        self._table_position = [0, 0]
-
         self._startup = True
+        self._cups_in_tower = 1
+        self._table_position = [500, 500]
 
         # FDA Dispenser Sim loop Thread start
         self._reset()
@@ -78,7 +77,7 @@ class FDACupTransitSim(ComponentSim):
     def _set_target_table_x(self, target_x: int) -> ComponentReceiveResponses:
         """Handler MainController request 9 and FDA request 4"""
         # Check if target x value is valid
-        if target_x not in range(1, 500):
+        if target_x not in range(500, 35501):
             return ComponentReceiveResponses.DENIED
 
         # If resetting (only at Main Controller request 9)
@@ -97,7 +96,7 @@ class FDACupTransitSim(ComponentSim):
     def _set_target_table_y(self, target_y: int) -> ComponentReceiveResponses:
         """Handler MainController request 10 and FDA request 5"""
         # Check if target y value is valid
-        if target_y not in range(1, 500):
+        if target_y not in range(500, 35501):
             return ComponentReceiveResponses.DENIED
 
         # If resetting (only at Main Controller request 9)
@@ -117,9 +116,15 @@ class FDACupTransitSim(ComponentSim):
         self, need_to_collect_more_ingredients: bool
     ) -> ComponentReceiveResponses:
         """Handler MainController request 11 and FDA request 6"""
-        self.log.info(
-            f"FDACupTransitSim #{self.id} collecting more ingredient?: {bool(need_to_collect_more_ingredients)}."
-        )
+        if bool(need_to_collect_more_ingredients):
+            self.log.info(
+                f"FDACupTransitSim #{self.id} been notified to collect more ingredients"
+            )
+        else:
+            self.log.info(
+                f"FDACupTransitSim #{self.id} been notified there is no more ingredients to collect"
+            )
+
         self._is_more_ingredient = bool(need_to_collect_more_ingredients)
         self._target_XY = [
             None,
@@ -143,9 +148,10 @@ class FDACupTransitSim(ComponentSim):
         self, dispensing_done: bool
     ) -> ComponentReceiveResponses:
         """FDA request 8"""
-        self.log.info(
-            f"FDACupTransitSim #{self.id} been notify that cylinder dispensing done is {bool(dispensing_done)}."
-        )
+        if bool(dispensing_done) is True:
+            self.log.info(
+                f"FDACupTransitSim #{self.id} been notified that cylinder dispensing is done is."
+            )
         self._dispensing_done = bool(dispensing_done)
         return ComponentReceiveResponses.CONFIRMED
 
@@ -210,7 +216,29 @@ class FDACupTransitSim(ComponentSim):
     def _transit_state(self) -> None:
         """The logic of state transition
 
-        TODO: Doc details here
+        1. The FDA Cup Transit will initialize in the `STANDBY` state, which will
+            - Check if there is cup in the cup tower.
+            - Trigger to release a cup if there is cup in cup tower, call to refill cup otherwise (go to step 2(b)).
+            - Move cup to the conveyor's actuator.
+            - Move XY table to the start position.
+            - Place the cup on XY table.
+
+        2(a). After the operations above, the FDA Cup Transit goes into the `COLLECTING` state which will
+            - Wait for the main controller to set target X and target Y place.
+            - Move XY table to the target coordinates.
+            - Wait for the main controller to notify if the cylinder dispensing is done.
+            - Ask main controller if there is more ingredient to collect. Repeat step 2(a) if there is more ingredients
+              to collect.
+        3(a). Once the FDA Cup Transit collected all the ingredients, it goes into the `DEPARTING` state which will
+            - Move XY table to the exit position.
+            - Pull out the cup from XY table to the departure conveyor.
+            - Move the cup with ingredients to the queue conveyor.
+
+        2(b). If there is not cup in the cup tower then the FDA Cup Transit goes into the `CUP REFILLING` state
+        which will
+            - Wait main controller to notify if the cup refilling is done.
+        3(b). Once the main controller notified that cup refilling is done, FDA Cup Transit goes back to `STANDBY`
+        state (cycle back to the first step).
 
         """
         if self.is_STANDBY():
@@ -277,6 +305,7 @@ class FDADispenserSim(ComponentSim):
         self._is_cup_arrived = False
 
         self._startup = True
+        self._cylinder_load_levels = [100 for _ in range(25)]
 
         # FDA Dispenser Sim loop Thread start
         self._reset()
@@ -365,6 +394,13 @@ class FDADispenserSim(ComponentSim):
 
     @property
     def _is_desire_cylinder_need_refill(self) -> bool:
+        if (
+            self._dispensing_weight is not None
+            and self._dispensing_cylindar_number is not None
+            and self._cylinder_load_levels[self._dispensing_cylindar_number - 1]
+            < self._dispensing_weight
+        ):
+            return True
         return False
 
     @property
@@ -409,7 +445,7 @@ class FDADispenserSim(ComponentSim):
     def _transit_state(self) -> None:
         """The logic of state transition
 
-        1. The FDA Cup Transit will initialize in the `STANDBY` state, which will
+        1. The FDA Dispenser will initialize in the `STANDBY` state, which will
             - Wait for the main controller to set the cylinder number to dispense.
             - Wait for the main controller to set the weight of ingredient to dispense.
 
@@ -435,6 +471,7 @@ class FDADispenserSim(ComponentSim):
             self.is_STANDBY()
             and self._dispensing_cylindar_number is not None
             and self._dispensing_weight is not None
+            and not self._is_desire_cylinder_need_refill
         ):
             self.go_to_weight()
 
@@ -460,10 +497,20 @@ class FDADispenserSim(ComponentSim):
         elif self._dispensing_weight is None:
             self._request_code = FDARequestCodes.SET_DISPENSING_WEIGHT
 
+        # Check if there is enough ingredient in cylinder
+        if self._is_desire_cylinder_need_refill:
+            self._error_code = FDAErrors.CYLINDER_NEED_REFILL
+        else:
+            self._error_code = FDAErrors.NO_ERROR
+
     def _weighting_state_actions(self) -> None:
         self._request_code = FDARequestCodes.NO_REQUEST
         if not self._is_cup_arrived:
             self._request_code = FDARequestCodes.SET_CUP_IS_ARRIVED_CYLINDER
 
     def _dispensing_state_actions(self) -> None:
-        pass
+        if self._dispensed_weight < self._dispensing_weight:
+            self._dispensed_weight = self._dispensing_weight
+            self._cylinder_load_levels[
+                self._dispensing_cylindar_number
+            ] -= self._dispensing_weight
