@@ -150,7 +150,7 @@ class FDACupTransitSim(ComponentSim):
         """FDA request 8"""
         if bool(dispensing_done) is True:
             self.log.info(
-                f"FDACupTransitSim #{self.id} been notified that cylinder dispensing is done is."
+                f"FDACupTransitSim #{self.id} been notified that cylinder dispensing is done."
             )
         self._dispensing_done = bool(dispensing_done)
         return ComponentReceiveResponses.CONFIRMED
