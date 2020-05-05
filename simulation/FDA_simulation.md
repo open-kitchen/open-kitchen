@@ -92,9 +92,9 @@ The overall workflow cycle of the FDA Dispenser component is explained in the ne
 
 
 
-**FDA Dispenser**
+**FDA Cup Transit**
 
-The overall workflow cycle of the FDA Dispenser component is explained in the next 5 points:
+The overall workflow cycle of the FDA Cup Transit component is explained in the next 5 points:
 
         1. The FDA Cup Transit will initialize in the `STANDBY` state, which will
             - Check if there is cup in the cup tower.
