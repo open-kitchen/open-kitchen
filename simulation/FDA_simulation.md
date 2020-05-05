@@ -1,4 +1,4 @@
-# Food Dispense Assembly (FDA) Simulation
+# Food Dispensing Assembly (FDA) Simulation
 
 This FDA simulation contains two parts:
 
@@ -28,7 +28,7 @@ Once the virtual environment has been setup, follow the directory `simulation` i
 
 ### FDA States
 
-The **FDA Dispenser** will have the following states
+The **FDA Dispensing Mechanism** will have the following states
 
 | State code | Description                |
 |:-----------|:---------------------------|
@@ -37,7 +37,7 @@ The **FDA Dispenser** will have the following states
 | 3          | Dispensing                 |
 | 4          | Cylinder Refilling         |
 
-The **FDA Cup Transit** will have the following states
+The **FDA Cup Transportation Mechanism** will have the following states
 
 | State code | Description                |
 |:-----------|:---------------------------|
@@ -61,69 +61,73 @@ The fda_sim is the core of hardware-level, single FDA simulation. It simulates t
  (Raspberry Pi) and respond based on which requests have been sent from the main controller.
 
 
-**FDA Dispenser**
+**FDA Dispensing Mechanism**
 
-The overall workflow cycle of the FDA Dispenser component is explained in the next 7 points:
+The overall workflow cycle of the FDA Dispensing Mechanism is explained in the next 7 points:
 
-        1. The FDA Dispenser will initialize in the `STANDBY` state, which will
-            - Wait for the main controller to set the cylinder number to dispense.
-            - Wait for the main controller to set the weight of ingredient to dispense.
+      1. The FDA Dispensing Mechanism will initialize in the `STANDBY` state, in which the main 
+         controller is to set 
+          - The cylinder ID number 
+          - The weight each cylinder is to dispense
 
-        2(a). After the above parameter are set, and the desire ingredient load is greater than 20%, the FDA
-        Dispenser goes into the `WEIGHTING` state which will
-            - Opens up the top damper doors and weight the ingredient and close top damper doors once it reach the
-            desire weight of ingredient.
-            - Wait for the main controller to notify if the cup is arrive the cylinder.
+      2(a). After the above parameters are set, and only if the desire ingredient load is greater than 20%, 
+         the FDA Dispensing Mechanism goes into the `WEIGHTING` state, in which the mechanism
+           - Opens up the top damper door - simulateneously weighting the ingredient - and then closes the   
+           same damper door once the desire weight of ingredient is reached. 
+           - Then Waits for the main controller to notify if the cup has arrived below the cylinder.
+           
+      2(b). After the above parameters are set, and if the desire ingredient load is not greater than 20%, 
+         the FDA Dispensing Mechanism goes into the `REFILLING` state, in which it will
+           - Wait for main controller to notify if the refilling is done.
 
-        3(a). Once the main controller notify that the cup arrive the target cylinder, it goes into the
-        `DISPENSING` state which will
-            - Dispense the weighted ingredient in the desired cylinder number to the cup.
+      3(a). Once the main controller confirms that a cup has arrived below the target cylinder, it goes into
+          the `DISPENSING` state, in which the mechanism
+            - Dispenses the weighted ingredient of the cylinder into the cup.
+            
+      3(b). Once the main controller notifies that refilling is completed, the FDA Dispensing Mechanism goes 
+          back to `STANDBY` state (cycle back to the first step).
 
-        4(a). Finally, the FDA Dispenser will go to the `STANDBY` state.
-
-        5(a). The FDA Dispenser will cycle back to the first step
-
-        2(b). After the above parameter are set, and the desire ingredient load is not greater than 20%, the FDA
-        Dispenser goes into the `REFILLING` state which will
-            - Wait main controller to notify if the refilling is done.
-
-        3(b). Once the main controller notified that refilling is done, FDA Dispenser goes back to `STANDBY`
-        state (cycle back to the first step).
+      4(a). Finally, the FDA Dispensing Mechanism will cycle back to the first step into the `STANDBY` state. 
+    
+      
 
 
+**FDA Cup Transporting Mechanism**
 
-**FDA Cup Transit**
+The overall workflow cycle of the FDA Cup Transporting Mechanism is explained in the next 5 points:
 
-The overall workflow cycle of the FDA Cup Transit component is explained in the next 5 points:
+      1. The FDA Cup Transporting Mechanism will initialize in the `STANDBY` state which will
+           - Check for available cups in the cup tower.
+           - Trigger to release a cup if there is any available, or call to refill cup otherwise 
+           (go to step 1(b)).
+           - Move cup to the conveyor's actuator.
+           - Move XY table to the start position.
+           - Place the cup on XY table.
+           
+      1(b). If there is not cup in the cup tower then the FDA Cup Transporting Mechanism goes into the  
+           `CUP REFILLING` state which will
+            - Wait for main controller to notify if the cup refilling is done.
 
-        1. The FDA Cup Transit will initialize in the `STANDBY` state, which will
-            - Check if there is cup in the cup tower.
-            - Trigger to release a cup if there is cup in cup tower, call to refill cup otherwise (go to step 2(b)).
-            - Move cup to the conveyor's actuator.
-            - Move XY table to the start position.
-            - Place the cup on XY table.
+      1(c). Once the main controller notifies that cup refilling is done, FDA Cup Transporting Mechanism  
+          goes back to `STANDBY` state (cycle back to the first step).
 
-        2(a). After the operations above, the FDA Cup Transit goes into the `COLLECTING` state which will
-            - Wait for the main controller to set target X and target Y place.
-            - Move XY table to the target coordinates.
-            - Wait for the main controller to notify if the cylinder dispensing is done.
-            - Ask main controller if there is more ingredient to collect. Repeat step 2(a) if there is more ingredients
-              to collect.
+      2(a). After the operations above, the FDA Cup Transporting Mechanism goes into the `COLLECTING` state 
+           which will
+           - Wait for the main controller to set XY coordinates.
+           - Move XY table to the target coordinates.
+           - Wait for the main controller to notify if the cylinder dispensing is done.
+           - Ask main controller if there is more ingredients to collect. Repeat step 2(a) if there is more 
+           ingredients to collect.
 
-        3(a). Once the FDA Cup Transit collected all the ingredients, it goes into the `DEPARTING` state which will
+      3(a). Once the FDA Cup Transporting Mechanism collects all the ingredients, it goes into the  
+           `DEPARTING` state which will
             - Move XY table to the exit position.
             - Pull out the cup from XY table to the departure conveyor.
             - Move the cup with ingredients to the queue conveyor.
-
-        2(b). If there is not cup in the cup tower then the FDA Cup Transit goes into the `CUP REFILLING` state
-        which will
-            - Wait main controller to notify if the cup refilling is done.
-
-        3(b). Once the main controller notified that cup refilling is done, FDA Cup Transit goes back to `STANDBY`
-        state (cycle back to the first step).
-
-
-
+      
+      4. Finally, the FDA Cup Transporting Mechanism will cycle back to the first step into the 
+         `STANDBY` state.
+     
 
 ### Workflow Diagram
 You can check the following diagram for the FDA simulation workflow described above,
@@ -151,12 +155,12 @@ python sim_cli.py --component cup-transit
 After you run the previous command, you should see something like the following screenshots,
 
 
-**FDA Dispenser**
+**FDA Dispensing Mechanism**
 
 ![](../docs/img/fda_sim_001.png)
 
 
-**FDA Cup Transit**
+**FDA Cup Transporting Mechanism**
 
 ![](../docs/img/fda_sim_002.png)
 
@@ -164,7 +168,7 @@ Now, you can send requests as the main controller to control the FDA. Every time
  request, the simulation should respond with a code number. The following table shows the request types that can be done
   and the possible responses:
 
-#### Main controller to FDA Dispenser
+#### Main controller to FDA
 | Request code | Request Description | Data type | Data Description | Response type | Response Description
 |:-------------|:--------------------|:----------|:-----------------|:--------------|:--------------------
 | 1            | Get component code  |           |                  | uint8         | Refer to Component codes
@@ -174,16 +178,16 @@ Now, you can send requests as the main controller to control the FDA. Every time
 | 5            | Respond FDA request | uint8     |                  | uint8         | Refer to the response column at [FDA to the main controller requests](#fda-to-the-main-controller)
 | 6            | (Re)Set dispensing cylinder# | uint8 | Cylinder#   | unit8         | Denied (0) or Confirmed (1)
 | 7            | (Re)Set dispensing weight | uint8 | Weight (grams) | uint8         | Denied (0) or Confirmed (1)
-| 8            | Notify the cup is arrived cylinder | uint8 | True (1) or False (0) | uint8         | Denied (0) or Confirmed (1)
-| 9            | Trigger dispenser into refilling state | uint8 | True (1) or False (0) | uint8         | Denied (0) or Confirmed (1)
+| 8            | Notify cup's arrival under cylinder | uint8 | True (1) or False (0) | uint8         | Denied (0) or Confirmed (1)
+| 9            | Trigger dispensing cylinder into refilling state | uint8 | True (1) or False (0) | uint8         | Denied (0) or Confirmed (1)
 | 10           | (Re)Set target X   | uint8 | Y target for XY-table | uint8         | Denied (0) or Confirmed (1)
 | 11           | (Re)Set target Y   | uint8 | X target for XY-table | uint8         | Denied (0) or Confirmed (1)
-| 12           | Notify if there are more ingredient to collect| uint8 | True (1) or False (0) | uint8    | Denied (0) or Confirmed (1)
-| 13           | Notify the cup tower refill is done | uint8 | Number of cups been refilled to the cup tower| uint8         | Denied (0) or Confirmed (1)
+| 12           | Notify if there are more ingredients to collect| uint8 | True (1) or False (0) | uint8    | Denied (0) or Confirmed (1)
+| 13           | Notify cup tower refill is done | uint8 | Number of cups been refilled to the cup tower| uint8         | Denied (0) or Confirmed (1)
 
 
 The following table represents the request types from the FDA to the main controller (Raspberry pi) and the
- meanings of each one of them.
+ meaning of each one of them.
 
 #### FDA to the main controller
 | Request code | Request Description                     | Data type | Data Description | Response type | Response Description
@@ -195,7 +199,7 @@ The following table represents the request types from the FDA to the main contro
 | 4            | Request to notify if cylinder refill is done| uint8 | True (1) or False (0) | 0        | Denied (0) or Confirmed (1)
 | 5            | Request to set target X                 | uint8     | X target for XY-table | 0        | Denied (0) or Confirmed (1)
 | 6            | Request to set target Y                 | uint8     | Y target for XY-table | 0        | Denied (0) or Confirmed (1)
-| 7            | Request to notify if there is more ingredient to collect|uint8|True (1) or False (0)|0 | Denied (0) or Confirmed (1)
+| 7            | Request to notify if there is more ingredients to collect|uint8|True (1) or False (0)|0 | Denied (0) or Confirmed (1)
 | 8            | Request to notify if cup tower refill is done | uint8 |  Number of cups been refilled to the cup tower | 0 | Denied (0) or Confirmed (1)
 | 9            | Request to notify if cylinder dispense is done | uint8 | True (1) or False (0) | 0     | Denied (0) or Confirmed (1)
 
