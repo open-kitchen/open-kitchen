@@ -63,7 +63,7 @@ The fda_sim is the core of hardware-level, single FDA simulation. It simulates t
 
 **FDA Dispensing Mechanism**
 
-The overall workflow cycle of the FDA Dispensing Mechanism is explained in the next 7 points:
+The overall workflow cycle of the FDA Dispensing Mechanism is explained in the next 4 points:
 
       1. The FDA Dispensing Mechanism will initialize in the `STANDBY` state, in which the main
          controller is to set
@@ -74,29 +74,26 @@ The overall workflow cycle of the FDA Dispensing Mechanism is explained in the n
          the FDA Dispensing Mechanism goes into the `WEIGHTING` state, in which the mechanism
            - Opens up the top damper door - simulateneously weighting the ingredient - and then closes the
            same damper door once the desire weight of ingredient is reached.
-           - Then Waits for the main controller to notify if the cup has arrived below the cylinder.
+           - Then waits for the main controller to notify if the cup has arrived below the cylinder.
 
       2(b). After the above parameters are set, and if the desire ingredient load is not greater than 20%,
          the FDA Dispensing Mechanism goes into the `REFILLING` state, in which it will
            - Wait for main controller to notify if the refilling is done.
 
-      3(a). Once the main controller confirms that a cup has arrived below the target cylinder, it goes into
+      3. Once the main controller confirms that a cup has arrived below the target cylinder, it goes into
           the `DISPENSING` state, in which the mechanism
             - Dispenses the weighted ingredient of the cylinder into the cup.
-
-      3(b). Once the main controller notifies that refilling is completed, the FDA Dispensing Mechanism goes
-          back to `STANDBY` state (cycle back to the first step).
-
-      4(a). Finally, the FDA Dispensing Mechanism will cycle back to the first step into the `STANDBY` state.
-
+          
+      4. Once the main controller notifies that refilling is completed, the FDA Dispensing Mechanism will cycle
+          back to the first step, `STANDBY` state .
 
 
 
 **FDA Cup Transporting Mechanism**
 
-The overall workflow cycle of the FDA Cup Transporting Mechanism is explained in the next 5 points:
+The overall workflow cycle of the FDA Cup Transporting Mechanism is explained in the next 4 points:
 
-      1. The FDA Cup Transporting Mechanism will initialize in the `STANDBY` state which will
+      1(a). The FDA Cup Transporting Mechanism will initialize in the `STANDBY` state which will
            - Check for available cups in the cup tower.
            - Trigger to release a cup if there is any available, or call to refill cup otherwise
            (go to step 1(b)).
@@ -111,16 +108,16 @@ The overall workflow cycle of the FDA Cup Transporting Mechanism is explained in
       1(c). Once the main controller notifies that cup refilling is done, FDA Cup Transporting Mechanism
           goes back to `STANDBY` state (cycle back to the first step).
 
-      2(a). After the operations above, the FDA Cup Transporting Mechanism goes into the `COLLECTING` state
-           which will
+      2. After the above operations, the FDA Cup Transporting Mechanism goes into the `COLLECTING` state
+          in which it will
            - Wait for the main controller to set XY coordinates.
-           - Move XY table to the target coordinates.
+           - Move XY table to the assigned coordinates.
            - Wait for the main controller to notify if the cylinder dispensing is done.
-           - Ask main controller if there is more ingredients to collect. Repeat step 2(a) if there is more
+           - Ask main controller if there is more ingredients to collect. Repeat sub-steps if there is more
            ingredients to collect.
 
-      3(a). Once the FDA Cup Transporting Mechanism collects all the ingredients, it goes into the
-           `DEPARTING` state which will
+      3. Once the FDA Cup Transporting Mechanism collects all the ingredients, it goes into the
+           `DEPARTING` state in which it will
             - Move XY table to the exit position.
             - Pull out the cup from XY table to the departure conveyor.
             - Move the cup with ingredients to the queue conveyor.
