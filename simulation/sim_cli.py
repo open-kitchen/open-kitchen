@@ -1,11 +1,12 @@
 import argparse
 import logging
-from typing import List
+from typing import List, Union
 
 import colorlog
 
 from components.fda_sim import FDADispenserSim, FDACupTransitSim
 from components.pusher_tipper_sim import ConveyorSim, PusherTipperSim
+from components.queue_sim import QueueSim
 from components.runner_sim import RunnerSim
 from components.wok_sim import WokSim
 from messages.fda_message import FDAErrors, MasterFDARequestCodes, FDARequestCodes
@@ -19,6 +20,11 @@ from messages.pusher_tipper_message import (
     PusherTipperErrors,
     PusherTipperRequestCodes,
 )
+from messages.queue_message import (
+    QueueErrors,
+    MasterQueueRequestCodes,
+    QueueRequestCodes,
+)
 from messages.runner_message import (
     MasterRunnerRequestCodes,
     RunnerErrors,
@@ -26,7 +32,7 @@ from messages.runner_message import (
 )
 from messages.wok_message import MasterWokRequestCodes, WokErrors, WokRequestCodes
 
-COMPONENTS = ["wok", "runner", "OFTA", "dispenser", "cup-transit"]
+COMPONENTS = ["wok", "runner", "OFTA", "dispenser", "cup-transit", "queue"]
 
 
 def setup_logging(log_names: List[str], level=logging.INFO) -> None:
@@ -59,6 +65,28 @@ def setup_logging(log_names: List[str], level=logging.INFO) -> None:
         log = colorlog.getLogger(log_name)
         log.setLevel(level)
         log.addHandler(ch)
+
+
+"""
+General Component Sim
+"""
+
+
+def i2c_data_refine(
+    sim: Union[
+        RunnerSim, WokSim, PusherTipperSim, FDADispenserSim, FDACupTransitSim, QueueSim
+    ],
+    request_code: int,
+    data: str,
+):
+    return int(data)
+
+
+def i2c_response_refine(
+    sim: FDACupTransitSim, request_code: int, data: str, response: int
+):
+    response_description = f"{ComponentReceiveResponses(response).name}"
+    return response_description
 
 
 """
@@ -163,6 +191,21 @@ def fda_cup_trasit_i2c_response_refine(
 
 
 """
+QueueSim
+"""
+
+
+def queue_i2c_response_refine(
+    sim: QueueSim, request_code: int, data: str, response: int
+):
+    if request_code == MasterQueueRequestCodes.GET_QUEUE_SIZE:
+        response_description = f"Queue #{sim.id} " f"current size is {response}"
+    else:
+        response_description = f"{ComponentReceiveResponses(response).name}"
+    return response_description
+
+
+"""
 The Main
 """
 
@@ -215,6 +258,7 @@ if __name__ == "__main__":
             "ConveyorSim",
             "FDADispenserSim",
             "FDACupTransitSim",
+            "QueueSim",
         ],
         level=logging.DEBUG if config.debug else logging.INFO,
     )
@@ -264,6 +308,14 @@ if __name__ == "__main__":
         requests = FDARequestCodes
         i2c_data_refine_rules = fda_i2c_data_refine
         i2c_response_refine_rules = fda_i2c_response_refine
+    elif sim_component == "queue":
+        # Create a Cup Queue sim simulation
+        sim = QueueSim(id=1, current_cups=1)
+        errors = QueueErrors
+        commands = MasterQueueRequestCodes
+        requests = QueueRequestCodes
+        i2c_data_refine_rules = i2c_data_refine
+        i2c_response_refine_rules = queue_i2c_response_refine
     else:
         log.critical(f"The component {sim_component} is not supported.")
         exit(-1)
