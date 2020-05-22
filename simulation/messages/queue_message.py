@@ -36,7 +36,7 @@ class QueueRequestCodes(IntEnum):
     def get_description(self):
         request_desc = {
             self.NO_REQUEST: "No request from Sauce Queue",
-            self.SET_DEQUEUE: "Queue request to notify if it's ready to dequeue a cup",
+            self.SET_DEQUEUE: "Queue request to trigger dequeue a cup",
         }
         queue_request_code = self.value
         return request_desc.get(
