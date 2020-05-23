@@ -67,7 +67,7 @@ The overall workflow cycle of the QCB Mechanism is explained in the next 3 point
 ### Workflow Diagram
 You can check the following diagram for the QCB simulation workflow described above.
 
-![](../docs/img/6.Queue_workflow_diagram.png)
+![](../docs/img/6.Queue_workflow_diagram.jpg)
 
 
 
