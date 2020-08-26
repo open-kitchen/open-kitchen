@@ -8,6 +8,7 @@ from interfaces import (
     runner_sim_interface,
     wok_sim_interface,
     pusher_tipper_sim_interface,
+    fda_sim_interface,
 )
 
 app = FastAPI(
@@ -24,6 +25,7 @@ async def startup_event():
     await wok_sim_interface.startup_event(args)
     await runner_sim_interface.startup_event(args)
     await pusher_tipper_sim_interface.startup_event(args)
+    await fda_sim_interface.startup_event(args)
     log.info(f"Open-Kitchen simulation has been initialized.")
 
 
@@ -32,6 +34,7 @@ async def shutdown_event():
     await wok_sim_interface.shutdown_event()
     await runner_sim_interface.shutdown_event()
     await pusher_tipper_sim_interface.shutdown_event()
+    await fda_sim_interface.shutdown_event()
     log.info(f"Open-Kitchen simulation has been triggered to turn off.")
 
 
@@ -40,6 +43,7 @@ if __name__ == "__main__":
     wok_sim_interface.argparser_setup(arg_parser)
     runner_sim_interface.argparser_setup(arg_parser)
     pusher_tipper_sim_interface.argparser_setup(arg_parser)
+    fda_sim_interface.argparser_setup(arg_parser)
     args = arg_parser.parse_args()
 
     app.include_router(
@@ -58,6 +62,18 @@ if __name__ == "__main__":
         pusher_tipper_sim_interface.pi_sim,
         prefix="/OFTA",
         tags=["OFTA"],
+        responses={404: {"description": "Not found"}},
+    )
+    app.include_router(
+        fda_sim_interface.cup_transit_pi_sim,
+        prefix="/cup-transit",
+        tags=["FDA"],
+        responses={404: {"description": "Not found"}},
+    )
+    app.include_router(
+        fda_sim_interface.dispenser_pi_sim,
+        prefix="/dispenser",
+        tags=["FDA"],
         responses={404: {"description": "Not found"}},
     )
 

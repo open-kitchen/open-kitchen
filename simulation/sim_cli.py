@@ -4,27 +4,29 @@ from typing import List
 
 import colorlog
 
+from components.fda_sim import FDADispenserSim, FDACupTransitSim
 from components.pusher_tipper_sim import ConveyorSim, PusherTipperSim
 from components.runner_sim import RunnerSim
 from components.wok_sim import WokSim
-from messages.wok_message import MasterWokRequestCodes, WokErrors, WokRequestCodes
+from messages.fda_message import FDAErrors, MasterFDARequestCodes, FDARequestCodes
 from messages.main_controller_message import (
     MasterComponentRequestCodes,
     ComponentCodes,
     ComponentReceiveResponses,
-)
-from messages.runner_message import (
-    MasterRunnerRequestCodes,
-    RunnerErrors,
-    RunnerRequestCodes,
 )
 from messages.pusher_tipper_message import (
     MasterPusherTipperRequestCodes,
     PusherTipperErrors,
     PusherTipperRequestCodes,
 )
+from messages.runner_message import (
+    MasterRunnerRequestCodes,
+    RunnerErrors,
+    RunnerRequestCodes,
+)
+from messages.wok_message import MasterWokRequestCodes, WokErrors, WokRequestCodes
 
-COMPONENTS = ["wok", "runner", "OFTA"]
+COMPONENTS = ["wok", "runner", "OFTA", "dispenser", "cup-transit"]
 
 
 def setup_logging(log_names: List[str], level=logging.INFO) -> None:
@@ -127,6 +129,40 @@ def pusher_tipper_i2c_response_refine(
 
 
 """
+FDADispenserSim
+"""
+
+
+def fda_i2c_data_refine(sim: FDADispenserSim, request_code: int, data: str):
+    return int(data)
+
+
+def fda_i2c_response_refine(
+    sim: FDADispenserSim, request_code: int, data: str, response: int
+):
+    response_description = f"{ComponentReceiveResponses(response).name}"
+    return response_description
+
+
+"""
+FDATransitSim
+"""
+
+
+def fda_cup_transit_i2c_data_refine(
+    sim: FDACupTransitSim, request_code: int, data: str
+):
+    return int(data)
+
+
+def fda_cup_trasit_i2c_response_refine(
+    sim: FDACupTransitSim, request_code: int, data: str, response: int
+):
+    response_description = f"{ComponentReceiveResponses(response).name}"
+    return response_description
+
+
+"""
 The Main
 """
 
@@ -172,7 +208,14 @@ if __name__ == "__main__":
     # Setup all the logging
     setup_logging(["transitions.core"])
     setup_logging(
-        ["WokSim", "RunnerSim", "PusherTipperSim", "ConveyorSim"],
+        [
+            "WokSim",
+            "RunnerSim",
+            "PusherTipperSim",
+            "ConveyorSim",
+            "FDADispenserSim",
+            "FDACupTransitSim",
+        ],
         level=logging.DEBUG if config.debug else logging.INFO,
     )
     setup_logging([f"{__file__}"], level=logging.DEBUG)
@@ -205,6 +248,22 @@ if __name__ == "__main__":
         requests = RunnerRequestCodes
         i2c_data_refine_rules = runner_i2c_data_refine
         i2c_response_refine_rules = runner_i2c_response_refine
+    elif sim_component == "dispenser":
+        # Create a FDA dispenser sim simulation
+        sim = FDADispenserSim(id=1)
+        errors = FDAErrors
+        commands = MasterFDARequestCodes
+        requests = FDARequestCodes
+        i2c_data_refine_rules = fda_i2c_data_refine
+        i2c_response_refine_rules = fda_i2c_response_refine
+    elif sim_component == "cup-transit":
+        # Create a FDA cup transit sim simulation
+        sim = FDACupTransitSim(id=1)
+        errors = FDAErrors
+        commands = MasterFDARequestCodes
+        requests = FDARequestCodes
+        i2c_data_refine_rules = fda_i2c_data_refine
+        i2c_response_refine_rules = fda_i2c_response_refine
     else:
         log.critical(f"The component {sim_component} is not supported.")
         exit(-1)
