@@ -180,8 +180,8 @@ class RunnerSim(ComponentSim):
         """Handler MainController request 6"""
         # Check state
         if self.is_REFILLING():
-            self.error_code = RunnerErrors.NOT_ABLE_TO_RETRIEVE
-            self.log.error(f"RunnerSim #{self.id} {self.error_code.get_description()}")
+            self._error_code = RunnerErrors.NOT_ABLE_TO_RETRIEVE
+            self.log.error(f"RunnerSim #{self.id} {self._error_code.get_description()}")
             return ComponentReceiveResponses.DENIED
 
         # Force retrieve runner
