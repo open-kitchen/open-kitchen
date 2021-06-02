@@ -21,7 +21,7 @@ requests==2.22.0
 six==1.12.0
 transitions==0.7.1
 tzlocal==2.0.0
-urllib3==1.25.5
+urllib3==1.26.5
 uvicorn==0.11.1
 Werkzeug==0.16.0
 wireless==0.3.3
